@@ -7,4 +7,6 @@ terraform {
   }
 }
 
-provider "tfe" {}
+provider "tfe" {
+    token = var.tf_token
+}
