@@ -4,7 +4,7 @@ variable "tf_token" {
 
 variable  "workspace_name" {
   type = string
-  default = "new-workspace"
+  default = "the-rodasnet-workspace"
 }
 
 variable "org_name" {
