@@ -14,4 +14,5 @@ variable "org_name" {
 
 variable "vsc_identifier" {
   type = string
+  default = "value"
 }
