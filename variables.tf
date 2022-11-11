@@ -16,3 +16,7 @@ variable "vsc_identifier" {
   type = string
   default = "value"
 }
+
+variable "github_token" {
+  type = string
+}
