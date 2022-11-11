@@ -8,11 +8,11 @@ resource "tfe_workspace" "test" {
   # }
 }
 
-# resource "tfe_oauth_client" "test" {
-#   name             = "my-github-oauth-client"
-#   organization     = "rodasnet"
-#   api_url          = "https://api.github.com"
-#   http_url         = "https://github.com"
-#   oauth_token      = "my-vcs-provider-token"
-#   service_provider = "github"
-# }
+resource "tfe_oauth_client" "test" {
+  name             = "${var.workspace_name}-oauth-client"
+  organization     = "rodasnet"
+  api_url          = "https://api.github.com"
+  http_url         = "https://github.com"
+  oauth_token      = var.tf_token
+  service_provider = "github"
+}
