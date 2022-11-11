@@ -2,10 +2,10 @@ resource "tfe_workspace" "test" {
   name         = var.workspace_name
   organization = var.org_name
 
-  # vcs_repo {
-  #   identifier = var.vsc_identifier
-  #   oauth_token_id = 
-  # }
+  vcs_repo {
+    identifier = "rodasnet/terraform-rodasnet.com"
+    oauth_token_id = tfe_oauth_client.test.oauth_token_id
+  }
 }
 
 resource "tfe_oauth_client" "test" {
