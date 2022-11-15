@@ -28,7 +28,6 @@ variable "branch" {
 
 variable "tfe_variable_sensitive_map" {
   type = map
-  sensitive = true
   default = {}
   description = "A map of sensitive variable to add as environment variables to the TFC workspace"
 }
@@ -38,7 +37,6 @@ variable "tfe_variable_public_map" {
   default = {}
   description = "A map of public variable to add as environment variables to the TFC workspace"
 }
-
 
 variable "auto_apply" {
   type  = bool
