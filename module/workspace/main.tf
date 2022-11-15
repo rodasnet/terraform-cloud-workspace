@@ -1,6 +1,7 @@
 resource "tfe_workspace" "tfe_workspace" {
   name                  = var.workspace_name
   organization          = var.organization
+  description           = var.description == "" ? "Workspace ${var.workspace_name}" : var.description 
 
   vcs_repo {
     identifier      = "${var.organization}/${var.repo_name}"

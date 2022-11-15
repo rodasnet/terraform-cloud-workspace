@@ -5,4 +5,6 @@ module "aws-acct-dev-01" {
   workspace_name    = "aws-acct-dev-01"
   repo_name         = "terraform-rodasnet.com"
   oauth_token       = var.github_token
+
+  description       = "Something really special"
 }
