@@ -15,6 +15,11 @@ variable "oauth_token" {
   sensitive = true
 }
 
+variable "description" {
+  type    = string
+  default = ""
+}
+
 variable "branch" {
   type      = string
   default   = null
