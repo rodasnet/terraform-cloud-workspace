@@ -1,22 +1,15 @@
-variable "tf_token" {
-  type = string
-}
 
-variable  "workspace_name" {
-  type = string
-  default = "the-rodasnet-workspace"
-}
-
-variable "org_name" {
-  type = string
+variable "organization" {
+  type    = string
   default = "rodasnet"
 }
 
-variable "vsc_identifier" {
-  type = string
-  default = "value"
+variable "tf_token" {
+  type      = string
+  sensitive = true
 }
 
 variable "github_token" {
-  type = string
+  type      = string
+  sensitive = true
 }
