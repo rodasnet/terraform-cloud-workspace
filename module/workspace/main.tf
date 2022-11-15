@@ -5,15 +5,15 @@ resource "tfe_workspace" "this" {
   description           = var.description == "" ? "Workspace ${var.workspace_name}" : var.description 
 
   // Optional variables
-  auto_apply            = var.auto_apply // default fales
-  file_triggers_enabled = var.file_triggers_enabled // default true
-  ssh_key_id            = var.ssh_key_id
+//  auto_apply            = var.auto_apply // default fales
+//  file_triggers_enabled = var.file_triggers_enabled // default true
+//  ssh_key_id            = var.ssh_key_id
 
 
   vcs_repo {
     identifier      = "${var.organization}/{var.repo_name}"
     oauth_token_id  = tfe_oauth_client.this.oauth_token_id
-    branch          = var.branch
+  //  branch          = var.branch
   }
 }
 
