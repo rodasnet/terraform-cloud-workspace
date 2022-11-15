@@ -28,6 +28,7 @@ variable "branch" {
 
 variable "tfe_variable_sensitive_map" {
   type = map
+  sensitive = true
   default = {}
   description = "A map of sensitive variable to add as environment variables to the TFC workspace"
 }
