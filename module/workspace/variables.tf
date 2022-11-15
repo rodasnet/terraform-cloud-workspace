@@ -15,6 +15,12 @@ variable "oauth_token" {
   sensitive = true
 }
 
+variable "branch" {
+  type      = string
+  default   = null
+  description = "(Optional) The repository branch that Terraform will execute from. This defaults to the repository's default branch (e.g. main)."
+}
+
 variable "oauth_api_url" {
   type    = string
   default = "https://api.github.com"
