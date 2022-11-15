@@ -1,4 +1,3 @@
-/*
 module "aws-acct-dev-02" {
   source = "./module/workspace"
 
@@ -13,7 +12,7 @@ module "aws-acct-dev-02" {
   tfe_variable_sensitive_map = var.sensitives
   tfe_variable_public_map = var.workspace_vars
 }
-*/
+
 variable "sensitives" {
   type = map
   default = {
