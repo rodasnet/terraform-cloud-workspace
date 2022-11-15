@@ -6,6 +6,7 @@ resource "tfe_workspace" "tfe_workspace" {
   file_triggers_enabled = var.file_triggers_enabled
   ssh_key_id            = var.ssh_key_id
   allow_destroy_plan    = var.allow_destroy_plan
+  ssh_key_id            = var.ssh_key_id
 
   vcs_repo {
     identifier      = "${var.organization}/${var.repo_name}"
