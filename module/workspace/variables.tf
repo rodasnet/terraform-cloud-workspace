@@ -1,14 +1,14 @@
-variable "oauth_token" { // Required
-  type      = string
-  sensitive = true
+variable "organization" { // Required
+  type = string
 }
 
 variable "workspace_name" { // Required
   type = string
 }
 
-variable "organization" { // Required
-  type = string
+variable "oauth_token" { // Required
+  type      = string
+  sensitive = true
 }
 
 variable "repo_name" { // Required
@@ -16,7 +16,7 @@ variable "repo_name" { // Required
 }
 
 // Optional variables
-
+/*
 variable "branch" {
   type      = string
   default   = null
@@ -46,7 +46,7 @@ variable "ssh_key_id" {
   description = "(Optional) The ID of an SSH key to assign to the workspace."
   default     = null
 }
-
+*/
 // Default valued variables
 variable "oauth_api_url" {
   type    = string

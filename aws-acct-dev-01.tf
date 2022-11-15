@@ -2,8 +2,7 @@ module "aws-acct-dev-01" {
   source = "./module/workspace"
 
   organization      = var.organization
-  oauth_token       = var.github_token
-
   workspace_name    = "aws-acct-dev-01"
   repo_name         = "terraform-rodasnet.com"
+  oauth_token       = var.github_token
 }
