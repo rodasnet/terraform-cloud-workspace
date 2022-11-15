@@ -26,6 +26,26 @@ variable "branch" {
   description = "(Optional) The repository branch that Terraform will execute from. This defaults to the repository's default branch (e.g. main)."
 }
 
+variable "auto_apply" {
+  type  = bool
+  default = null
+}
+
+variable "file_triggers_enabled" {
+  type  = bool
+  default = null
+}
+
+variable "allow_destroy_plan" {
+  type  = bool
+  default = null
+}
+
+variable "ssh_key_id" {
+  description = "(Optional) The ID of an SSH key to assign to the workspace."
+  default     = null
+}
+
 variable "oauth_api_url" {
   type    = string
   default = "https://api.github.com"
