@@ -15,7 +15,7 @@ module "aws-acct-dev-02" {
 
 variable "sensitives" {
   type = map
-
+  sensitive = true
   default = {
     COLOR = "Magic"
     BANK_ACCOUNT = "292929292993"
