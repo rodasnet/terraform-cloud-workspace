@@ -6,6 +6,10 @@ variable "workspace_name" {
   type = string
 }
 
+variable "repo_name" {
+  type = string
+}
+
 variable "oauth_token" {
   type      = string
   sensitive = true
