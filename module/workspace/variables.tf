@@ -1,8 +1,3 @@
-variable "tf_token" { // Required
-  type      = string
-  sensitive = true
-}
-
 variable "oauth_token" { // Required
   type      = string
   sensitive = true
