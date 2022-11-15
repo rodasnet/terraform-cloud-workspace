@@ -1,11 +1,11 @@
 variable "tf_token" { // Required
   type      = string
-  sensative = true
+  sensitive = true
 }
 
 variable "oauth_token" { // Required
   type      = string
-  sensative = true
+  sensitive = true
 }
 
 variable "workspace_name" { // Required
@@ -24,7 +24,6 @@ variable "repo_name" { // Required
 
 variable "branch_name" {
   type      = string
-  sensative = true
   default   = null
 }
 

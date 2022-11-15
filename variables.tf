@@ -6,10 +6,10 @@ variable "organization" {
 
 variable "tf_token" {
   type      = string
-  sensative = true
+  sensitive = true
 }
 
 variable "github_token" {
   type      = string
-  sensative = true
+  sensitive = true
 }
