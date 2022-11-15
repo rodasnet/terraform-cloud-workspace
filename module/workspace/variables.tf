@@ -26,6 +26,19 @@ variable "branch" {
   description = "(Optional) The repository branch that Terraform will execute from. This defaults to the repository's default branch (e.g. main)."
 }
 
+variable "tfe_variable_sensitive_map" {
+  type = map
+  default = {}
+  description = "A map of sensitive variable to add as environment variables to the TFC workspace"
+}
+
+variable "tfe_variable_public_map" {
+  type = map
+  default = {}
+  description = "A map of public variable to add as environment variables to the TFC workspace"
+}
+
+
 variable "auto_apply" {
   type  = bool
   default = null
