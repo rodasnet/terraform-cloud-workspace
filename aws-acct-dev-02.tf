@@ -1,4 +1,4 @@
-module "aws-acct-dev-01" {
+module "aws-acct-dev-02" {
   source = "./module/workspace"
 
   organization      = var.organization
