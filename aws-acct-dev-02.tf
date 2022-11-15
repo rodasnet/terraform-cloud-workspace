@@ -8,4 +8,5 @@ module "aws-acct-dev-02" {
   
   // Optional variable
   branch            = "feature-branch"
+  auto_apply        = true
 }
