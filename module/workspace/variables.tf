@@ -22,7 +22,7 @@ variable "repo_name" { // Required
 
 // Optional variables
 
-variable "branch_name" {
+variable "branch" {
   type      = string
   default   = null
 }
