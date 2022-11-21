@@ -17,12 +17,14 @@ resource "tfe_workspace" "workspace" {
 }
 
 variable "workspace_settings" {
-  type = object({
-    organization    = optional(string)
-    workspace_name  = optional(string)
-    repo_name       = optional(string)
-    description     = optional(string)
+  type = optional(
+    object({
+      organization    = optional(string)
+      workspace_name  = optional(string)
+      repo_name       = optional(string)
+      description     = optional(string)
   })
+  )
 }
 
 # resource "tfe_oauth_client" "oauth_client" {
