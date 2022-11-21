@@ -20,7 +20,8 @@ variable "workspace_settings" {
     description     = optional(string)
     vcs             = optional(object({
         repo_name           = string
-        oauth_token_id      = string
+        # Is OAuth Token ID sensitive?
+        # oauth_token_id      = string
         branch              = optional(string)
       })
     )
