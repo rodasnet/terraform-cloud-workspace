@@ -8,19 +8,32 @@ variable "workspace_settings" {
   type = object({
     workspace_name  = optional(string)
     description     = optional(string)
+    vcs             = optional(map(
+      object({
+        repo_name           = string
+        oauth_token_id      = string
+      })
+    ))
   })
 }
 
-variable "global_settings" {
-  type = object({
-    organization    = optional(string)
-    workspace_name  = optional(string)
-    repo_name       = optional(string)
-    description     = optional(string)
-  })
+# variable "global_settings" {
+#   type = object({
+#     organization    = optional(string)
+#     workspace_name  = optional(string)
+#     description     = optional(string)
 
-  default = null
-}
+#     vcs             = optional(map(
+#       object({
+#         repo_name           = string
+#         oauth_token_id      = string
+#       })
+#     ))
+    
+#   })
+
+#   default = null
+# }
 
 # resource "tfe_oauth_client" "oauth_client" {
 #   name             = "${var.workspace_name}-oauth-client"
