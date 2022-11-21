@@ -2,10 +2,17 @@ resource "tfe_workspace" "workspace" {
   organization      = var.workspace_settings.organization
   name              = var.workspace_settings.workspace_name
   description       = var.workspace_settings.description
-  
 }
 
 variable "workspace_settings" {
+  type = object({
+    workspace_name  = optional(string)
+    repo_name       = optional(string)
+    description     = optional(string)
+  })
+}
+
+variable "global_settings" {
   type = object({
     organization    = optional(string)
     workspace_name  = optional(string)
