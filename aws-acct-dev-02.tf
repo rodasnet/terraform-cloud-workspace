@@ -1,31 +1,21 @@
 module "aws-acct-dev-02" {
   source = "./module/workspace"
 
-  organization      = var.organization
-  workspace_name    = "aws-acct-dev-02"
-  repo_name         = "terraform-rodasnet.com"
-  oauth_token       = var.github_token == "" ? null : var.github_token
-  
-  // Optional variable
-  branch            = "feature-branch"
-
-  tfe_variable_sensitive_map = var.sensitives
-  tfe_variable_public_map = var.workspace_vars
+  workspace_settings = var.my-workspace_settings
 }
 
-variable "sensitives" {
-  type = map
+variable "my-workspace_settings" {
+  # type = object({
+  #   organization    = optional(string)
+  #   workspace_name  = optional(string)
+  #   repo_name       = optional(string)
+  #   description     = optional(string)
+  # })
+
   default = {
-    COLOR = "Magic"
-    BANK_ACCOUNT = "292929292993"
+    organization        = "rodasnet"
+    description         = "Second something really special"
+    repo_name           = "terraform-rodasnet.com"
+    workspace_name      = "aws-acct-dev-02"
   }
 }
-
-variable "workspace_vars" {
-  type = map
-  default = {
-    LOCATION = "West Coast"
-    TIER = "Premium"
-  }
-}
-
