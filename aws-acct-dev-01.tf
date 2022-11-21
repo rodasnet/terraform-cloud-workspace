@@ -1,5 +1,5 @@
 module "aws-acct-dev-01" {
-  source = "./constructor"
+  source = "./module/workspace"
 
   workspace_settings = {
     description = "Something really special"
