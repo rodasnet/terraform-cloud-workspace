@@ -39,7 +39,7 @@ resource "tfe_workspace" "workspace" {
 
 
 resource "tfe_oauth_client" "oauth_client" {
-  count = var.github_token == "" ? null : var.github_token
+  count = var.github_token == "" ? 0 : 1
   name             = "${var.workspace_name}-oauth-client"
   organization     = var.organization
   api_url          = var.oauth_api_url
