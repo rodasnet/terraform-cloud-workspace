@@ -6,7 +6,7 @@ resource "tfe_workspace" "workspace" {
   dynamic vcs_repo {
     for_each = var.workspace_settings.vcs != null ? [1] : []
     content {
-      identifier      = "${var.organization}/${var.workspace_settings.vcs.repo_name}"
+      identifier      = "${var.global_settings.organization}/${var.workspace_settings.vcs.repo_name}"
       oauth_token_id  = var.workspace_settings.vcs.oauth_token_id
       branch          = var.workspace_settings.vcs.branch
     }
