@@ -7,11 +7,12 @@ resource "tfe_workspace" "workspace" {
   ssh_key_id            = var.ssh_key_id
   allow_destroy_plan    = var.allow_destroy_plan
 
-  vcs_repo {
-    identifier      = "${var.organization}/${var.repo_name}"
-    oauth_token_id  = tfe_oauth_client.oauth_client.oauth_token_id
-    branch          = var.branch
-  }
+  # vcs_repo {
+  #   count = 0
+  #   identifier      = "${var.organization}/${var.repo_name}"
+  #   oauth_token_id  = tfe_oauth_client.oauth_client.oauth_token_id
+  #   branch          = var.branch
+  # }
 }
 
 # module "constructor" {
@@ -38,6 +39,7 @@ resource "tfe_workspace" "workspace" {
 
 
 resource "tfe_oauth_client" "oauth_client" {
+  count = var.oauth_token == "" ? 0 : 1
   name             = "${var.workspace_name}-oauth-client"
   organization     = var.organization
   api_url          = var.oauth_api_url
