@@ -1,5 +1,4 @@
 resource "tfe_workspace" "workspace" {
-  count                 = 0
   name                  = var.workspace_name
   organization          = var.organization
   description           = var.description == "" ? "Workspace ${var.workspace_name}" : var.description
