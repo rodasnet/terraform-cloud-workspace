@@ -2,7 +2,7 @@
 variable "tf_token" {
   type      = string
   sensitive = true
-    default = null
+  default = null
 }
 
 variable "organization" {
