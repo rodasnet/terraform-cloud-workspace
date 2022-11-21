@@ -1,8 +1,6 @@
 module "aws-acct-dev-02" {
   source = "./module/workspace"
-  organization = var.organization
-
-  oauth_token_2 = var.github_token
+  global_settings = var.global_settings
 
   workspace_settings = {
     workspace_name      = "aws-acct-dev-02"
