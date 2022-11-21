@@ -18,11 +18,17 @@ variable "github_token" {
 variable "github_oauth_client" {
   type = map
   default = {
-      name             = "rodasnet-oauth-client"
-      organization     = "rodasnet"
       api_url          = "https://api.github.com"
       http_url         = "https://github.com"
-      oauth_token      =  "SuperSecret"
       service_provider = "github"
+  }
+}
+
+variable "global_settings" {
+  type = object({
+    organization    = optional(string)
+  })
+  default = {
+      organization     = "rodasnet"
   }
 }

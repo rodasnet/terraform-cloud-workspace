@@ -1,6 +1,6 @@
-# variable "organization" { 
-#   type = string
-# }
+variable "organization" { 
+  type = string
+}
 
 # variable "workspace_name" {
 #   type = string
