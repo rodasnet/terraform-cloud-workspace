@@ -1,10 +1,12 @@
 module "workspace-constructor" {
-  source = "../module/workspace"
+  source = "./module/workspace"
 
   organization      = var.organization
+  oauth_token       = var.github_token
+  
   workspace_name    = workspace_settings.workspace_name
   repo_name         = workspace_settings.repo_name
-  oauth_token       = var.github_token
+  
 }
 
 variable "workspace_settings" {
