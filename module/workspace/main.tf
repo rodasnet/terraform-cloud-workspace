@@ -2,6 +2,7 @@ resource "tfe_workspace" "workspace" {
   organization      = workspace_settings.organization
   workspace_name    = workspace_settings.workspace_name
   repo_name         = workspace_settings.repo_name
+  description       = workspace_settings.description
 
   # auto_apply            = var.auto_apply
   # file_triggers_enabled = var.file_triggers_enabled
