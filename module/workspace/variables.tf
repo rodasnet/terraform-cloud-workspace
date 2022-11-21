@@ -10,10 +10,10 @@ variable "organization" {
 #   type = string
 # }
 
-# variable "oauth_token" {
-#   type      = string
-#   sensitive = true
-# }
+variable "oauth_token_2" {
+  type      = string
+  sensitive = true
+}
 
 # variable "description" {
 #   type    = string

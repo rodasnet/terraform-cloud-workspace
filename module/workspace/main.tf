@@ -7,7 +7,8 @@ resource "tfe_workspace" "workspace" {
     for_each = var.workspace_settings.vcs != null ? [1] : []
     content {
       identifier      = "${var.organization}/${var.workspace_settings.vcs.repo_name}"
-      oauth_token_id  = var.workspace_settings.vcs.oauth_token_id
+      # oauth_token_id  = var.workspace_settings.vcs.oauth_token_id
+      oauth_token_id  = tfe_oauth_client.oauth_client.oauth_token_id
       branch          = var.workspace_settings.vcs.branch
     }
   }  
@@ -24,6 +25,15 @@ variable "workspace_settings" {
       })
     )
   })
+}
+
+resource "tfe_oauth_client" "oauth_client" {
+  name             = "${var.workspace_settings.vcs.repo_name}-oauth-client"
+  organization     = var.organization
+  api_url          = "https://api.github.com"
+  http_url         =  "https://github.com"
+  oauth_token      = var.oauth_token_2
+  service_provider = "github"
 }
 
 # variable "global_settings" {
@@ -44,14 +54,7 @@ variable "workspace_settings" {
 #   default = null
 # }
 
-# resource "tfe_oauth_client" "oauth_client" {
-#   name             = "${var.workspace_name}-oauth-client"
-#   organization     = var.organization
-#   api_url          = var.oauth_api_url
-#   http_url         = var.oauth_http_url
-#   oauth_token      = var.oauth_token
-#   service_provider = var.oauth_service_provider
-# }
+
 
 # resource "tfe_variable" "sensitive" {
 #   for_each      = var.tfe_variable_sensitive_map
