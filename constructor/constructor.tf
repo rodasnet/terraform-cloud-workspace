@@ -1,5 +1,5 @@
 module "workspace-constructor" {
-  source = "./module/workspace"
+  source = "../module/workspace"
 
   organization      = var.organization
   workspace_name    = workspace_settings.workspace_name
