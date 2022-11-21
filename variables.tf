@@ -15,7 +15,7 @@ variable "github_token" {
   sensitive = true
 }
 
-var "github_oauth_client" {
+variable "github_oauth_client" {
   type = map
   default = {
       name             = "${var.organization}-oauth-client"
