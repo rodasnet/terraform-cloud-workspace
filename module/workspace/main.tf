@@ -4,11 +4,13 @@ resource "tfe_workspace" "workspace" {
   description       = var.workspace_settings.description
 
   dynamic vcs_repo {
-    count = var.workspace_settings.vcs != null ? 1 : 0
-    identifier      = "${var.organization}/${var.workspace_settings.vcs.repo_name}"
-    oauth_token_id  = var.workspace_settings.vcs.oauth_token_id
-    branch          = var.workspace_settings.vcs.branch
-  }
+    for_each = var.workspace_settings.vcs != null ? [1] : []
+    content {
+      identifier      = "${var.organization}/${var.workspace_settings.vcs.repo_name}"
+      oauth_token_id  = var.workspace_settings.vcs.oauth_token_id
+      branch          = var.workspace_settings.vcs.branch
+    }
+  }  
 }
 
 variable "workspace_settings" {
