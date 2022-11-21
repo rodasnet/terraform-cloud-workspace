@@ -8,6 +8,7 @@ resource "tfe_workspace" "workspace" {
   allow_destroy_plan    = var.allow_destroy_plan
 
   vcs_repo {
+    count = 0
     identifier      = "${var.organization}/${var.repo_name}"
     oauth_token_id  = tfe_oauth_client.oauth_client.oauth_token_id
     branch          = var.branch

@@ -1,16 +1,16 @@
-module "aws-acct-dev-02" {
+module "constructor" {
   source = "./module/workspace"
 
-  organization      = var.organization
-  workspace_name    = "aws-acct-dev-02"
+  organization      = "rodasnet"
+  workspace_name    = "worksace-with-constructor-01"
   repo_name         = "terraform-rodasnet.com"
   oauth_token       = var.github_token == "" ? null : var.github_token
   
   // Optional variable
   branch            = "feature-branch"
 
-  tfe_variable_sensitive_map = var.sensitives
-  tfe_variable_public_map = var.workspace_vars
+#   tfe_variable_sensitive_map = var.sensitives
+#   tfe_variable_public_map = var.workspace_vars
 }
 
 variable "sensitives" {
@@ -28,4 +28,3 @@ variable "workspace_vars" {
     TIER = "Premium"
   }
 }
-
