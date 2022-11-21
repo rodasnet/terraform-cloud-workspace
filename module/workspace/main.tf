@@ -28,7 +28,7 @@ variable "workspace_settings" {
 }
 
 resource "tfe_oauth_client" "oauth_client" {
-  name             = "${var.workspace_settings.vcs.repo_name}-oauth-client"
+  name             = "${ var.workspace_settings.workspace_name}-oauth-client"
   organization     = var.organization
   api_url          = "https://api.github.com"
   http_url         =  "https://github.com"
