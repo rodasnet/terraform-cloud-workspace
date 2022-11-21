@@ -2,18 +2,27 @@ resource "tfe_workspace" "workspace" {
   organization      = var.organization
   name              = var.workspace_settings.workspace_name
   description       = var.workspace_settings.description
+
+  dynamic vcs_repo {
+    for_each = var.workspace_settings.vcs != null ? [1] : []
+    content {
+      identifier      = "${var.organization}/${var.workspace_settings.vcs.repo_name}"
+      oauth_token_id  = var.workspace_settings.vcs.oauth_token_id
+      branch          = var.workspace_settings.vcs.branch
+    }
+  }  
 }
 
 variable "workspace_settings" {
   type = object({
     workspace_name  = optional(string)
     description     = optional(string)
-    vcs             = optional(map(
-      object({
+    vcs             = optional(object({
         repo_name           = string
         oauth_token_id      = string
+        branch              = optional(string)
       })
-    ))
+    )
   })
 }
 
