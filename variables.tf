@@ -18,11 +18,11 @@ variable "github_token" {
 variable "github_oauth_client" {
   type = map
   default = {
-      name             = "${var.organization}-oauth-client"
-      organization     = var.organization
+      name             = "rodasnet-oauth-client"
+      organization     = "rodasnet"
       api_url          = "https://api.github.com"
       http_url         = "https://github.com"
-      oauth_token      = var.github_token
+      oauth_token      =  "SuperSecret"
       service_provider = "github"
   }
 }
