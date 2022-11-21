@@ -5,11 +5,6 @@ variable "tf_token" {
   default = null
 }
 
-variable "organization" {
-  type    = string
-  default = "rodasnet"
-}
-
 variable "github_token" {
   type      = string
   sensitive = true
