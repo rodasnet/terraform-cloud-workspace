@@ -1,9 +1,9 @@
-module "example-workspace-minimum-configuration" {
+module "workspace-minimum-configuration" {
   source          = "./module/workspace"
   global_settings = var.global_settings
 
   workspace_settings = {
-    workspace_name = "example-workspace-minimum-configuration"
+    workspace_name = "workspace-minimum-configuration"
     description    = "Second something really special"
   }
 }

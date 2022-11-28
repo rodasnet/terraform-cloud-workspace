@@ -1,9 +1,9 @@
-module "example-workspace-with-variables" {
+module "workspace-with-variables" {
   source          = "./module/workspace"
   global_settings = var.global_settings
 
   workspace_settings = {
-    workspace_name = "example-workspace-with-variables"
+    workspace_name = "workspace-with-variables"
     description    = "Variables. something really special"
   }
   
