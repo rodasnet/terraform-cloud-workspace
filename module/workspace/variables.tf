@@ -1,16 +1,16 @@
 variable "workspace_settings" {
   type = object({
-    workspace_name  = string
-    description     = optional(string)
-    agent_pool_id   = optional(string)
-    allow_destroy_plan    = optional(bool)
-    auto_apply            = optional(bool)
-    execution_mode        = optional(string)
-    assessments_enabled   = optional(bool)
-    file_triggers_enabled   = optional(bool)
-    global_remote_state     = optional(bool)
-    queue_all_runs          = optional(bool)
-    speculative_enabled     = optional(bool)
+    workspace_name                      = string
+    description                         = optional(string)
+    agent_pool_id                       = optional(string)
+    allow_destroy_plan                  = optional(bool)
+    auto_apply                          = optional(bool)
+    execution_mode                      = optional(string)
+    assessments_enabled                 = optional(bool)
+    file_triggers_enabled               = optional(bool)
+    global_remote_state                 = optional(bool)
+    queue_all_runs                      = optional(bool)
+    speculative_enabled                 = optional(bool)
     structured_run_output_enabled       = optional(bool)
     ssh_key_id                          = optional(string)
     tag_names                           = optional(list(string))
@@ -37,4 +37,16 @@ variable "global_settings" {
     organization        = string
     oauth_token_id      = optional(string)
   })
+}
+
+variable "tfe_variable_sensitive_map" {
+  type = map
+  default = {}
+  description = "A map of sensitive variable to add as environment variables to the TFC workspace"
+}
+
+variable "tfe_variable_public_map" {
+  type = map
+  default = {}
+  description = "A map of public variable to add as environment variables to the TFC workspace"
 }

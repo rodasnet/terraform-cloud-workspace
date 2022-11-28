@@ -2,7 +2,7 @@
 variable "tf_token" {
   type      = string
   sensitive = true
-  default = null
+  default   = null
 }
 
 variable "github_token" {
@@ -11,19 +11,19 @@ variable "github_token" {
 }
 
 variable "github_oauth_client" {
-  type = map
+  type = map(any)
   default = {
-      api_url          = "https://api.github.com"
-      http_url         = "https://github.com"
-      service_provider = "github"
+    api_url          = "https://api.github.com"
+    http_url         = "https://github.com"
+    service_provider = "github"
   }
 }
 
 variable "global_settings" {
   type = object({
-    organization    = optional(string)
+    organization = optional(string)
   })
   default = {
-      organization     = "rodasnet"
+    organization = "rodasnet"
   }
 }
