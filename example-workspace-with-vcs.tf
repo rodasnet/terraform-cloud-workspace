@@ -1,9 +1,9 @@
-module "aws-acct-dev-03" {
+module "example-workspace-with-vcs" {
   source = "./module/workspace"
   global_settings = var.global_settings
 
   workspace_settings = {
-    workspace_name      = "aws-acct-dev-03"
+    workspace_name      = "example-workspace-with-vcs"
     description         = "Third something really special"
     vcs = {
       repo_name = "terraform-rodasnet.com"
