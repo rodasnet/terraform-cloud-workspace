@@ -13,10 +13,10 @@ variable "workspace_settings" {
     speculative_enabled     = optional(bool)
     structured_run_output_enabled       = optional(bool)
     ssh_key_id                          = optional(string)
-    tag_names                           = optional(list)
+    tag_names                           = optional(list(string))
     terraform_version                   = optional(string)
-    trigger_prefixes                    = optional(list)
-    trigger_patterns                    = optional(list)
+    trigger_prefixes                    = optional(list(string))
+    trigger_patterns                    = optional(list(string))
     working_directory                   = optional(string)
     
     vcs             = optional(object({
@@ -27,7 +27,7 @@ variable "workspace_settings" {
     )
 
     force_delete                        = optional(bool)
-    
+
   })
 
 }
