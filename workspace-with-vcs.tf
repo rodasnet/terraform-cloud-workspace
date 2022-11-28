@@ -1,9 +1,9 @@
-module "example-workspace-with-vcs" {
+module "workspace-with-vcs" {
   source          = "./module/workspace"
   global_settings = var.global_settings
 
   workspace_settings = {
-    workspace_name = "example-workspace-with-vcs"
+    workspace_name = "workspace-with-vcs"
     description    = "Third something really special"
     vcs = {
       repo_name      = "terraform-rodasnet.com"
