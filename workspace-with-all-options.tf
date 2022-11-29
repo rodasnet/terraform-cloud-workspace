@@ -14,7 +14,7 @@ module "workspace-with-all-options" {
     file_triggers_enabled           = false
     # global_remote_state             = false
     queue_all_runs                  = true
-    # speculative_enabled             = ""
+    speculative_enabled             = false
     # structured_run_output_enabled   = ""
     # ssh_key_id                      = ""
     # tag_names                       = ""
