@@ -15,7 +15,7 @@ module "workspace-with-all-options" {
     # global_remote_state             = false
     queue_all_runs                  = true
     speculative_enabled             = false
-    # structured_run_output_enabled   = ""
+    structured_run_output_enabled   = false
     # ssh_key_id                      = ""
     # tag_names                       = ""
     # terraform_version               = ""
