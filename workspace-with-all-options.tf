@@ -12,11 +12,11 @@ module "workspace-with-all-options" {
     execution_mode                  = "remote"
     assessments_enabled             = true
     file_triggers_enabled           = false
-    # global_remote_state             = false
+    global_remote_state             = false
     queue_all_runs                  = true
     speculative_enabled             = false
     structured_run_output_enabled   = false
-    # ssh_key_id                      = ""
+    ssh_key_id                      = var.ssh_key_id
     # tag_names                       = ""
     # terraform_version               = ""
     # trigger_prefixes                = ""
@@ -33,6 +33,10 @@ module "workspace-with-all-options" {
   # depends_on = [
   #   tfe_agent_pool.test-agent-pool
   # ]
+}
+
+variable "ssh_key_id" {
+  type = string
 }
 
 # Note: Terraform Cloud Agents are a paid feature, available as part of the Terraform Cloud for Business upgrade package.
