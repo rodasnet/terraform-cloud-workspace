@@ -16,7 +16,7 @@ module "workspace-with-all-options" {
     queue_all_runs                  = true
     speculative_enabled             = false
     structured_run_output_enabled   = false
-    ssh_key_id                      = var.ssh_key_id
+    ssh_key_id                      = tfe_ssh_key.test.id
     # tag_names                       = ""
     # terraform_version               = ""
     # trigger_prefixes                = ""
@@ -37,6 +37,12 @@ module "workspace-with-all-options" {
 
 variable "ssh_key_id" {
   type = string
+}
+
+resource "tfe_ssh_key" "test" {
+  name         = "tf-test-ssh-key-name"
+  organization = var.global_settings.organization
+  key          = var.ssh_key_id
 }
 
 # Note: Terraform Cloud Agents are a paid feature, available as part of the Terraform Cloud for Business upgrade package.
