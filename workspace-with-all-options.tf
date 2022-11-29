@@ -19,7 +19,7 @@ module "workspace-with-all-options" {
     ssh_key_id                      = tfe_ssh_key.test.id
     tag_names                       = ["tagx", "you", "are", "it"]
     terraform_version               = "1.2.5"
-    # trigger_prefixes                = ""
+    trigger_prefixes                = ["terraform/modules/*"]
     # trigger_patterns                = ""
     # working_directory               = ""
   }
