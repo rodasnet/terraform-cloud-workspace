@@ -17,7 +17,7 @@ module "workspace-with-all-options" {
     speculative_enabled             = false
     structured_run_output_enabled   = false
     ssh_key_id                      = tfe_ssh_key.test.id
-    # tag_names                       = ""
+    tag_names                       = ["tagx", "you", "are", "it"]
     # terraform_version               = ""
     # trigger_prefixes                = ""
     # trigger_patterns                = ""
