@@ -20,7 +20,7 @@ module "workspace-with-all-options" {
     tag_names                       = ["tagx", "you", "are", "it"]
     terraform_version               = "1.2.5"
     trigger_prefixes                = ["terraform/modules/*"]
-    # trigger_patterns                = ""
+    trigger_patterns                = ["/**/networking/*"]
     # working_directory               = ""
   }
   
