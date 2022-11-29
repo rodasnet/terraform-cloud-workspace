@@ -5,6 +5,7 @@ module "workspace-with-all-options" {
   workspace_settings = {
     workspace_name                  = "workspace-with-all-options"
     description                     = "TFE Workspace module with all options"
+    # Note: Terraform Cloud Agents are a paid feature, available as part of the Terraform Cloud for Business upgrade package.
     # agent_pool_id                   = tfe_agent_pool.test-agent-pool.id
     # allow_destroy_plan              = ""
     # auto_apply                      = ""
@@ -34,7 +35,8 @@ module "workspace-with-all-options" {
   # ]
 }
 
-resource "tfe_agent_pool" "test-agent-pool" {
-  name         = "my-agent-pool-name"
-  organization = var.global_settings.organization
-}
+# Note: Terraform Cloud Agents are a paid feature, available as part of the Terraform Cloud for Business upgrade package.
+# resource "tfe_agent_pool" "test-agent-pool" {
+#   name         = "my-agent-pool-name"
+#   organization = var.global_settings.organization
+# }
