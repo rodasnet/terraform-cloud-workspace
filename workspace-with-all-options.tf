@@ -12,7 +12,7 @@ module "workspace-with-all-options" {
     execution_mode                  = "remote"
     assessments_enabled             = true
     file_triggers_enabled           = false
-    global_remote_state             = false
+    # global_remote_state             = false
     queue_all_runs                  = true
     # speculative_enabled             = ""
     # structured_run_output_enabled   = ""
