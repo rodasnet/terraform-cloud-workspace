@@ -11,7 +11,7 @@ module "workspace-with-all-options" {
     auto_apply                      = true
     execution_mode                  = "remote"
     assessments_enabled             = true
-    # file_triggers_enabled           = ""
+    file_triggers_enabled           = false
     # global_remote_state             = ""
     # queue_all_runs                  = ""
     # speculative_enabled             = ""
