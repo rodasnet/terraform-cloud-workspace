@@ -9,7 +9,7 @@ module "workspace-with-all-options" {
     # agent_pool_id                   = tfe_agent_pool.test-agent-pool.id
     allow_destroy_plan              = false
     auto_apply                      = true
-    execution_mode                  = remote
+    execution_mode                  = "remote"
     # assessments_enabled             = ""
     # file_triggers_enabled           = ""
     # global_remote_state             = ""
