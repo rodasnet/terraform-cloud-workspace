@@ -5,7 +5,7 @@ module "workspace-with-all-options" {
   workspace_settings = {
     workspace_name                  = "workspace-with-all-options"
     description                     = "TFE Workspace module with all options"
-    agent_pool_id                   = tfe_agent_pool.test-agent-pool.id
+    # agent_pool_id                   = tfe_agent_pool.test-agent-pool.id
     # allow_destroy_plan              = ""
     # auto_apply                      = ""
     # execution_mode                  = ""
@@ -29,9 +29,9 @@ module "workspace-with-all-options" {
     ENV_VARIABLE_3 = "Value Number 3"
   }
 
-  depends_on = [
-    tfe_agent_pool.test-agent-pool
-  ]
+  # depends_on = [
+  #   tfe_agent_pool.test-agent-pool
+  # ]
 }
 
 resource "tfe_agent_pool" "test-agent-pool" {
