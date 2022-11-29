@@ -10,7 +10,7 @@ module "workspace-with-all-options" {
     allow_destroy_plan              = false
     auto_apply                      = true
     execution_mode                  = "remote"
-    # assessments_enabled             = ""
+    assessments_enabled             = true
     # file_triggers_enabled           = ""
     # global_remote_state             = ""
     # queue_all_runs                  = ""
