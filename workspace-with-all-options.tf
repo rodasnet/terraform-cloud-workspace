@@ -28,6 +28,10 @@ module "workspace-with-all-options" {
     TIER        = "Premium"
     ENV_VARIABLE_3 = "Value Number 3"
   }
+
+  depends_on = [
+    tfe_agent_pool.test-agent-pool
+  ]
 }
 
 resource "tfe_agent_pool" "test-agent-pool" {
