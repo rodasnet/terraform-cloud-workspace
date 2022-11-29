@@ -5,5 +5,7 @@ module "workspace-with-all-options" {
   workspace_settings = {
     workspace_name = "workspace-with-all-options"
     description    = "Second something really special"
+    terraform_version = "1.0.0"
+    
   }
 }
