@@ -25,10 +25,7 @@ variable "workspace_settings" {
       repo_name      = string
       oauth_token_id = string
       branch         = optional(string)
-      })
-    )
-
-    
+      }))
   })
 }
 
