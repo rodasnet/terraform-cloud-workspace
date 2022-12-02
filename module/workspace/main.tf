@@ -30,7 +30,7 @@ resource "tfe_workspace" "workspace" {
     }
   }
 
-  force_delete                  = var.workspace_settings.force_delete
+  # force_delete                  = var.workspace_settings.force_delete
 }
 
 resource "tfe_variable" "sensitive" {
