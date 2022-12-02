@@ -19,7 +19,6 @@ variable "workspace_settings" {
     trigger_prefixes              = optional(list(string))
     trigger_patterns              = optional(list(string))
     working_directory             = optional(string)
-    force_delete                  = optional(bool)
 
     vcs = optional(object({
       repo_name      = string
