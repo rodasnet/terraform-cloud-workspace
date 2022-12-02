@@ -21,7 +21,7 @@ module "workspace-with-all-options" {
     terraform_version               = "1.2.5"
     # trigger_prefixes                = ["terraform/modules/*"] # Conflicts with trigger_patterns
     trigger_patterns                = ["/**/networking/*"]    # Conflicts with trigger_prefixes
-    # working_directory               = ""
+    working_directory               = "some/path"
   }
   
   tfe_variable_public_map = {
