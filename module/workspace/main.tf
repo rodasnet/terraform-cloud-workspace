@@ -10,6 +10,7 @@ resource "tfe_workspace" "workspace" {
   assessments_enabled           = var.workspace_settings.assessments_enabled
   file_triggers_enabled         = var.workspace_settings.file_triggers_enabled
   global_remote_state           = var.workspace_settings.global_remote_state
+  remote_state_consumer_ids     = var.workspace_settings.remote_state_consumer_ids
   queue_all_runs                = var.workspace_settings.queue_all_runs
   speculative_enabled           = var.workspace_settings.speculative_enabled
   structured_run_output_enabled = var.workspace_settings.structured_run_output_enabled
@@ -28,6 +29,8 @@ resource "tfe_workspace" "workspace" {
       branch         = var.workspace_settings.vcs.branch
     }
   }
+
+  force_delete                  = var.workspace_settings.force_delete
 }
 
 resource "tfe_variable" "sensitive" {
