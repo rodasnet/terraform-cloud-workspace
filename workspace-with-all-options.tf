@@ -22,6 +22,10 @@ module "workspace-with-all-options" {
     # trigger_prefixes                = ["terraform/modules/*"] # Conflicts with trigger_patterns
     trigger_patterns                = ["/**/networking/*"]    # Conflicts with trigger_prefixes
     working_directory               = "some/path"
+    vcs = {
+      repo_name      = "terraform-rodasnet.com"
+      oauth_token_id = tfe_oauth_client.oauth_client.oauth_token_id
+    }
   }
   
   tfe_variable_public_map = {
