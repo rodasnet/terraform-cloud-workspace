@@ -11,7 +11,7 @@ module "workspace-with-all-options" {
     auto_apply                      = true
     execution_mode                  = "remote"
     assessments_enabled             = true
-    file_triggers_enabled           = false
+    file_triggers_enabled           = true # 'trigger_patterns' cannot be populated when 'file_triggers_enabled' is set to false.
     global_remote_state             = false
     queue_all_runs                  = true
     speculative_enabled             = false
