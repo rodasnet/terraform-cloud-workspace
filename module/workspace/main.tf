@@ -20,6 +20,7 @@ resource "tfe_workspace" "workspace" {
   trigger_prefixes              = var.workspace_settings.trigger_prefixes
   trigger_patterns              = var.workspace_settings.trigger_patterns
   working_directory             = var.workspace_settings.working_directory
+  force_delete                  = var.workspace_settings.force_delete
 
   dynamic "vcs_repo" {
     for_each = var.workspace_settings.vcs != null ? [1] : []
@@ -29,8 +30,7 @@ resource "tfe_workspace" "workspace" {
       branch         = var.workspace_settings.vcs.branch
     }
   }
-
-  # force_delete                  = var.workspace_settings.force_delete
+ 
 }
 
 resource "tfe_variable" "sensitive" {
