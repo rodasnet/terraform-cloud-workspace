@@ -1,7 +1,14 @@
+variable "my_description" {
+  type = string
+  default = ""
+}
+
 resource "tfe_workspace" "workspace" {
   organization = var.global_settings.organization
   name         = var.workspace_settings.workspace_name
-  description  = var.workspace_settings.description
+  # description  = var.workspace_settings.description
+  # Test variable input
+  description  = var.my_description
 
   agent_pool_id                 = var.workspace_settings.agent_pool_id
   allow_destroy_plan            = var.workspace_settings.allow_destroy_plan
