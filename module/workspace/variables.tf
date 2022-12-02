@@ -9,6 +9,7 @@ variable "workspace_settings" {
     assessments_enabled           = optional(bool)
     file_triggers_enabled         = optional(bool)
     global_remote_state           = optional(bool)
+    remote_state_consumer_ids     = optional(list(string))
     queue_all_runs                = optional(bool)
     speculative_enabled           = optional(bool)
     structured_run_output_enabled = optional(bool)
@@ -26,7 +27,7 @@ variable "workspace_settings" {
       })
     )
 
-    force_delete = optional(bool)
+    force_delete                  = optional(bool)
 
   })
 
