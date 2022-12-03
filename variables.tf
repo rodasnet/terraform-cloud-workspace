@@ -27,3 +27,7 @@ variable "global_settings" {
     organization = "rodasnet"
   }
 }
+
+variable "my_description" {
+  type = string
+}
