@@ -1,6 +1,5 @@
 variable "my_description" {
   type = string
-  default = ""
 }
 
 resource "tfe_workspace" "workspace" {
