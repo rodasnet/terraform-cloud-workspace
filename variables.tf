@@ -28,7 +28,7 @@ variable "global_settings" {
   }
 }
 
-variable "my_description" {
-  type = string
-  default = "A generic description ."
-}
+# variable "my_description" {
+#   type = string
+#   default = "A generic description ."
+# }
