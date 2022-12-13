@@ -1,4 +1,4 @@
-variable "workspace_name" {
+variable "name" {
   type = string
   description = "(Required) Name of the workspace."
 }

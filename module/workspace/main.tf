@@ -1,6 +1,6 @@
 resource "tfe_workspace" "workspace" {
   organization                  = var.organization
-  name                          = var.workspace_name
+  name                          = var.name
   description                   = var.description
   agent_pool_id                 = var.agent_pool_id
   allow_destroy_plan            = var.allow_destroy_plan
