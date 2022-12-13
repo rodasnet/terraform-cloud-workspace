@@ -6,7 +6,7 @@ module "VCS-Workspace" {
   description                   = "Terraform workspace with VCS configuration"
 
   vcs_repo = {
-      identifier      = "terraform-rodasnet.com"
+      identifier      = "rodasnet/terraform-rodasnet.com"
       oauth_token_id = tfe_oauth_client.oauth_client.oauth_token_id
     }
 }
