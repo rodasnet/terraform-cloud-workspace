@@ -129,14 +129,6 @@ variable "example_block" {
   default = null
 }
 
-# The vcs_repo block supports:
-
-# identifier
-# branch
-# ingress_submodules 
-# oauth_token_id
-# tags_regex
-
 variable "vcs_repo" {
   type = object({
     identifier          = string
