@@ -20,14 +20,14 @@ resource "tfe_workspace" "workspace" {
   trigger_patterns              = var.trigger_patterns
   working_directory             = var.working_directory
 
-  # dynamic "vcs_repo" {
-  #   for_each = var.workspace_settings.vcs != null ? [1] : []
-  #   content {
-  #     identifier     = "${var.global_settings.organization}/${var.workspace_settings.vcs.repo_name}"
-  #     oauth_token_id = var.workspace_settings.vcs.oauth_token_id
-  #     branch         = var.workspace_settings.vcs.branch
-  #   }
-  # }
+  dynamic "vcs_repo" {
+    for_each = var.vcs_repo != null ? [1] : []
+    content {
+      identifier     = var.vcs_repo
+      oauth_token_id = var.vcs_repo.oauth_token_id
+      branch         = var.vcs_repo.branch
+    }
+  }
  
 }
 

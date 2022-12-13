@@ -122,8 +122,12 @@ variable "working_directory" {
 }
 
 variable "vcs_repo" {
-  type = map
-  default = null
+  type = optional(object({
+    identifier       = string
+    oauth_token_id  = string
+    branch          = optional(string)
+  }))
+  
   description = "(Optional) Settings for the workspace's VCS repository, enabling the UI/VCS-driven run workflow. Omit this argument to utilize the CLI-driven and API-driven workflows, where runs are not driven by webhooks on your VCS provider."
 }
 
@@ -138,3 +142,12 @@ variable "tfe_variable_public_map" {
   default     = {}
   description = "A map of public variable to add as environment variables to the TFC workspace"
 }
+
+
+The vcs_repo block supports:
+
+identifier
+branch
+ingress_submodules 
+oauth_token_id
+tags_regex
