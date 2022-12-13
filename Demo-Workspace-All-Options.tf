@@ -29,3 +29,10 @@ module "Demo-Workspace-All-Options" {
       oauth_token_id  = tfe_oauth_client.oauth_client.oauth_token_id
     }
 }
+
+resource "tfe_ssh_key" "test" {
+  name         = "tf-test-ssh-key-name"
+  organization = var.global_settings.organization
+  key          = var.ssh_key_id
+}
+
