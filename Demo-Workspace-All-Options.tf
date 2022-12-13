@@ -33,6 +33,11 @@ module "Demo-Workspace-All-Options" {
     "ConsultingCo"     = "read"
     "SecondTeam"       = "write"
   }
+
+  variable_set_names = [
+    "my-aws-creds",
+    "tfe-api-token"
+  ]
 }
 
 variable "ssh_key_id" {
