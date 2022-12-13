@@ -1,5 +1,5 @@
 module "VCS-Workspace" {
-  source          = "./module/workspace"
+  source          = "../"
   
   organization                  = var.organization
   name                          = "VCS-Workspace"
