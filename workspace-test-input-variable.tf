@@ -1,11 +1,49 @@
-module "workspace-test-input-variable" {
+module "Sample-Workspace" {
   source          = "./module/workspace"
-  global_settings = var.global_settings
   
-   my_description = "This is a description"  
-
-  workspace_settings = {
-    workspace_name    = "workspace-test-input-variable"
-    terraform_version = "1.0.0"
-  }
+  organization                  = "rodasnet"
+  name                          = "Sample-Workspace"
+  description                   = "Sample Terraform workspace module implimentation"
+  # agent_pool_id                 = ""
+  # allow_destroy_plan            = ""
+  # auto_apply                    = ""
+  # execution_mode                = ""
+  # assessments_enabled           = ""
+  # file_triggers_enabled         = ""
+  # global_remote_state           = ""
+  # remote_state_consumer_ids     = ""
+  # queue_all_runs                = ""
+  # speculative_enabled           = ""
+  # structured_run_output_enabled = ""
+  # ssh_key_id                    = ""
+  # tag_names                     = ""
+  # terraform_version             = ""
+  # trigger_prefixes              = ""
+  # trigger_patterns              = ""
+  # working_directory             = ""
 }
+
+# module "workspace-test-input-variable" {
+#   source          = "./module/workspace"
+  
+#   organization                  = "rodasnet"
+#   name                          = "Sample Terraform workspace module implimentation"
+#   description                   = ""
+#   agent_pool_id                 = ""
+#   allow_destroy_plan            = ""
+#   auto_apply                    = ""
+#   execution_mode                = ""
+#   assessments_enabled           = ""
+#   file_triggers_enabled         = ""
+#   global_remote_state           = ""
+#   remote_state_consumer_ids     = ""
+#   queue_all_runs                = ""
+#   speculative_enabled           = ""
+#   structured_run_output_enabled = ""
+#   ssh_key_id                    = ""
+#   tag_names                     = ""
+#   terraform_version             = ""
+#   trigger_prefixes              = ""
+#   trigger_patterns              = ""
+#   working_directory             = ""
+# }
