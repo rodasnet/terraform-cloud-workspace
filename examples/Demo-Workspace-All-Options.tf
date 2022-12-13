@@ -12,7 +12,7 @@ module "Demo-Workspace-All-Options" {
   execution_mode                  = "remote"
   assessments_enabled             = true
   file_triggers_enabled           = true # 'trigger_patterns' cannot be populated when 'file_triggers_enabled' is set to false.
-  global_remote_state             = false
+  global_remote_state             = true
   queue_all_runs                  = true
   speculative_enabled             = false
   structured_run_output_enabled   = false
