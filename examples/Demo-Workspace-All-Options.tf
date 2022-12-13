@@ -13,6 +13,7 @@ module "Demo-Workspace-All-Options" {
   assessments_enabled             = true
   file_triggers_enabled           = true # 'trigger_patterns' cannot be populated when 'file_triggers_enabled' is set to false.
   global_remote_state             = true
+  remote_state_consumer_ids       = values(data.tfe_workspace_ids.example.ids)
   queue_all_runs                  = true
   speculative_enabled             = false
   structured_run_output_enabled   = false
@@ -56,4 +57,7 @@ resource "tfe_ssh_key" "test" {
 #   organization = var.global_settings.organization
 # }
 
-
+data "tfe_workspace_ids" "example" {
+  names = ["Simple-Workspace", "VCS-Workspace"]
+  organization = var.organization
+}
