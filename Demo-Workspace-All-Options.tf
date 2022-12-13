@@ -47,7 +47,6 @@ resource "tfe_ssh_key" "test" {
 # }
 
   team_access = {
-    "dev-team"     = "read"
-    "release-team" = "write"
-    "ops-team"     = "admin"
+    "ConsultingCo"     = "read"
+    "SecondTeam"       = "write"
   }
