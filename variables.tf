@@ -23,8 +23,3 @@ variable "organization" {
   type = string
   default = "rodasnet"
 }
-
-# variable "my_description" {
-#   type = string
-#   default = "A generic description ."
-# }
