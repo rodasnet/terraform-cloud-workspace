@@ -20,7 +20,7 @@ module "Demo-Workspace-All-Options" {
   tag_names                       = ["tagx", "you", "are", "it"]
   terraform_version               = "1.2.5"
   # trigger_prefixes                = ["terraform/modules/*"] # Conflicts with trigger_patterns
-  trigger_patterns                = ["/**/networking/*"]    # Conflicts with trigger_prefixes
+  trigger_patterns                = ["modules/web"]    # Conflicts with trigger_prefixes
   working_directory               = "some/path"
 
   vcs_repo = {
