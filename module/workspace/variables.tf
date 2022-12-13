@@ -27,13 +27,13 @@ variable "allow_destroy_plan" {
 
 variable "auto_apply" {
   type = bool
-  nullable = true
+  default = false
   description = "(Optional) Whether to automatically apply changes when a Terraform plan is successful. Defaults to false."
 }
 
 variable "execution_mode" {
   type = string
-  nullable = true
+  default = "remote"
   description = "(Optional) Which execution mode to use. Using Terraform Cloud, valid values are remote, local oragent. Defaults to remote. Using Terraform Enterprise, only remoteand local execution modes are valid. When set to local, the workspace will be used for state storage only. This value must not be provided if operations is provided."
 }
 
@@ -51,7 +51,7 @@ variable "file_triggers_enabled" {
 
 variable "global_remote_state" {
   type = bool
-  nullable = true
+  default = true
   description = "(Optional) Whether the workspace allows all workspaces in the organization to access its state data during runs. If false, then only specifically approved workspaces can access its state (remote_state_consumer_ids)."
 }
 
