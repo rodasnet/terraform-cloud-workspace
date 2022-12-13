@@ -139,7 +139,7 @@ variable "example_block" {
 
 variable "vcs_repo" {
   type = object({
-    identifier       = string
+    identifier      = string
     oauth_token_id  = string
     branch          = optional(string)
   })
