@@ -121,13 +121,29 @@ variable "working_directory" {
   description = "(Optional) A relative path that Terraform will execute within. Defaults to the root of your repository."
 }
 
-variable "vcs_repo" {
+variable "example_block" {
   type = object({
-    identifier        = string
-    oauth_token_id    = string
-    branch            = optional(string)
+    name    = string
+    enabled = bool
   })
   default = null
+}
+
+# The vcs_repo block supports:
+
+# identifier
+# branch
+# ingress_submodules 
+# oauth_token_id
+# tags_regex
+
+variable "vcs_repo" {
+  type = optional(object({
+    identifier       = string
+    oauth_token_id  = string
+    branch          = optional(string)
+  }))
+  
   description = "(Optional) Settings for the workspace's VCS repository, enabling the UI/VCS-driven run workflow. Omit this argument to utilize the CLI-driven and API-driven workflows, where runs are not driven by webhooks on your VCS provider."
 }
 
@@ -142,12 +158,3 @@ variable "tfe_variable_public_map" {
   default     = {}
   description = "A map of public variable to add as environment variables to the TFC workspace"
 }
-
-
-The vcs_repo block supports:
-
-identifier
-branch
-ingress_submodules 
-oauth_token_id
-tags_regex
