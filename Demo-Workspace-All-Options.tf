@@ -30,6 +30,10 @@ module "Demo-Workspace-All-Options" {
     }
 }
 
+variable "ssh_key_id" {
+  type = string
+}
+
 resource "tfe_ssh_key" "test" {
   name         = "tf-test-ssh-key-name"
   organization = var.global_settings.organization
