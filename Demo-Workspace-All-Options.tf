@@ -40,3 +40,8 @@ resource "tfe_ssh_key" "test" {
   key          = var.ssh_key_id
 }
 
+# Note: Terraform Cloud Agents are a paid feature, available as part of the Terraform Cloud for Business upgrade package.
+# resource "tfe_agent_pool" "test-agent-pool" {
+#   name         = "my-agent-pool-name"
+#   organization = var.global_settings.organization
+# }
