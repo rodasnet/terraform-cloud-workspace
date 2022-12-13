@@ -36,7 +36,7 @@ variable "ssh_key_id" {
 
 resource "tfe_ssh_key" "test" {
   name         = "tf-test-ssh-key-name"
-  organization = var.global_settings.organization
+  organization = var.organization
   key          = var.ssh_key_id
 }
 
