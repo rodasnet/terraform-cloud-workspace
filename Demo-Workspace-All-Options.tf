@@ -28,6 +28,11 @@ module "Demo-Workspace-All-Options" {
       branch          = "feature-branch"
       oauth_token_id  = tfe_oauth_client.oauth_client.oauth_token_id
     }
+  
+  team_access = {
+    "ConsultingCo"     = "read"
+    "SecondTeam"       = "write"
+  }
 }
 
 variable "ssh_key_id" {
@@ -46,7 +51,4 @@ resource "tfe_ssh_key" "test" {
 #   organization = var.global_settings.organization
 # }
 
-  team_access = {
-    "ConsultingCo"     = "read"
-    "SecondTeam"       = "write"
-  }
+
