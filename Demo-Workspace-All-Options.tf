@@ -45,3 +45,8 @@ resource "tfe_ssh_key" "test" {
 #   name         = "my-agent-pool-name"
 #   organization = var.global_settings.organization
 # }
+
+  team_access = {
+    "ConsultingCo"     = "read"
+    "SecondTeam"       = "write"
+  }
