@@ -19,13 +19,9 @@ variable "github_oauth_client" {
   }
 }
 
-variable "global_settings" {
-  type = object({
-    organization = optional(string)
-  })
-  default = {
-    organization = "rodasnet"
-  }
+variable "organization" {
+  type = string
+  default = "rodasnet"
 }
 
 # variable "my_description" {
