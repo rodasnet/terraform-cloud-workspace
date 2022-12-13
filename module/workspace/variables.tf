@@ -122,12 +122,12 @@ variable "working_directory" {
 }
 
 variable "vcs_repo" {
-  type = optional(object({
-    identifier       = string
-    oauth_token_id  = string
-    branch          = optional(string)
-  }))
-  
+  type = object({
+    identifier        = string
+    oauth_token_id    = string
+    branch            = optional(string)
+  })
+  default = null
   description = "(Optional) Settings for the workspace's VCS repository, enabling the UI/VCS-driven run workflow. Omit this argument to utilize the CLI-driven and API-driven workflows, where runs are not driven by webhooks on your VCS provider."
 }
 
