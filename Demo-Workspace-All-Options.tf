@@ -20,7 +20,7 @@ module "Demo-Workspace-All-Options" {
   tag_names                       = ["tagx", "you", "are", "it"]
   terraform_version               = "1.2.5"
   # trigger_prefixes                = ["terraform/modules/*"] # Conflicts with trigger_patterns
-  trigger_patterns                = ["/**/networking/*"]    # Conflicts with trigger_prefixes
+  trigger_patterns                = ["modules/web"]    # Conflicts with trigger_prefixes
   working_directory               = "some/path"
 
   vcs_repo = {
@@ -40,3 +40,8 @@ resource "tfe_ssh_key" "test" {
   key          = var.ssh_key_id
 }
 
+# Note: Terraform Cloud Agents are a paid feature, available as part of the Terraform Cloud for Business upgrade package.
+# resource "tfe_agent_pool" "test-agent-pool" {
+#   name         = "my-agent-pool-name"
+#   organization = var.global_settings.organization
+# }
