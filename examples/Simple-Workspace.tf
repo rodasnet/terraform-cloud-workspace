@@ -3,5 +3,5 @@ module "Simple-Workspace" {
   
   organization                  = var.organization
   name                          = "Simple-Workspace"
-  description                   = "Simple Terraform workspace module implimentation"
+  description                   = "Simple Terraform workspace module implimentation - test fix"
 }
