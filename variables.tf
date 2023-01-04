@@ -39,13 +39,13 @@ variable "execution_mode" {
 
 variable "assessments_enabled" {
   type = bool
-  default = null
+  default = false
   description = "(Optional) Whether to regularly run health assessments such as drift detection on the workspace. Defaults to false."
 }
 
 variable "file_triggers_enabled" {
   type = bool
-  default = null
+  default = true
   description = "(Optional) Whether to filter runs based on the changed files in a VCS push. Defaults to true. If enabled, the working directory and trigger prefixes describe a set of paths which must contain changes for a VCS push to trigger a run. If disabled, any push will trigger a run."
 }
 
@@ -61,27 +61,27 @@ variable "remote_state_consumer_ids" {
   description = "(Optional) The set of workspace IDs set as explicit remote state consumers for the given workspace."
 }
 
-# variable "project_id" {
-#   type = string
-#   
-#   description = "(Optional) ID of the project where the workspace should be created."
-# }
+variable "project_id" {
+  type = string
+  default = null
+  description = "(Optional) ID of the project where the workspace should be created."
+}
 
 variable "queue_all_runs" {
   type = bool
-  default = null
+  default = true
   description = "(Optional) Whether the workspace should start automatically performing runs immediately after its creation. Defaults to true. When set to false, runs triggered by a webhook (such as a commit in VCS) will not be queued until at least one run has been manually queued. Note: This default differs from the Terraform Cloud API default, which is false. The provider uses true as any workspace provisioned with false would need to then have a run manually queued out-of-band before accepting webhooks."
 }
 
 variable "speculative_enabled" {
   type = bool
-  default = null
+  default = true
   description = "(Optional) Whether this workspace allows speculative plans. Defaults to true. Setting this to false prevents Terraform Cloud or the Terraform Enterprise instance from running plans on pull requests, which can improve security if the VCS repository is public or includes untrusted contributors."
 }
 
 variable "structured_run_output_enabled" {
   type = bool
-  default = null
+  default = true
   description = "(Optional) Whether this workspace should show output from Terraform runs using the enhanced UI when available. Defaults to true. Setting this to false ensures that all runs in this workspace will display their output as text logs."
 }
 
@@ -119,14 +119,6 @@ variable "working_directory" {
   type = string
   default = null
   description = "(Optional) A relative path that Terraform will execute within. Defaults to the root of your repository."
-}
-
-variable "example_block" {
-  type = object({
-    name    = string
-    enabled = bool
-  })
-  default = null
 }
 
 variable "vcs_repo" {
