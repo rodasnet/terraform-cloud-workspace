@@ -25,7 +25,7 @@ module "Demo-Workspace-All-Options" {
   working_directory               = "some/path"
 
   vcs_repo = {
-      identifier      = "rodasnet/terraform-rodasnet.com"
+      identifier      = "rodasnet/optimalstop-secretary"
       branch          = "feature-branch"
       oauth_token_id  = var.github_oauth_token_id
     }
