@@ -7,6 +7,6 @@ module "VCS-Workspace" {
 
   vcs_repo = {
       identifier      = "daniel-rodas/sample-terraform"
-      oauth_token_id = var.github_oauth_client.oauth_token_id
+      oauth_token_id = var.github_oauth_token_id
     }
 }
