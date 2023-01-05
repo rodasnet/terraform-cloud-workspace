@@ -23,3 +23,9 @@ variable "organization" {
   type = string
   default = "rodasnet"
 }
+
+ variable "github_oauth_token_id" {
+   type = string
+   default = "ot-6PX3K5GHYKaZmuYg"
+ }
+  
