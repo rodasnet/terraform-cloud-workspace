@@ -27,7 +27,7 @@ module "Demo-Workspace-All-Options" {
   vcs_repo = {
       identifier      = "rodasnet/terraform-rodasnet.com"
       branch          = "feature-branch"
-      oauth_token_id  = tfe_oauth_client.oauth_client.oauth_token_id
+      oauth_token_id  = var.github_oauth_token_id
     }
   
   team_access = {
