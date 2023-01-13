@@ -16,7 +16,8 @@ resource "tfe_workspace" "workspace" {
   structured_run_output_enabled = var.structured_run_output_enabled
   ssh_key_id                    = var.ssh_key_id
   # tag_names                     = var.tag_names
-  tag_names                     = concat(values(locals.default_tags), var.tag_names)
+  # tag_names                     = concat(values(locals.default_tags), var.tag_names)
+  tag_names                     = values(locals.default_tags)
   terraform_version             = var.terraform_version
   trigger_prefixes              = var.trigger_prefixes
   trigger_patterns              = var.trigger_patterns
