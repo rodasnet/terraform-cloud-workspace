@@ -18,7 +18,8 @@ resource "tfe_workspace" "workspace" {
   # tag_names                     = var.tag_names
   # tag_names                     = concat(values(local.default_tags), var.tag_names)
   # tag_names                     = tolist(values(local.default_tags)) 
-  tag_names                     = concat(tolist(values(local.default_tags)), var.tag_names)
+  # tag_names                     = concat(tolist(values(local.default_tags)), var.tag_names)
+  tag_names                     = concat(tolist(values(local.default_tags)), var.tag_names...)
   terraform_version             = var.terraform_version
   trigger_prefixes              = var.trigger_prefixes
   trigger_patterns              = var.trigger_patterns
