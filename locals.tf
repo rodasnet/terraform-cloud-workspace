@@ -3,8 +3,5 @@ locals {
     Terraform = "TfcManagedWorkspace"
   }
 
-  tags_merged = concat(
-    values(default_tags), 
-    var.tag_names
-    )
+  tags_merged = concat(values(locals.default_tags), var.tag_names)
 }
