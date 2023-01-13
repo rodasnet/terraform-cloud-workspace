@@ -17,7 +17,8 @@ module "Demo-Workspace-All-Options" {
   queue_all_runs                  = true
   speculative_enabled             = false
   structured_run_output_enabled   = false
-  ssh_key_id                      = tfe_ssh_key.test.id
+  # Must provide SSH key in varialbe
+  # ssh_key_id                      = tfe_ssh_key.test.id
   tag_names                       = ["tagx", "you", "are", "it"]
   terraform_version               = "1.2.5"
   # trigger_prefixes                = ["terraform/modules/*"] # Conflicts with trigger_patterns
