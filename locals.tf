@@ -1,5 +1,5 @@
 locals {
-  default_tags {
+  default_tags = {
     Terraform = "TfcManagedWorkspace"
   }
 
