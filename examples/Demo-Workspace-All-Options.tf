@@ -45,11 +45,12 @@ variable "ssh_key_id" {
   type = string
 }
 
-resource "tfe_ssh_key" "test" {
-  name         = "tf-test-ssh-key-name"
-  organization = var.organization
-  key          = var.ssh_key_id
-}
+# Must provide SSH key in varialbe
+# resource "tfe_ssh_key" "test" {
+#   name         = "tf-test-ssh-key-name"
+#   organization = var.organization
+#   key          = var.ssh_key_id
+# }
 
 # Note: Terraform Cloud Agents are a paid feature, available as part of the Terraform Cloud for Business upgrade package.
 # resource "tfe_agent_pool" "test-agent-pool" {
