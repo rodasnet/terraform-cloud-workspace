@@ -4,7 +4,7 @@ locals {
   }
 
   tags_merged = concat(
-    values(locals.default_tags), 
+    values(default_tags), 
     var.tag_names
     )
 }
