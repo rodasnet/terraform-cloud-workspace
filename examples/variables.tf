@@ -26,6 +26,6 @@ variable "organization" {
 
  variable "github_oauth_token_id" {
    type = string
-   default = "ot-fDGBsomaKMQj6WkL"
+   default = "ot-yUp4vcJK68UPqkUa"
  }
   
