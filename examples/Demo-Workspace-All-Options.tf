@@ -19,7 +19,7 @@ module "Demo-Workspace-All-Options" {
   structured_run_output_enabled   = false
   # Must provide SSH key in varialbe
   # ssh_key_id                      = tfe_ssh_key.test.id
-  tag_names                       = ["tagx", "you", "are", "it"]
+  additional_tags_list            = ["add", "more", "info", "it"]
   terraform_version               = "1.2.5"
   # trigger_prefixes                = ["terraform/modules/*"] # Conflicts with trigger_patterns
   trigger_patterns                = ["modules/web"]    # Conflicts with trigger_prefixes
