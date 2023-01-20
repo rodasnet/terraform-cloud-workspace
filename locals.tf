@@ -1,3 +1,3 @@
 locals {
-  tags = ["MangedByTerraform"]
+  tags = ["manged-by-terraform"]
 }
