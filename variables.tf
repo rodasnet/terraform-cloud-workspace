@@ -91,11 +91,11 @@ variable "ssh_key_id" {
   description = "(Optional) The ID of an SSH key to assign to the workspace."
 }
 
-variable "tag_names" {
-  type = list(string)
-  default = null
-  description = "(Optional) A list of tag names for this workspace. Note that tags must only contain lowercase letters, numbers, colons, or hyphens."
-}
+# variable "tag_names" {
+#   type = list(string)
+#   default = null
+#   description = "(Optional) A list of tag names for this workspace. Note that tags must only contain lowercase letters, numbers, colons, or hyphens."
+# }
 
 variable "terraform_version" {
   type = string
@@ -178,4 +178,10 @@ variable "variable_set_names" {
   type        = list(string)
   description = "List of names of existing Variable Sets to add this Workspace into."
   default     = []
+}
+
+variable "additional_tags_list" {
+  type = list(string)
+  default = []
+  description = "Additional tags."
 }
