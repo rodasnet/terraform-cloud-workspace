@@ -22,7 +22,7 @@ resource "tfe_workspace" "workspace" {
   # tag_names                     = concat(tolist(values(local.default_tags)), var.tag_names == null ? [] : var.tag_names)
   # tag_names                     = merge(var.additional_tags_list,local.tags)
   tag_names                     = concat(
-    tolist(setsubsctract(var.additional_tags_list,local.tags)),
+    tolist(setsubtract(var.additional_tags_list,local.tags)),
     local.tags
     )
   terraform_version             = var.terraform_version
