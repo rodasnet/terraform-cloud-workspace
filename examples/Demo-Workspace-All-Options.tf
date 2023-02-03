@@ -35,16 +35,16 @@ module "Demo-Workspace-All-Options" {
     "ConsultingCo"     = "read"
     "SecondTeam"       = "write"
   }
-
+# module.Demo-Workspace-All-Options.variable_set_names
   variable_set_names = [
     "my-aws-creds",
     "tfe-api-token"
   ]
 }
 
-variable "ssh_key_id" {
-  type = string
-}
+# variable "ssh_key_id" {
+#   type = string
+# }
 
 # Must provide SSH key in varialbe
 # resource "tfe_ssh_key" "test" {

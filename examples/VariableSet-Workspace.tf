@@ -9,4 +9,20 @@ module "VariableSet-Workspace" {
     "my-aws-creds",
     "tfe-api-token"
   ]
+
+  tfe_variable_sensitive_map = {
+    "a_key" = var.another_key
+  }
+
+  # tfe_variable_sensitive_map = {
+  #   "a_key" = data.tfe_variable_set.varset_azure_spn.variable_ids 
+  # }
+
+  # tfe_variable_public_map = {
+  #   "a_key" = data.tfe_variable_set.varset_azure_spn.variable_ids 
+  # }
+}
+
+variable "another_key" {
+  type = string
 }
