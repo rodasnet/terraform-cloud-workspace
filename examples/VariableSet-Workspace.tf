@@ -12,6 +12,7 @@ module "VariableSet-Workspace" {
 
   tfe_variable_sensitive_map = {
     "a_key" = var.another_key
+    "b_key" = var.something_special
   }
 
   # tfe_variable_sensitive_map = {
@@ -24,5 +25,9 @@ module "VariableSet-Workspace" {
 }
 
 variable "another_key" {
+  type = string
+}
+
+variable "something_special" {
   type = string
 }
