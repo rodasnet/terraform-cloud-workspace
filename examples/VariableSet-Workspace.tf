@@ -26,8 +26,10 @@ module "VariableSet-Workspace" {
 
 variable "another_key" {
   type = string
+  default = "AnotherKeyValue"
 }
 
 variable "something_special" {
   type = string
+  default = "SomethingSpecialValue"
 }
