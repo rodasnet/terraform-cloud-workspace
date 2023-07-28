@@ -5,8 +5,8 @@ module "TeamAccess-Workspace" {
   name                          = "TeamAccess-Workspace"
   description                   = "Terraform workspace with Team Acess configurations"
  
-  team_access = {
-    "ConsultingCo"     = "read"
-    "SecondTeam"       = "write"
-  }
+  # team_access = {
+  #   "ConsultingCo"     = "read"
+  #   "SecondTeam"       = "write"
+  # }
 }
