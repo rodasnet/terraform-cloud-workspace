@@ -13,7 +13,7 @@ module "Demo-Workspace-All-Options" {
   assessments_enabled             = true
   file_triggers_enabled           = true # 'trigger_patterns' cannot be populated when 'file_triggers_enabled' is set to false.
   global_remote_state             = false
-  remote_state_consumer_ids       = values(data.tfe_workspace_ids.example.ids)
+  # remote_state_consumer_ids       = values(data.tfe_workspace_ids.example.ids)
   queue_all_runs                  = true
   speculative_enabled             = false
   structured_run_output_enabled   = false
@@ -31,10 +31,10 @@ module "Demo-Workspace-All-Options" {
       oauth_token_id  = var.github_oauth_token_id
     }
   
-  team_access = {
-    "ConsultingCo"     = "read"
-    "SecondTeam"       = "write"
-  }
+  # team_access = {
+  #   "ConsultingCo"     = "read"
+  #   "SecondTeam"       = "write"
+  # }
 # module.Demo-Workspace-All-Options.variable_set_names
   variable_set_names = [
     "my-aws-creds",
@@ -59,7 +59,7 @@ module "Demo-Workspace-All-Options" {
 #   organization = var.global_settings.organization
 # }
 
-data "tfe_workspace_ids" "example" {
-  names = ["Simple-Workspace", "VCS-Workspace"]
-  organization = var.organization
-}
+# data "tfe_workspace_ids" "example" {
+#   names = ["Simple-Workspace", "VCS-Workspace"]
+#   organization = var.organization
+# }
