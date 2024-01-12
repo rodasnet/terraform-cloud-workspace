@@ -9,7 +9,9 @@
 resource "tfe_workspace_run_task" "workspace_task_synk" {
     count = var.create_runtask == true ? 1 : 0
     workspace_id = tfe_workspace.workspace.id
-    task_id = resource.data.tfe_organization_run_task.synk.id
+    # Why can't I use data inside the root module?
+    # task_id = data.tfe_organization_run_task.synk.id
+    task_id = var.run_task_config_list[0].task_id
     enforcement_level = "advisory"
 }
 
