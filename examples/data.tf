@@ -1,7 +1,7 @@
-# data "tfe_organization_run_task" "synk" {
-#   name         = "RunTaskOrgSynk"
-#   organization = var.organization
-# }
+data "tfe_organization_run_task" "synk" {
+  name         = "RunTaskOrgSynk"
+  organization = var.organization
+}
 
 # output "org_task_name" {
 #   value = tfe_organization_run_task.synk.name
