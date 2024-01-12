@@ -1,11 +1,3 @@
-
-#   for_each = { for config in var.run_task_config_list : config => config.value }
-# resource "tfe_workspace_run_task" "example" {
-#   workspace_id      = resource.tfe_workspace.example.id
-#   task_id           = resource.tfe_organization_run_task.example.id
-#   enforcement_level = "advisory"
-# }
-
 resource "tfe_workspace_run_task" "workspace_task_synk" {
 
     for_each = { for config in var.run_task_config_list : config.stage => config }
@@ -25,7 +17,4 @@ variable "run_task_config_list" {
   default = []
 }
 
-variable "create_runtask" {
-  type = bool
-  default = false
-}
+
