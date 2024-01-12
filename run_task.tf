@@ -28,7 +28,7 @@ variable "run_task_config_list" {
     stage = optional(string)
   }))
 
-  default = null
+  default = []
 }
 
 variable "create_runtask" {
