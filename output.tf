@@ -2,9 +2,9 @@ output "workspace_id" {
   value = tfe_workspace.workspace.id
 }
 
-# output "org_task_name" {
-#   value = tfe_organization_run_task.synk.name
-# }
+output "org_task_name" {
+  value = tfe_organization_run_task.synk.name
+}
 
 # output "org_task_organization" {
 #   value = tfe_organization_run_task.synk.organization
