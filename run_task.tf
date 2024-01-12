@@ -7,7 +7,7 @@
 # }
 
 resource "tfe_workspace_run_task" "workspace_task_synk" {
-    count = var.create_runtask == trye ? 1 : 0
+    count = var.create_runtask == true ? 1 : 0
     workspace_id = tfe_workspace.workspace.id
     task_id = data.tfe_organization_run_task.synk.id
     enforcement_level = "advisory"
