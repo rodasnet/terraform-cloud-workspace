@@ -11,6 +11,11 @@ module "Runtask-Workspace" {
       enforcement_level = "advisory"
       task_id = data.tfe_organization_run_task.synk.id
       stage = "pre_plan"
+    },
+    {
+      enforcement_level = "advisory"
+      task_id = data.tfe_organization_run_task.synk.id
+      stage = "post_plan"
     }
   ]
 }
