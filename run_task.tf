@@ -17,9 +17,9 @@ resource "tfe_workspace_run_task" "workspace_task_synk" {
 
 variable "run_task_config_list" {
   type = list(object({
-    enforcement_level = string
+    enforcement_level = optional(string, "advisory")
     task_id = string
-    stage = optional(string)
+    stage = string
   }))
 
   default = []
