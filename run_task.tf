@@ -14,7 +14,3 @@ resource "tfe_organization_run_task" "org_task" {
 #   stage = ""
 # }
 
-variable "synk_hmac_key" {
-  type = string
-  sensitive = true
-}
