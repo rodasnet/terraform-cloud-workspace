@@ -6,7 +6,6 @@ module "Runtask-Workspace" {
   description                   = "Runtask Terraform workspace."
   additional_tags_list            = ["synk", "poc"]
 
-  # create_runtask = true
   run_task_config_list = [
     {
       enforcement_level = "advisory"
