@@ -8,14 +8,8 @@
 
 resource "tfe_workspace_run_task" "workspace_task_synk" {
 
-    # for_each = var.run_task_config_list[*]
-    for_each = { for config in var.run_task_config_list : config.enforcement_level => config }
+    for_each = { for config in var.run_task_config_list : config.stage => config }
     workspace_id = tfe_workspace.workspace.id
-    # Why can't I use data inside the root module?
-    # task_id = data.tfe_organization_run_task.synk.id
-    # enforcement_level = var.run_task_config_list[0].enforcement_level
-    # task_id = var.run_task_config_list[0].task_id
-    # stage = var.run_task_config_list[0].stage
     enforcement_level = each.value.enforcement_level
     task_id = each.value.task_id
     stage = each.value.stage
