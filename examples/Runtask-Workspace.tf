@@ -9,7 +9,7 @@ module "Runtask-Workspace" {
   run_task_config_list = [
     {
       task_id = data.tfe_organization_run_task.synk.id
-      stage = "post_plan"
+      stage = "pre_apply"
     }
   ]
 }
