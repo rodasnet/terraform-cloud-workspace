@@ -5,4 +5,13 @@ module "Runtask-Workspace" {
   name                          = "Runtask-Workspace"
   description                   = "Runtask Terraform workspace."
   additional_tags_list            = ["synk", "poc"]
+
+  create_runtask = true
+  run_task_config_list = [
+    {
+      enforcement_level = "advisory"
+      task_id = data.tfe_organization_run_task.synk.id
+      stage = "pre_plan"
+    }
+  ]
 }
