@@ -1,6 +1,12 @@
 resource "tfe_workspace_run_task" "workspace_task_synk" {
 
-    for_each = { for config in var.run_task_config_list : config.stage => config }
+    # for_each = { for config in var.run_task_config_list : config.stage => config }
+    # workspace_id = tfe_workspace.workspace.id
+    # enforcement_level = each.value.enforcement_level
+    # task_id = each.value.task_id
+    # stage = each.value.stage
+
+    for_each = var.run_task_config_map
     workspace_id = tfe_workspace.workspace.id
     enforcement_level = each.value.enforcement_level
     task_id = each.value.task_id
@@ -15,6 +21,16 @@ variable "run_task_config_list" {
   }))
 
   default = []
+}
+
+variable "run_task_config_map" {
+  type = map(object({
+    enforcement_level = optional(string, "advisory")
+    task_id = string
+    stage = string
+  }))
+
+  default = {}
 }
 
 
