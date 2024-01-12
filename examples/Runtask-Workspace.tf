@@ -1,4 +1,4 @@
-module "Simple-Workspace" {
+module "Runtask-Workspace" {
   source          = "../"
   
   organization                  = var.organization
