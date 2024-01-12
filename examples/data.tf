@@ -3,9 +3,9 @@ data "tfe_organization_run_task" "synk" {
   organization = var.organization
 }
 
-# output "org_task_name" {
-#   value = tfe_organization_run_task.synk.name
-# }
+output "org_task_name" {
+  value = tfe_organization_run_task.synk.name
+}
 
 # output "org_task_organization" {
 #   value = tfe_organization_run_task.synk.organization
