@@ -1,10 +1,12 @@
 resource "tfe_workspace_run_task" "workspace_task_synk" {
 
-    for_each = { for config in var.run_task_config_list : config.index => config }
+    # for_each = { for config in var.run_task_config_list : config.index => config }
+    # flatten(var.storageaccounts.*.containers)[count.index]
+    count = length(flatten(var.run_task_config_list))
     workspace_id = tfe_workspace.workspace.id
-    enforcement_level = each.value.enforcement_level
-    task_id = each.value.task_id
-    stage = each.value.stage
+    enforcement_level = flatten(var.run_task_config_list)[count.index].enforcement_level
+    task_id = flatten(var.run_task_config_list)[count.index].task_id
+    stage = flatten(var.run_task_config_list)[count.index].stage
 }
 
 variable "run_task_config_list" {
