@@ -1,6 +1,7 @@
 variable "name" {
   type = string
   description = "(Required) Name of the workspace."
+  default = null
 }
 
 variable "organization" {
@@ -13,6 +14,7 @@ variable "organization" {
 variable "description" {
   type = string
   description = "(Required) A description for the workspace."
+  default = null
 }
 
 variable "agent_pool_id" {
