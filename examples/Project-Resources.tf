@@ -23,10 +23,10 @@ module "Project-PolicySet-1" {
     }
    ]
 
-   project_policy_set_list = [
-    {
-      policy_set_id
-      project_id
-    }
-   ]
+  #  project_policy_set_list = [
+  #   {
+  #     policy_set_id
+  #     project_id
+  #   }
+  #  ]
 }
