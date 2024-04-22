@@ -1,3 +1,19 @@
+resource "tfe_project" "project" {
+
+  count         = length(var.project_list)
+
+  organization = var.project_list[count.index].organization
+  name         = var.project_list[count.index].name
+}
+
+variable "project_list" {
+  type = list(object({
+    organization = string
+    name         = string
+  }))
+
+  default = []
+}
 
 resource "tfe_project_policy_set" "project_policy_set" {
 
@@ -32,18 +48,18 @@ variable "project_variable_set_list" {
 }
 
 resource "tfe_team_project_access" "project_access" {
-    count = length(var.project_access)
+  count = length(var.project_access)
 
-    access = var.project_access[count.index].access
-    team_id = var.project_access[count.index].team_id
-    project_id = var.project_access[count.index].project_id
+  access     = var.project_access[count.index].access
+  team_id    = var.project_access[count.index].team_id
+  project_id = var.project_access[count.index].project_id
 }
 
 variable "project_access" {
   type = list(object({
-    access = string
-    team_id = string
-    project_id = string 
+    access     = string
+    team_id    = string
+    project_id = string
   }))
   default = []
 }
