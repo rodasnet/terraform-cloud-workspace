@@ -54,7 +54,7 @@
 #   value        = each.value
 #   category     = "env"
 #   sensitive    = true
-#   workspace_id = tfe_workspace.workspace.id
+#   workspace_id = tfe_workspace.workspace[0].id
 # }
 
 # resource "tfe_variable" "public" {
@@ -64,5 +64,5 @@
 #   value        = each.value
 #   category     = "env"
 #   sensitive    = false
-#   workspace_id = tfe_workspace.workspace.id
+#   workspace_id = tfe_workspace.workspace[0].id
 # }

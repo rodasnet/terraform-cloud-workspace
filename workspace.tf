@@ -1,6 +1,6 @@
 resource "tfe_workspace" "workspace" {
 
-  # count = var.create_workspace == true ? 1 : 0
+  count = var.create_workspace == true ? 1 : 0
   organization                  = var.organization
   name                          = var.name
   description                   = var.description
@@ -55,7 +55,7 @@ resource "tfe_variable" "sensitive" {
   value        = each.value
   category     = "env"
   sensitive    = true
-  workspace_id = tfe_workspace.workspace.id
+  workspace_id = tfe_workspace.workspace[0].id
 }
 
 resource "tfe_variable" "public" {
@@ -65,5 +65,5 @@ resource "tfe_variable" "public" {
   value        = each.value
   category     = "env"
   sensitive    = false
-  workspace_id = tfe_workspace.workspace.id
+  workspace_id = tfe_workspace.workspace[0].id
 }
