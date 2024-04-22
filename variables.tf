@@ -7,6 +7,7 @@ variable "organization" {
   type = string
   description = "(Required) Name of the organization."
   nullable = true
+  default = null
 }
 
 variable "description" {
