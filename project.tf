@@ -2,8 +2,8 @@
 resource "tfe_project_policy_set" "project_policy_set" {
 
   count         = length(var.project_policy_set_list)
-  policy_set_id = var.project_policy_set_list[count].policy_set_id
-  project_id    = var.project_policy_set_list[count].project_id
+  policy_set_id = var.project_policy_set_list[count.index].policy_set_id
+  project_id    = var.project_policy_set_list[count.index].project_id
 }
 
 variable "project_policy_set_list" {
@@ -19,8 +19,8 @@ resource "tfe_project_variable_set" "project_variable_set" {
 
   count = length(var.project_variable_set_list)
 
-  variable_set_id = var.project_variable_set_list[count].variable_set_id
-  project_id      = var.project_variable_set_list[count].project_id
+  variable_set_id = var.project_variable_set_list[count.index].variable_set_id
+  project_id      = var.project_variable_set_list[count.index].project_id
 }
 
 variable "project_variable_set_list" {
@@ -34,9 +34,9 @@ variable "project_variable_set_list" {
 resource "tfe_team_project_access" "project_access" {
     count = length(var.project_access)
 
-    access = var.project_access[count].access
-    team_id = var.project_access[count].team_id
-    project_id = var.project_access[count].project_id
+    access = var.project_access[count.index].access
+    team_id = var.project_access[count.index].team_id
+    project_id = var.project_access[count.index].project_id
 }
 
 variable "project_access" {
