@@ -29,16 +29,18 @@ resource "tfe_policy_set" "policy_set" {
   organization        = var.create_project_policy_set_list[count.index].organization
   policies_path       = var.create_project_policy_set_list[count.index].policies_path
   policy_ids          = var.create_project_policy_set_list[count.index].policy_ids
-# TODO: VCS Repo
-  workspace_ids       = var.create_project_policy_set_list[count.index].workspace_ids
-  slug                = var.create_project_policy_set_list[count.index].slug
-
-  # vcs_repo {
-  #   identifier         = "my-org-name/my-policy-set-repository"
-  #   branch             = "main"
-  #   ingress_submodules = false
-  #   oauth_token_id     = tfe_oauth_client.test.oauth_token_id
-  # }
+  dynamic "vcs_repo" {
+    for_each = var.create_project_policy_set_list[count.index].vcs_repo != null ? [1] : []
+    content {
+      identifier     = var.create_project_policy_set_list[count.index].vcs_repo.identifier
+      branch                     = var.create_project_policy_set_list[count.index].vcs_repo.branch
+      ingress_submodules         = var.create_project_policy_set_list[count.index].vcs_repo.ingress_submodules
+      oauth_token_id             = var.create_project_policy_set_list[count.index].vcs_repo.oauth_token_id
+      github_app_installation_id = var.create_project_policy_set_list[count.index].vcs_repo.github_app_installation_id
+    }
+  }
+  workspace_ids = var.create_project_policy_set_list[count.index].workspace_ids
+  slug          = var.create_project_policy_set_list[count.index].slug
 }
 
 resource "tfe_project_policy_set" "created" {
@@ -78,9 +80,15 @@ variable "create_project_policy_set_list" {
       organization        = optional(string)
       policies_path       = optional(string)
       policy_ids          = optional(list(string))
-      vcs_repo            = optional(object)
-      workspace_ids       = optional(list(string))
-      slug                = optional(string)
+      vcs_repo = optional(object({
+        identifier                 = optional(string)
+        branch                     = optional(string)
+        ingress_submodules         = optional(bool)
+        oauth_token_id             = optional(string)
+        github_app_installation_id = optional(string)
+      }))
+      workspace_ids = optional(list(string))
+      slug          = optional(string)
 
     })
     project_id = optional(string)
