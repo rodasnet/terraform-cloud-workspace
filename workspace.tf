@@ -1,4 +1,6 @@
 resource "tfe_workspace" "workspace" {
+
+  count = var.create_workspace == true ? 1 : 0
   organization                  = var.organization
   name                          = var.name
   description                   = var.description
@@ -39,6 +41,11 @@ resource "tfe_workspace" "workspace" {
     }
   }
  
+}
+
+variable "create_workspace" {
+  type = bool
+  default = true
 }
 
 resource "tfe_variable" "sensitive" {
