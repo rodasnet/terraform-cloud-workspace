@@ -1,6 +1,6 @@
 resource "tfe_project" "project" {
 
-  count         = length(var.project_list)
+  count = length(var.project_list)
 
   organization = var.project_list[count.index].organization
   name         = var.project_list[count.index].name
@@ -21,12 +21,17 @@ resource "tfe_policy_set" "policy_set" {
 
   name                = var.create_project_policy_set_list[count.index].name
   description         = var.create_project_policy_set_list[count.index].description
-  organization        = var.create_project_policy_set_list[count.index].organization
+  global              = var.create_project_policy_set_list[count.index].global
   kind                = var.create_project_policy_set_list[count.index].kind
   agent_enabled       = var.create_project_policy_set_list[count.index].agent_enabled
   policy_tool_version = var.create_project_policy_set_list[count.index].policy_tool_version
+  overridable         = var.create_project_policy_set_list[count.index].overridable
+  organization        = var.create_project_policy_set_list[count.index].organization
   policies_path       = var.create_project_policy_set_list[count.index].policies_path
+  policy_ids          = var.create_project_policy_set_list[count.index].policy_ids
+# TODO: VCS Repo
   workspace_ids       = var.create_project_policy_set_list[count.index].workspace_ids
+  slug                = var.create_project_policy_set_list[count.index].slug
 
   # vcs_repo {
   #   identifier         = "my-org-name/my-policy-set-repository"
@@ -38,7 +43,7 @@ resource "tfe_policy_set" "policy_set" {
 
 resource "tfe_project_policy_set" "created" {
 
-  count         = length(var.create_project_policy_set_list)
+  count = length(var.create_project_policy_set_list)
 
   policy_set_id = tfe_policy_set.policy_set[count.index].policy_set_id
   project_id    = var.create_project_policy_set_list[count.index].project_id
@@ -63,22 +68,22 @@ variable "link_project_policy_set_list" {
 variable "create_project_policy_set_list" {
   type = list(object({
     policy_set = object({
-    name                = string
-    description         = optional(string)
-    global         = optional(string)
-    kind                = optional(string)
-    agent_enabled       = optional(string)
-    policy_tool_version = optional(string)
-    overridable          = optional(bool)
-    organization        = optional(string)
-    policies_path       = optional(string)
-    description         = optional(string)
-    description         = optional(string)
-    description         = optional(string)
-    description         = optional(string)
-    workspace_ids       = optional(list(string))
+      name                = string
+      description         = optional(string)
+      global              = optional(string)
+      kind                = optional(string)
+      agent_enabled       = optional(string)
+      policy_tool_version = optional(string)
+      overridable         = optional(bool)
+      organization        = optional(string)
+      policies_path       = optional(string)
+      policy_ids          = optional(list(string))
+      vcs_repo            = optional(object)
+      workspace_ids       = optional(list(string))
+      slug                = optional(string)
+
     })
-    project_id    = optional(string)
+    project_id = optional(string)
   }))
 
   default = []
