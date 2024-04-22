@@ -1,6 +1,6 @@
 resource "tfe_workspace" "workspace" {
 
-  count = var.create_workspace == true ? 1 : 0
+  # count = var.create_workspace == true ? 1 : 0
   organization                  = var.organization
   name                          = var.name
   description                   = var.description
