@@ -20,27 +20,27 @@ resource "tfe_policy_set" "policy_set" {
   count = length(var.create_project_policy_set_list)
 
   name                = var.create_project_policy_set_list[count.index].policy_set.name
-  description         = var.create_project_policy_set_list[count.index].policy_set.description
-  global              = var.create_project_policy_set_list[count.index].policy_set.global
-  kind                = var.create_project_policy_set_list[count.index].policy_set.kind
-  agent_enabled       = var.create_project_policy_set_list[count.index].policy_set.agent_enabled
-  policy_tool_version = var.create_project_policy_set_list[count.index].policy_set.policy_tool_version
-  overridable         = var.create_project_policy_set_list[count.index].policy_set.overridable
-  organization        = var.create_project_policy_set_list[count.index].policy_set.organization
-  policies_path       = var.create_project_policy_set_list[count.index].policy_set.policies_path
-  policy_ids          = var.create_project_policy_set_list[count.index].policy_set.policy_ids
-  dynamic "vcs_repo" {
-    for_each = var.create_project_policy_set_list[count.index].policy_set.vcs_repo != null ? [1] : []
-    content {
-      identifier     = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.identifier
-      branch                     = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.branch
-      ingress_submodules         = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.ingress_submodules
-      oauth_token_id             = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.oauth_token_id
-      github_app_installation_id = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.github_app_installation_id
-    }
-  }
-  workspace_ids = var.create_project_policy_set_list[count.index].policy_set.workspace_ids
-  slug          = var.create_project_policy_set_list[count.index].policy_set.slug
+  # description         = var.create_project_policy_set_list[count.index].policy_set.description
+  # global              = var.create_project_policy_set_list[count.index].policy_set.global
+  # kind                = var.create_project_policy_set_list[count.index].policy_set.kind
+  # agent_enabled       = var.create_project_policy_set_list[count.index].policy_set.agent_enabled
+  # policy_tool_version = var.create_project_policy_set_list[count.index].policy_set.policy_tool_version
+  # overridable         = var.create_project_policy_set_list[count.index].policy_set.overridable
+  # organization        = var.create_project_policy_set_list[count.index].policy_set.organization
+  # policies_path       = var.create_project_policy_set_list[count.index].policy_set.policies_path
+  # policy_ids          = var.create_project_policy_set_list[count.index].policy_set.policy_ids
+  # dynamic "vcs_repo" {
+  #   for_each = var.create_project_policy_set_list[count.index].policy_set.vcs_repo != null ? [1] : []
+  #   content {
+  #     identifier     = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.identifier
+  #     branch                     = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.branch
+  #     ingress_submodules         = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.ingress_submodules
+  #     oauth_token_id             = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.oauth_token_id
+  #     github_app_installation_id = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.github_app_installation_id
+  #   }
+  # }
+  # workspace_ids = var.create_project_policy_set_list[count.index].policy_set.workspace_ids
+  # slug          = var.create_project_policy_set_list[count.index].policy_set.slug
 }
 
 resource "tfe_project_policy_set" "created" {
