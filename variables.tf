@@ -204,7 +204,7 @@ variable "project_definition" {
       description = string
     })))
 
-    policy_set_list = optional(list(object({
+    policy_sets = optional(list(object({
       name                = string
       description         = optional(string)
       global              = optional(string)
