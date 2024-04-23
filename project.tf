@@ -33,19 +33,25 @@ variable "project_list" {
     })))
   }))
 
-  default = []
+  default = [
+    {
+      organization = "rodasnet"
+      name = "ProjectSampleLocal"
+    }    
+  ]
 }
 
-locals {
-  # create_policy_set_list = [for p in var.project_list : p.policy_set_list]
-  create_policy_set_list = compact(flatten(var.project_list.*.policy_set_list))
-}
+# locals {
+#   # create_policy_set_list = [for p in var.project_list : p.policy_set_list]
+#   create_policy_set_list = compact(flatten(var.project_list.*.policy_set_list))
+# }
 
 resource "tfe_policy_set" "policy_set" {
 
-  count = length(compact(flatten(var.project_list.*.policy_set_list)))
+  # count = length(compact(flatten(var.project_list.*.policy_set_list)))
 
-  name = compact(flatten(var.project_list.*.policy_set_list))[count.index].name
+  # name = compact(flatten(var.project_list.*.policy_set_list))[count.index].name
+  name = "testing-123"
 
   # name                = var.project_list.*.policy_set_list[count.index].policy_set.name
   # name                = var.project_list.*.policy_set_list[count.index].policy_set.name
@@ -137,38 +143,38 @@ variable "link_project_policy_set_list" {
 #   default = []
 # }
 
-resource "tfe_project_variable_set" "project_variable_set" {
+# resource "tfe_project_variable_set" "project_variable_set" {
 
-  count = length(var.project_variable_set_list)
+#   count = length(var.project_variable_set_list)
 
-  variable_set_id = var.project_variable_set_list[count.index].variable_set_id
-  project_id      = var.project_variable_set_list[count.index].project_id
-}
+#   variable_set_id = var.project_variable_set_list[count.index].variable_set_id
+#   project_id      = var.project_variable_set_list[count.index].project_id
+# }
 
-variable "project_variable_set_list" {
-  type = list(object({
-    variable_set_id = string
-    project_id      = string
-  }))
-  default = []
-}
+# variable "project_variable_set_list" {
+#   type = list(object({
+#     variable_set_id = string
+#     project_id      = string
+#   }))
+#   default = []
+# }
 
-resource "tfe_team_project_access" "project_access" {
-  count = length(var.project_access)
+# resource "tfe_team_project_access" "project_access" {
+#   count = length(var.project_access)
 
-  access     = var.project_access[count.index].access
-  team_id    = var.project_access[count.index].team_id
-  project_id = var.project_access[count.index].project_id
-}
+#   access     = var.project_access[count.index].access
+#   team_id    = var.project_access[count.index].team_id
+#   project_id = var.project_access[count.index].project_id
+# }
 
-variable "project_access" {
-  type = list(object({
-    access     = string
-    team_id    = string
-    project_id = string
-  }))
-  default = []
-}
+# variable "project_access" {
+#   type = list(object({
+#     access     = string
+#     team_id    = string
+#     project_id = string
+#   }))
+#   default = []
+# }
 
   # count = length(var.project_list[*].policy_set_list)
   # count = length(flatten(var.project_list.*.policy_set_list))
