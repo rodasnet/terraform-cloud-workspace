@@ -47,6 +47,7 @@ variable "project_list" {
 # }
 
 resource "tfe_policy_set" "policy_set" {
+  count = 0
 
   # count = length(compact(flatten(var.project_list.*.policy_set_list)))
 
