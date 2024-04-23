@@ -10,14 +10,47 @@ variable "project_list" {
   type = list(object({
     organization = string
     name         = string
+    policy_set_list = list(object({
+      policy_set = object({
+        name                = string
+        description         = optional(string)
+        global              = optional(string)
+        kind                = optional(string)
+        agent_enabled       = optional(string)
+        policy_tool_version = optional(string)
+        overridable         = optional(bool)
+        organization        = optional(string)
+        policies_path       = optional(string)
+        policy_ids          = optional(list(string))
+        vcs_repo = optional(object({
+          identifier                 = optional(string)
+          branch                     = optional(string)
+          ingress_submodules         = optional(bool)
+          oauth_token_id             = optional(string)
+          github_app_installation_id = optional(string)
+        }))
+        workspace_ids = optional(list(string))
+        slug          = optional(map(string))
+
+      })
+      project_id = optional(string)
+    }))
   }))
 
   default = []
 }
+# variable "project_list" {
+#   type = list(object({
+#     organization = string
+#     name         = string
+#   }))
+
+#   default = []
+# }
 
 resource "tfe_policy_set" "policy_set" {
 
-  count = length(var.create_project_policy_set_list)
+  count = length(var.project_list[*].policy_set_list)
 
   name                = var.create_project_policy_set_list[count.index].policy_set.name
   description         = var.create_project_policy_set_list[count.index].policy_set.description
@@ -30,10 +63,9 @@ resource "tfe_policy_set" "policy_set" {
   policies_path       = var.create_project_policy_set_list[count.index].policy_set.policies_path
   policy_ids          = var.create_project_policy_set_list[count.index].policy_set.policy_ids
   dynamic "vcs_repo" {
-    # for_each = var.create_project_policy_set_list[count.index].policy_set.vcs_repo != null ? [1] : []
     for_each = var.create_project_policy_set_list
     content {
-      identifier     = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.identifier
+      identifier                 = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.identifier
       branch                     = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.branch
       ingress_submodules         = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.ingress_submodules
       oauth_token_id             = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.oauth_token_id
