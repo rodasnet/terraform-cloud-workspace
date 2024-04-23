@@ -28,7 +28,7 @@ resource "tfe_policy_set" "policy_set" {
   overridable         = var.create_project_policy_set_list[count.index].policy_set.overridable
   organization        = var.create_project_policy_set_list[count.index].policy_set.organization
   policies_path       = var.create_project_policy_set_list[count.index].policy_set.policies_path
-  # policy_ids          = var.create_project_policy_set_list[count.index].policy_set.policy_ids
+  policy_ids          = var.create_project_policy_set_list[count.index].policy_set.policy_ids
   # dynamic "vcs_repo" {
   #   for_each = var.create_project_policy_set_list[count.index].policy_set.vcs_repo != null ? [1] : []
   #   content {
@@ -39,8 +39,8 @@ resource "tfe_policy_set" "policy_set" {
   #     github_app_installation_id = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.github_app_installation_id
   #   }
   # }
-  # workspace_ids = var.create_project_policy_set_list[count.index].policy_set.workspace_ids
-  # slug          = var.create_project_policy_set_list[count.index].policy_set.slug
+  workspace_ids = var.create_project_policy_set_list[count.index].policy_set.workspace_ids
+  slug          = var.create_project_policy_set_list[count.index].policy_set.slug
 }
 
 resource "tfe_project_policy_set" "created" {
