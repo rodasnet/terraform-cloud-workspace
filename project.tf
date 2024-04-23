@@ -53,36 +53,36 @@ resource "tfe_policy_set" "policy_set" {
   # count = length(var.project_list[*].policy_set_list)
   count = length(var.project_list.*.policy_set_list)
 
-  name                = var.project_list[*].policy_set_list[count.index].policy_set.name
-  description         = var.project_list[*].policy_set_list[count.index].policy_set.description
-  global              = var.project_list[*].policy_set_list[count.index].policy_set.global
-  kind                = var.project_list[*].policy_set_list[count.index].policy_set.kind
-  agent_enabled       = var.project_list[*].policy_set_list[count.index].policy_set.agent_enabled
-  policy_tool_version = var.project_list[*].policy_set_list[count.index].policy_set.policy_tool_version
-  overridable         = var.project_list[*].policy_set_list[count.index].policy_set.overridable
-  organization        = var.project_list[*].policy_set_list[count.index].policy_set.organization
-  policies_path       = var.project_list[*].policy_set_list[count.index].policy_set.policies_path
-  policy_ids          = var.project_list[*].policy_set_list[count.index].policy_set.policy_ids
+  name                = var.project_list.*.policy_set_list[count.index].policy_set.name
+  description         = var.project_list.*.policy_set_list[count.index].policy_set.description
+  global              = var.project_list.*.policy_set_list[count.index].policy_set.global
+  kind                = var.project_list.*.policy_set_list[count.index].policy_set.kind
+  agent_enabled       = var.project_list.*.policy_set_list[count.index].policy_set.agent_enabled
+  policy_tool_version = var.project_list.*.policy_set_list[count.index].policy_set.policy_tool_version
+  overridable         = var.project_list.*.policy_set_list[count.index].policy_set.overridable
+  organization        = var.project_list.*.policy_set_list[count.index].policy_set.organization
+  policies_path       = var.project_list.*.policy_set_list[count.index].policy_set.policies_path
+  policy_ids          = var.project_list.*.policy_set_list[count.index].policy_set.policy_ids
   dynamic "vcs_repo" {
-    for_each = var.project_list[*].policy_set_list
+    for_each = var.project_list.*.policy_set_list
     content {
-      identifier                 = var.project_list[*].policy_set_list[count.index].policy_set.vcs_repo.identifier
-      branch                     = var.project_list[*].policy_set_list[count.index].policy_set.vcs_repo.branch
-      ingress_submodules         = var.project_list[*].policy_set_list[count.index].policy_set.vcs_repo.ingress_submodules
-      oauth_token_id             = var.project_list[*].policy_set_list[count.index].policy_set.vcs_repo.oauth_token_id
-      github_app_installation_id = var.project_list[*].policy_set_list[count.index].policy_set.vcs_repo.github_app_installation_id
+      identifier                 = var.project_list.*.policy_set_list[count.index].policy_set.vcs_repo.identifier
+      branch                     = var.project_list.*.policy_set_list[count.index].policy_set.vcs_repo.branch
+      ingress_submodules         = var.project_list.*.policy_set_list[count.index].policy_set.vcs_repo.ingress_submodules
+      oauth_token_id             = var.project_list.*.policy_set_list[count.index].policy_set.vcs_repo.oauth_token_id
+      github_app_installation_id = var.project_list.*.policy_set_list[count.index].policy_set.vcs_repo.github_app_installation_id
     }
   }
-  workspace_ids = var.project_list[*].policy_set_list[count.index].policy_set.workspace_ids
-  slug          = var.project_list[*].policy_set_list[count.index].policy_set.slug
+  workspace_ids = var.project_list.*.policy_set_list[count.index].policy_set.workspace_ids
+  slug          = var.project_list.*.policy_set_list[count.index].policy_set.slug
 }
 
 resource "tfe_project_policy_set" "created" {
 
-  count = length(var.project_list[*].policy_set_list)
+  count = length(var.project_list.*.policy_set_list)
 
   policy_set_id = tfe_policy_set.policy_set[count.index].policy_set_id
-  project_id    = var.project_list[*].policy_set_list[count.index].project_id
+  project_id    = var.project_list.*.policy_set_list[count.index].project_id
 }
 
 resource "tfe_project_policy_set" "linked" {
