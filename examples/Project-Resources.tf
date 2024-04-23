@@ -14,16 +14,17 @@ module "Project-PolicySet-1" {
 
   create_workspace = false
 
-  #  project_definition = [
-  #   {
-  #     organization = var.organization
-  #     name = "Project-PolicySet-1"
-
-  #   }
-  #  ]
-
-
+   project_definition = {
+      organization = var.organization
+      name = "Project-PolicySet-1"
+      policy_sets = [
+        {
+          name = "Project-PolicySet-1"
+        }
+      ]
+    }
 }
+
 
 # variable "the_project" {
 #   type = object({

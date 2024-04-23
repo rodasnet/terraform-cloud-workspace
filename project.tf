@@ -1,8 +1,3 @@
-# locals {
-#   # create_policy_set_list = [for p in var.project_definition : p.policy_set_list]
-#   # create_policy_set_list = compact(flatten(var.project_definition.*.policy_set_list))
-#   # create_project 
-# }
 
 resource "tfe_project" "project" {
 
@@ -12,12 +7,14 @@ resource "tfe_project" "project" {
   name         = var.project_definition.name
 }
 
+locals {
+  # create_policy_set_list = [for p in var.project_definition : p.policy_set_list]
+  policy_set_create_list = flatten(var.project_definition.*.policy_sets)
+}
+
 resource "tfe_policy_set" "policy_set" {
-  count = 0
-
-  # count = length(compact(flatten(var.project_definition.*.policy_set_list)))
-
-  # name = compact(flatten(var.project_definition.*.policy_set_list))[count.index].name
+  
+  count = length(local.policy_set_create_list)
   name = "testing-123"
 
   # name                = var.project_definition.*.policy_set_list[count.index].policy_set.name
