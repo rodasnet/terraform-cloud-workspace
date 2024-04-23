@@ -26,8 +26,8 @@ resource "tfe_policy_set" "policy_set" {
   agent_enabled       = var.create_project_policy_set_list[count.index].policy_set.agent_enabled
   policy_tool_version = var.create_project_policy_set_list[count.index].policy_set.policy_tool_version
   overridable         = var.create_project_policy_set_list[count.index].policy_set.overridable
-  # organization        = var.create_project_policy_set_list[count.index].policy_set.organization
-  # policies_path       = var.create_project_policy_set_list[count.index].policy_set.policies_path
+  organization        = var.create_project_policy_set_list[count.index].policy_set.organization
+  policies_path       = var.create_project_policy_set_list[count.index].policy_set.policies_path
   # policy_ids          = var.create_project_policy_set_list[count.index].policy_set.policy_ids
   # dynamic "vcs_repo" {
   #   for_each = var.create_project_policy_set_list[count.index].policy_set.vcs_repo != null ? [1] : []
