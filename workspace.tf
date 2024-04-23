@@ -17,12 +17,6 @@ resource "tfe_workspace" "workspace" {
   speculative_enabled           = var.speculative_enabled
   structured_run_output_enabled = var.structured_run_output_enabled
   ssh_key_id                    = var.ssh_key_id
-  # tag_names                     = var.tag_names
-  # tag_names                     = concat(values(local.default_tags), var.tag_names)
-  # tag_names                     = tolist(values(local.default_tags)) 
-  # tag_names                     = concat(tolist(values(local.default_tags)), var.tag_names)
-  # tag_names                     = concat(tolist(values(local.default_tags)), var.tag_names == null ? [] : var.tag_names)
-  # tag_names                     = merge(var.additional_tags_list,local.tags)
   tag_names                     = concat(
     tolist(setsubtract(var.additional_tags_list,local.tags)),
     local.tags
