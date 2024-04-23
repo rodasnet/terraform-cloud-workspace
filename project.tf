@@ -23,7 +23,7 @@ resource "tfe_policy_set" "policy_set" {
   description         = var.create_project_policy_set_list[count.index].policy_set.description
   global              = var.create_project_policy_set_list[count.index].policy_set.global
   kind                = var.create_project_policy_set_list[count.index].policy_set.kind
-  # agent_enabled       = var.create_project_policy_set_list[count.index].policy_set.agent_enabled
+  agent_enabled       = var.create_project_policy_set_list[count.index].policy_set.agent_enabled
   # policy_tool_version = var.create_project_policy_set_list[count.index].policy_set.policy_tool_version
   # overridable         = var.create_project_policy_set_list[count.index].policy_set.overridable
   # organization        = var.create_project_policy_set_list[count.index].policy_set.organization
