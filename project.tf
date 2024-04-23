@@ -21,7 +21,7 @@ resource "tfe_policy_set" "policy_set" {
 
   name                = var.create_project_policy_set_list[count.index].policy_set.name
   description         = var.create_project_policy_set_list[count.index].policy_set.description
-  # global              = var.create_project_policy_set_list[count.index].policy_set.global
+  global              = var.create_project_policy_set_list[count.index].policy_set.global
   # kind                = var.create_project_policy_set_list[count.index].policy_set.kind
   # agent_enabled       = var.create_project_policy_set_list[count.index].policy_set.agent_enabled
   # policy_tool_version = var.create_project_policy_set_list[count.index].policy_set.policy_tool_version
