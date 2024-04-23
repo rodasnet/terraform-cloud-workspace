@@ -37,7 +37,7 @@ variable "project_list" {
 }
 
 locals {
-  create_policy_set_list = flatten([for p in var.project_list : p.policy_set_list])
+  create_policy_set_list = flatten([for p in var.project_list : (p.policy_set_list != null ? p.policy_set_list : continue )])
 }
 
 resource "tfe_policy_set" "policy_set" {
