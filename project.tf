@@ -40,7 +40,7 @@ resource "tfe_policy_set" "policy_set" {
   #   }
   # }
   workspace_ids = var.create_project_policy_set_list[count.index].policy_set.workspace_ids
-  # slug          = var.create_project_policy_set_list[count.index].policy_set.slug
+  slug          = var.create_project_policy_set_list[count.index].policy_set.slug
 }
 
 resource "tfe_project_policy_set" "created" {
