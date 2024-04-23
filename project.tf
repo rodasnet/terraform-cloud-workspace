@@ -10,7 +10,7 @@ variable "project_list" {
   type = list(object({
     organization = string
     name         = string
-    policy_set_list = list(object({
+    policy_set_list = optional(list(object({
       policy_set = object({
         name                = string
         description         = optional(string)
@@ -34,7 +34,7 @@ variable "project_list" {
 
       })
       project_id = optional(string)
-    }))
+    })))
   }))
 
   default = []
