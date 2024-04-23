@@ -50,7 +50,8 @@ variable "project_list" {
 
 resource "tfe_policy_set" "policy_set" {
 
-  count = length(var.project_list[*].policy_set_list)
+  # count = length(var.project_list[*].policy_set_list)
+  count = length(var.project_list.*.policy_set_list)
 
   name                = var.project_list[*].policy_set_list[count.index].policy_set.name
   description         = var.project_list[*].policy_set_list[count.index].policy_set.description
