@@ -88,7 +88,7 @@ variable "create_project_policy_set_list" {
         github_app_installation_id = optional(string)
       }))
       workspace_ids = optional(list(string))
-      slug          = optional(string)
+      slug          = optional(map(string))
 
     })
     project_id = optional(string)
