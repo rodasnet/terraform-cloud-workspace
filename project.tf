@@ -36,24 +36,15 @@ variable "project_list" {
   default = []
 }
 
-locals {
-  create_policy_set_list = flatten([for p in var.project_list : (p.policy_set_list != null ? p.policy_set_list : continue )])
-}
+# locals {
+#   create_policy_set_list = [for p in var.project_list : p.policy_set_list]
+# }
 
 resource "tfe_policy_set" "policy_set" {
 
-  # count = length(var.project_list[*].policy_set_list)
-  # count = length(flatten(var.project_list.*.policy_set_list))
-  # count = length(flatten(var.project_list[*].policy_set_list))
-  # count = length(flatten(local.create_policy_set_list))
-  # count = length(local.create_policy_set_list)
-  # count = length(var.project_list.*.policy_set_list)
-  # for_each =  var.project_list.*.policy_set_list
-  count = length(local.create_policy_set_list)
+  count = length(flatten(var.project_list.*.policy_set_list))
 
-  # name = each.value.policy_set.name
-  # name = local.create_policy_set_list[count.index].name
-  name = local.create_policy_set_list[count.index].name
+  name = flatten(var.project_list.*.policy_set_list)[count.index].name
 
   # name                = var.project_list.*.policy_set_list[count.index].policy_set.name
   # name                = var.project_list.*.policy_set_list[count.index].policy_set.name
@@ -177,3 +168,11 @@ variable "project_access" {
   }))
   default = []
 }
+
+  # count = length(var.project_list[*].policy_set_list)
+  # count = length(flatten(var.project_list.*.policy_set_list))
+  # count = length(flatten(var.project_list[*].policy_set_list))
+  # count = length(flatten(local.create_policy_set_list))
+  # count = length(local.create_policy_set_list)
+  # count = length(var.project_list.*.policy_set_list)
+  # for_each =  var.project_list.*.policy_set_list
