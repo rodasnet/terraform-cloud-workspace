@@ -29,16 +29,17 @@ resource "tfe_policy_set" "policy_set" {
   organization        = var.create_project_policy_set_list[count.index].policy_set.organization
   policies_path       = var.create_project_policy_set_list[count.index].policy_set.policies_path
   policy_ids          = var.create_project_policy_set_list[count.index].policy_set.policy_ids
-  # dynamic "vcs_repo" {
-  #   for_each = var.create_project_policy_set_list[count.index].policy_set.vcs_repo != null ? [1] : []
-  #   content {
-  #     identifier     = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.identifier
-  #     branch                     = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.branch
-  #     ingress_submodules         = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.ingress_submodules
-  #     oauth_token_id             = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.oauth_token_id
-  #     github_app_installation_id = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.github_app_installation_id
-  #   }
-  # }
+  dynamic "vcs_repo" {
+    # for_each = var.create_project_policy_set_list[count.index].policy_set.vcs_repo != null ? [1] : []
+    for_each = var.create_project_policy_set_list
+    content {
+      identifier     = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.identifier
+      branch                     = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.branch
+      ingress_submodules         = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.ingress_submodules
+      oauth_token_id             = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.oauth_token_id
+      github_app_installation_id = var.create_project_policy_set_list[count.index].policy_set.vcs_repo.github_app_installation_id
+    }
+  }
   workspace_ids = var.create_project_policy_set_list[count.index].policy_set.workspace_ids
   slug          = var.create_project_policy_set_list[count.index].policy_set.slug
 }
