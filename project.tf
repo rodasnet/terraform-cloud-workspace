@@ -48,13 +48,17 @@ resource "tfe_policy_set" "policy_set" {
 
   # count = length(var.project_list[*].policy_set_list)
   # count = length(flatten(var.project_list.*.policy_set_list))
-  count = length(flatten(var.project_list[*].policy_set_list))
+  # count = length(flatten(var.project_list[*].policy_set_list))
   # count = length(flatten(local.create_policy_set_list))
+
+  for_each = flatten(var.project_list.*.policy_set_list)
+
+  name = each.value.policy_set.name
 
   # name                = var.project_list.*.policy_set_list[count.index].policy_set.name
   # name                = var.project_list.*.policy_set_list[count.index].policy_set.name
   # name                = flatten(var.project_list.*.policy_set_list)[count.index].policy_set.name
-  name                = flatten(var.project_list[*].policy_set_list)[count.index].policy_set.name
+  # name                = flatten(var.project_list[*].policy_set_list)[count.index].policy_set.name
   # description         = var.project_list.*.policy_set_list[count.index].policy_set.description
   # global              = var.project_list.*.policy_set_list[count.index].policy_set.global
   # kind                = var.project_list.*.policy_set_list[count.index].policy_set.kind
