@@ -20,6 +20,7 @@ module "Project-PolicySet-1" {
     {
       organization = var.organization
       name = "Project-PolicySet-1"
+      
     }
    ]
 
