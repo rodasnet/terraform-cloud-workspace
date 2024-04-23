@@ -11,29 +11,25 @@ variable "project_list" {
     organization = string
     name         = string
     policy_set_list = optional(list(object({
-      policy_set = object({
-        name                = string
-        description         = optional(string)
-        global              = optional(string)
-        kind                = optional(string)
-        agent_enabled       = optional(string)
-        policy_tool_version = optional(string)
-        overridable         = optional(bool)
-        organization        = optional(string)
-        policies_path       = optional(string)
-        policy_ids          = optional(list(string))
-        vcs_repo = optional(object({
-          identifier                 = optional(string)
-          branch                     = optional(string)
-          ingress_submodules         = optional(bool)
-          oauth_token_id             = optional(string)
-          github_app_installation_id = optional(string)
-        }))
-        workspace_ids = optional(list(string))
-        slug          = optional(map(string))
-
-      })
-      project_id = optional(string)
+      name                = string
+      description         = optional(string)
+      global              = optional(string)
+      kind                = optional(string)
+      agent_enabled       = optional(string)
+      policy_tool_version = optional(string)
+      overridable         = optional(bool)
+      organization        = optional(string)
+      policies_path       = optional(string)
+      policy_ids          = optional(list(string))
+      vcs_repo = optional(object({
+        identifier                 = optional(string)
+        branch                     = optional(string)
+        ingress_submodules         = optional(bool)
+        oauth_token_id             = optional(string)
+        github_app_installation_id = optional(string)
+      }))
+      workspace_ids = optional(list(string))
+      slug          = optional(map(string))
     })))
   }))
 
@@ -57,7 +53,7 @@ resource "tfe_policy_set" "policy_set" {
 
 
   # name = each.value.policy_set.name
-  name = local.create_policy_set_list[count.index].policy_set.name
+  name = local.create_policy_set_list[count.index].name
 
   # name                = var.project_list.*.policy_set_list[count.index].policy_set.name
   # name                = var.project_list.*.policy_set_list[count.index].policy_set.name
