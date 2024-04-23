@@ -1,109 +1,75 @@
+# locals {
+#   # create_policy_set_list = [for p in var.project_definition : p.policy_set_list]
+#   # create_policy_set_list = compact(flatten(var.project_definition.*.policy_set_list))
+#   # create_project 
+# }
+
 resource "tfe_project" "project" {
 
-  count = length(var.project_list)
+  count = var.project_definition != null ? 1 : 0
 
-  organization = var.project_list[count.index].organization
-  name         = var.project_list[count.index].name
+  organization = var.project_definition.organization
+  name         = var.project_definition.name
 }
-
-variable "project_list" {
-  type = list(object({
-    organization = string
-    name         = string
-    policy_set_list = optional(list(object({
-      name                = string
-      description         = optional(string)
-      global              = optional(string)
-      kind                = optional(string)
-      agent_enabled       = optional(string)
-      policy_tool_version = optional(string)
-      overridable         = optional(bool)
-      organization        = optional(string)
-      policies_path       = optional(string)
-      policy_ids          = optional(list(string))
-      vcs_repo = optional(object({
-        identifier                 = optional(string)
-        branch                     = optional(string)
-        ingress_submodules         = optional(bool)
-        oauth_token_id             = optional(string)
-        github_app_installation_id = optional(string)
-      }))
-      workspace_ids = optional(list(string))
-      slug          = optional(map(string))
-    })))
-  }))
-
-  default = [
-    {
-      organization = "rodasnet"
-      name = "ProjectSampleLocal"
-    }    
-  ]
-}
-
-# locals {
-#   # create_policy_set_list = [for p in var.project_list : p.policy_set_list]
-#   create_policy_set_list = compact(flatten(var.project_list.*.policy_set_list))
-# }
 
 resource "tfe_policy_set" "policy_set" {
   count = 0
 
-  # count = length(compact(flatten(var.project_list.*.policy_set_list)))
+  # count = length(compact(flatten(var.project_definition.*.policy_set_list)))
 
-  # name = compact(flatten(var.project_list.*.policy_set_list))[count.index].name
+  # name = compact(flatten(var.project_definition.*.policy_set_list))[count.index].name
   name = "testing-123"
 
-  # name                = var.project_list.*.policy_set_list[count.index].policy_set.name
-  # name                = var.project_list.*.policy_set_list[count.index].policy_set.name
-  # name                = flatten(var.project_list.*.policy_set_list)[count.index].policy_set.name
-  # name                = flatten(var.project_list[*].policy_set_list)[count.index].policy_set.name
-  # description         = var.project_list.*.policy_set_list[count.index].policy_set.description
-  # global              = var.project_list.*.policy_set_list[count.index].policy_set.global
-  # kind                = var.project_list.*.policy_set_list[count.index].policy_set.kind
-  # agent_enabled       = var.project_list.*.policy_set_list[count.index].policy_set.agent_enabled
-  # policy_tool_version = var.project_list.*.policy_set_list[count.index].policy_set.policy_tool_version
-  # overridable         = var.project_list.*.policy_set_list[count.index].policy_set.overridable
-  # organization        = var.project_list.*.policy_set_list[count.index].policy_set.organization
-  # policies_path       = var.project_list.*.policy_set_list[count.index].policy_set.policies_path
-  # policy_ids          = var.project_list.*.policy_set_list[count.index].policy_set.policy_ids
+  # name                = var.project_definition.*.policy_set_list[count.index].policy_set.name
+  # name                = var.project_definition.*.policy_set_list[count.index].policy_set.name
+  # name                = flatten(var.project_definition.*.policy_set_list)[count.index].policy_set.name
+  # name                = flatten(var.project_definition[*].policy_set_list)[count.index].policy_set.name
+  # description         = var.project_definition.*.policy_set_list[count.index].policy_set.description
+  # global              = var.project_definition.*.policy_set_list[count.index].policy_set.global
+  # kind                = var.project_definition.*.policy_set_list[count.index].policy_set.kind
+  # agent_enabled       = var.project_definition.*.policy_set_list[count.index].policy_set.agent_enabled
+  # policy_tool_version = var.project_definition.*.policy_set_list[count.index].policy_set.policy_tool_version
+  # overridable         = var.project_definition.*.policy_set_list[count.index].policy_set.overridable
+  # organization        = var.project_definition.*.policy_set_list[count.index].policy_set.organization
+  # policies_path       = var.project_definition.*.policy_set_list[count.index].policy_set.policies_path
+  # policy_ids          = var.project_definition.*.policy_set_list[count.index].policy_set.policy_ids
   # dynamic "vcs_repo" {
-  #   for_each = var.project_list.*.policy_set_list
+  #   for_each = var.project_definition.*.policy_set_list
   #   content {
-  #     identifier                 = var.project_list.*.policy_set_list[count.index].policy_set.vcs_repo.identifier
-  #     branch                     = var.project_list.*.policy_set_list[count.index].policy_set.vcs_repo.branch
-  #     ingress_submodules         = var.project_list.*.policy_set_list[count.index].policy_set.vcs_repo.ingress_submodules
-  #     oauth_token_id             = var.project_list.*.policy_set_list[count.index].policy_set.vcs_repo.oauth_token_id
-  #     github_app_installation_id = var.project_list.*.policy_set_list[count.index].policy_set.vcs_repo.github_app_installation_id
+  #     identifier                 = var.project_definition.*.policy_set_list[count.index].policy_set.vcs_repo.identifier
+  #     branch                     = var.project_definition.*.policy_set_list[count.index].policy_set.vcs_repo.branch
+  #     ingress_submodules         = var.project_definition.*.policy_set_list[count.index].policy_set.vcs_repo.ingress_submodules
+  #     oauth_token_id             = var.project_definition.*.policy_set_list[count.index].policy_set.vcs_repo.oauth_token_id
+  #     github_app_installation_id = var.project_definition.*.policy_set_list[count.index].policy_set.vcs_repo.github_app_installation_id
   #   }
   # }
-  # workspace_ids = var.project_list.*.policy_set_list[count.index].policy_set.workspace_ids
-  # slug          = var.project_list.*.policy_set_list[count.index].policy_set.slug
+  # workspace_ids = var.project_definition.*.policy_set_list[count.index].policy_set.workspace_ids
+  # slug          = var.project_definition.*.policy_set_list[count.index].policy_set.slug
 }
 
 # resource "tfe_project_policy_set" "created" {
 
-#   count = length(var.project_list.*.policy_set_list)
+#   count = length(var.project_definition.*.policy_set_list)
 
 #   policy_set_id = tfe_policy_set.policy_set[count.index].policy_set_id
-#   project_id    = var.project_list.*.policy_set_list[count.index].project_id
+#   project_id    = var.project_definition.*.policy_set_list[count.index].project_id
 # }
 
-resource "tfe_project_policy_set" "linked" {
+# resource "tfe_project_policy_set" "linked" {
 
-  count         = length(var.link_project_policy_set_list)
-  policy_set_id = var.link_project_policy_set_list[count.index].policy_set_id
-  project_id    = var.link_project_policy_set_list[count.index].project_id
-}
+#   count         = length(var.link_project_policy_set_list)
+#   policy_set_id = var.link_project_policy_set_list[count.index].policy_set_id
+#   project_id    = var.link_project_policy_set_list[count.index].project_id
+# }
 
-variable "link_project_policy_set_list" {
-  type = list(object({
-    policy_set_id = string
-    project_id    = string
-  }))
+# variable "link_project_policy_set_list" {
+#   type = list(object({
+#     policy_set_id = string
+#     project_id    = string
+#   }))
 
-  default = []
-}
+#   default = []
+# }
 
 # variable "create_new_policy_set_list" {
 #   type = list(object({
@@ -177,10 +143,10 @@ variable "link_project_policy_set_list" {
 #   default = []
 # }
 
-  # count = length(var.project_list[*].policy_set_list)
-  # count = length(flatten(var.project_list.*.policy_set_list))
-  # count = length(flatten(var.project_list[*].policy_set_list))
+  # count = length(var.project_definition[*].policy_set_list)
+  # count = length(flatten(var.project_definition.*.policy_set_list))
+  # count = length(flatten(var.project_definition[*].policy_set_list))
   # count = length(flatten(local.create_policy_set_list))
   # count = length(local.create_policy_set_list)
-  # count = length(var.project_list.*.policy_set_list)
-  # for_each =  var.project_list.*.policy_set_list
+  # count = length(var.project_definition.*.policy_set_list)
+  # for_each =  var.project_definition.*.policy_set_list
