@@ -13,7 +13,8 @@ resource "tfe_policy_set" "policy_set" {
 
   name = var.project_definition.policy_sets[count.index].name
   # TODO: Test with organization override in policy_set definition
-  description         = try(var.project_definition.policy_sets[count.index].description,null)
+  # description         = try(var.project_definition.policy_sets[count.index].description,null)
+  description         = var.project_definition.policy_sets[count.index].description
   # global              = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
   # kind                = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
   # agent_enabled       = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
