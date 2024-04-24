@@ -19,7 +19,7 @@ resource "tfe_policy_set" "policy_set" {
   kind                = var.project_definition.policy_sets[count.index].kind
   agent_enabled       = var.project_definition.policy_sets[count.index].agent_enabled
   policy_tool_version = var.project_definition.policy_sets[count.index].policy_tool_version
-  # overridable         = var.project_definition.policy_sets[count.index].overridable
+  overridable         = var.project_definition.policy_sets[count.index].overridable
   organization = try(var.project_definition.policy_sets[count.index].organization,null) != null ? var.project_definition.policy_sets[count.index].organization : var.project_definition.organization
   # policies_path       = var.project_definition.policy_sets[count.index].NNN
   # policy_ids          = var.project_definition.policy_sets[count.index].NNN
@@ -33,8 +33,8 @@ resource "tfe_policy_set" "policy_set" {
   #     github_app_installation_id = var.project_definition.*.policy_set_list[count.index].policy_set.vcs_repo.github_app_installation_id
   #   }
   # }
-  # workspace_ids = var.project_definition.policy_sets[count.index].workspace_ids
-  # slug          = var.project_definition.policy_sets[count.index].slug
+  workspace_ids = var.project_definition.policy_sets[count.index].workspace_ids
+  slug          = var.project_definition.policy_sets[count.index].slug
 }
 
 # resource "tfe_project_policy_set" "created" {
