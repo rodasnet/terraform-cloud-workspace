@@ -14,7 +14,7 @@ locals {
 
 resource "tfe_policy_set" "policy_set" {
   
-  count = var.project_definition != null && var.project_definition.policy_sets != null ? length(var.project_definition.policy_sets) : 0
+  count = try(var.project_definition, null) != null && try(var.project_definition.policy_sets, null) != null ? length(var.project_definition.policy_sets) : 0
 
   name = var.project_definition.policy_sets[count.index].name
   organization = var.project_definition.policy_sets[count.index].organization
