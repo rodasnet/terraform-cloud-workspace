@@ -7,20 +7,13 @@ resource "tfe_project" "project" {
   name         = var.project_definition.name
 }
 
-locals {
-  # create_policy_set_list = [for p in var.project_definition : p.policy_set_list]
-  policy_set_create_list = flatten(var.project_definition.*.policy_sets)
-}
-
 resource "tfe_policy_set" "policy_set" {
   
   count = try(var.project_definition, null) != null && try(var.project_definition.policy_sets, null) != null ? length(var.project_definition.policy_sets) : 0
 
   name = var.project_definition.policy_sets[count.index].name
-  organization = var.project_definition.policy_sets[count.index].organization
-  # name = local.policy_set_create_list[count.index].name
-  # organization = local.policy_set_create_list[count.index].organization != null ? local.policy_set_create_list[count.index].organization : var.project_definition.organization
-  # organization = try(local.policy_set_create_list[count.index].organization, var.project_definition.organization)
+  organization = try(var.project_definition.policy_sets[count.index].organization,var.project_definition.organization)
+
 
   # name                = var.project_definition.*.policy_set_list[count.index].policy_set.name
   # name                = var.project_definition.*.policy_set_list[count.index].policy_set.name
