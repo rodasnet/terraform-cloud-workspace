@@ -16,28 +16,30 @@ module "Project-PolicySet-1" {
       policy_sets = [
         {
           name = "Project-PolicySet-1"
+          # Organization is overridable in the policy set configuration
+          # organization = "<A Different Organization>"
         }
       ]
     }
 }
 
-module "Project-PolicySet-Override-Organizaion" {
-  source          = "../"
+# module "Project-PolicySet-Override-Organizaion" {
+#   source          = "../"
 
-  # Works but with an error:
-  # Error: Error creating policy set Project-PolicySet-2 for organization rodasnet: 
-  # forbidden The organization has reached the limit of 1 policy set.
-   project_definition = {
-      organization = var.organization
-      name = "Project-PolicySet-2"
-      policy_sets = [
-        {
-          name = "Project-PolicySet-2"
-          organization = "rodasnet"
-        }
-      ]
-    }
-}
+#   # Works but with an error:
+#   # Error: Error creating policy set Project-PolicySet-2 for organization rodasnet: 
+#   # forbidden The organization has reached the limit of 1 policy set.
+#    project_definition = {
+#       organization = var.organization
+#       name = "Project-PolicySet-2"
+#       policy_sets = [
+#         {
+#           name = "Project-PolicySet-2"
+#           organization = "rodasnet"
+#         }
+#       ]
+#     }
+# }
 
 
 # variable "the_project" {
