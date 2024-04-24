@@ -8,21 +8,19 @@ resource "tfe_project" "project" {
 }
 
 resource "tfe_policy_set" "policy_set" {
-  
+
   count = try(var.project_definition, null) != null && try(var.project_definition.policy_sets, null) != null ? length(var.project_definition.policy_sets) : 0
 
   name = var.project_definition.policy_sets[count.index].name
-  # TODO: Test with organization override in policy_set definition
-  # description         = try(var.project_definition.policy_sets[count.index].description,null)
   description         = var.project_definition.policy_sets[count.index].description
   global              = var.project_definition.policy_sets[count.index].global
   kind                = var.project_definition.policy_sets[count.index].kind
   agent_enabled       = var.project_definition.policy_sets[count.index].agent_enabled
   policy_tool_version = var.project_definition.policy_sets[count.index].policy_tool_version
   overridable         = var.project_definition.policy_sets[count.index].overridable
-  organization = try(var.project_definition.policy_sets[count.index].organization,null) != null ? var.project_definition.policy_sets[count.index].organization : var.project_definition.organization
-  # policies_path       = var.project_definition.policy_sets[count.index].NNN
-  # policy_ids          = var.project_definition.policy_sets[count.index].NNN
+  organization        = try(var.project_definition.policy_sets[count.index].organization, null) != null ? var.project_definition.policy_sets[count.index].organization : var.project_definition.organization
+  policies_path       = var.project_definition.policy_sets[count.index].policies_path
+  policy_ids          = var.project_definition.policy_sets[count.index].policy_ids
   # dynamic "vcs_repo" {
   #   for_each = var.project_definition.*.policy_set_list
   #   content {
@@ -133,10 +131,10 @@ resource "tfe_policy_set" "policy_set" {
 #   default = []
 # }
 
-  # count = length(var.project_definition[*].policy_set_list)
-  # count = length(flatten(var.project_definition.*.policy_set_list))
-  # count = length(flatten(var.project_definition[*].policy_set_list))
-  # count = length(flatten(local.create_policy_set_list))
-  # count = length(local.create_policy_set_list)
-  # count = length(var.project_definition.*.policy_set_list)
-  # for_each =  var.project_definition.*.policy_set_list
+# count = length(var.project_definition[*].policy_set_list)
+# count = length(flatten(var.project_definition.*.policy_set_list))
+# count = length(flatten(var.project_definition[*].policy_set_list))
+# count = length(flatten(local.create_policy_set_list))
+# count = length(local.create_policy_set_list)
+# count = length(var.project_definition.*.policy_set_list)
+# for_each =  var.project_definition.*.policy_set_list
