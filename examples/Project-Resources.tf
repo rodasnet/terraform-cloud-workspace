@@ -22,6 +22,22 @@ module "Project-PolicySet-1" {
     }
 }
 
+module "Project-PolicySet-Override-Organizaion" {
+  source          = "../"
+
+
+   project_definition = {
+      organization = var.organization
+      name = "Project-PolicySet-2"
+      policy_sets = [
+        {
+          name = "Project-PolicySet-2"
+          organization = "doesnotexist12342"
+        }
+      ]
+    }
+}
+
 
 # variable "the_project" {
 #   type = object({
