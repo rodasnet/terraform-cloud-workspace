@@ -5,7 +5,7 @@ resource "tfe_workspace" "workspace" {
   agent_pool_id                 = var.agent_pool_id
   allow_destroy_plan            = var.allow_destroy_plan
   auto_apply                    = var.auto_apply
-  execution_mode                = var.execution_mode
+  # execution_mode                = var.execution_mode
   assessments_enabled           = var.assessments_enabled
   file_triggers_enabled         = var.file_triggers_enabled
   global_remote_state           = var.global_remote_state
