@@ -7,8 +7,6 @@ resource "tfe_project" "project" {
   name         = var.project_definition.name
 }
 
-loca
-
 resource "tfe_policy_set" "policy_set" {
   
   count = try(var.project_definition, null) != null && try(var.project_definition.policy_sets, null) != null ? length(var.project_definition.policy_sets) : 0
