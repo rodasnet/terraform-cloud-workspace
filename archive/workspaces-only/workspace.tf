@@ -1,6 +1,4 @@
 resource "tfe_workspace" "workspace" {
-
-  count = var.create_workspace == true ? 1 : 0
   organization                  = var.organization
   name                          = var.name
   description                   = var.description
@@ -17,6 +15,12 @@ resource "tfe_workspace" "workspace" {
   speculative_enabled           = var.speculative_enabled
   structured_run_output_enabled = var.structured_run_output_enabled
   ssh_key_id                    = var.ssh_key_id
+  # tag_names                     = var.tag_names
+  # tag_names                     = concat(values(local.default_tags), var.tag_names)
+  # tag_names                     = tolist(values(local.default_tags)) 
+  # tag_names                     = concat(tolist(values(local.default_tags)), var.tag_names)
+  # tag_names                     = concat(tolist(values(local.default_tags)), var.tag_names == null ? [] : var.tag_names)
+  # tag_names                     = merge(var.additional_tags_list,local.tags)
   tag_names                     = concat(
     tolist(setsubtract(var.additional_tags_list,local.tags)),
     local.tags
@@ -37,11 +41,6 @@ resource "tfe_workspace" "workspace" {
  
 }
 
-variable "create_workspace" {
-  type = bool
-  default = true
-}
-
 resource "tfe_variable" "sensitive" {
   for_each = var.tfe_variable_sensitive_map
 
@@ -49,7 +48,7 @@ resource "tfe_variable" "sensitive" {
   value        = each.value
   category     = "env"
   sensitive    = true
-  workspace_id = tfe_workspace.workspace[0].id
+  workspace_id = tfe_workspace.workspace.id
 }
 
 resource "tfe_variable" "public" {
@@ -59,5 +58,5 @@ resource "tfe_variable" "public" {
   value        = each.value
   category     = "env"
   sensitive    = false
-  workspace_id = tfe_workspace.workspace[0].id
+  workspace_id = tfe_workspace.workspace.id
 }
