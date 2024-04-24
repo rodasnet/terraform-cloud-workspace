@@ -15,14 +15,14 @@ resource "tfe_policy_set" "policy_set" {
   # TODO: Test with organization override in policy_set definition
   # description         = try(var.project_definition.policy_sets[count.index].description,null)
   description         = var.project_definition.policy_sets[count.index].description
-  # global              = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
-  # kind                = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
-  # agent_enabled       = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
-  # policy_tool_version = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
-  # overridable         = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
+  global              = var.project_definition.policy_sets[count.index].global
+  kind                = var.project_definition.policy_sets[count.index].kind
+  agent_enabled       = var.project_definition.policy_sets[count.index].agent_enabled
+  policy_tool_version = var.project_definition.policy_sets[count.index].policy_tool_version
+  # overridable         = var.project_definition.policy_sets[count.index].overridable
   organization = try(var.project_definition.policy_sets[count.index].organization,null) != null ? var.project_definition.policy_sets[count.index].organization : var.project_definition.organization
-  # policies_path       = var.project_definition.*.policy_set_list[count.index].policy_set.policies_path
-  # policy_ids          = var.project_definition.*.policy_set_list[count.index].policy_set.policy_ids
+  # policies_path       = var.project_definition.policy_sets[count.index].NNN
+  # policy_ids          = var.project_definition.policy_sets[count.index].NNN
   # dynamic "vcs_repo" {
   #   for_each = var.project_definition.*.policy_set_list
   #   content {
@@ -33,8 +33,8 @@ resource "tfe_policy_set" "policy_set" {
   #     github_app_installation_id = var.project_definition.*.policy_set_list[count.index].policy_set.vcs_repo.github_app_installation_id
   #   }
   # }
-  # workspace_ids = var.project_definition.*.policy_set_list[count.index].policy_set.workspace_ids
-  # slug          = var.project_definition.*.policy_set_list[count.index].policy_set.slug
+  # workspace_ids = var.project_definition.policy_sets[count.index].workspace_ids
+  # slug          = var.project_definition.policy_sets[count.index].slug
 }
 
 # resource "tfe_project_policy_set" "created" {
