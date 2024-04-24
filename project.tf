@@ -13,22 +13,15 @@ resource "tfe_policy_set" "policy_set" {
 
   name = var.project_definition.policy_sets[count.index].name
   # TODO: Test with organization override in policy_set definition
+  description         = try(var.project_definition.policy_sets[count.index].description,null) != null ? var.project_definition.policy_sets[count.index].description : var.project_definition.description
+  # global              = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
+  # kind                = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
+  # agent_enabled       = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
+  # policy_tool_version = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
+  # overridable         = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
   organization = try(var.project_definition.policy_sets[count.index].organization,null) != null ? var.project_definition.policy_sets[count.index].organization : var.project_definition.organization
-
-
-  # name                = var.project_definition.*.policy_set_list[count.index].policy_set.name
-  # name                = var.project_definition.*.policy_set_list[count.index].policy_set.name
-  # name                = flatten(var.project_definition.*.policy_set_list)[count.index].policy_set.name
-  # name                = flatten(var.project_definition[*].policy_set_list)[count.index].policy_set.name
-  # description         = var.project_definition.*.policy_set_list[count.index].policy_set.description
-  # global              = var.project_definition.*.policy_set_list[count.index].policy_set.global
-  # kind                = var.project_definition.*.policy_set_list[count.index].policy_set.kind
-  # agent_enabled       = var.project_definition.*.policy_set_list[count.index].policy_set.agent_enabled
-  # policy_tool_version = var.project_definition.*.policy_set_list[count.index].policy_set.policy_tool_version
-  # overridable         = var.project_definition.*.policy_set_list[count.index].policy_set.overridable
-  # organization        = var.project_definition.*.policy_set_list[count.index].policy_set.organization
-  # policies_path       = var.project_definition.*.policy_set_list[count.index].policy_set.policies_path
-  # policy_ids          = var.project_definition.*.policy_set_list[count.index].policy_set.policy_ids
+  policies_path       = var.project_definition.*.policy_set_list[count.index].policy_set.policies_path
+  policy_ids          = var.project_definition.*.policy_set_list[count.index].policy_set.policy_ids
   # dynamic "vcs_repo" {
   #   for_each = var.project_definition.*.policy_set_list
   #   content {
