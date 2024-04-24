@@ -32,7 +32,7 @@ module "Project-PolicySet-Override-Organizaion" {
       policy_sets = [
         {
           name = "Project-PolicySet-2"
-          organization = "doesnotexist12342"
+          organization = "rodasnet"
         }
       ]
     }
