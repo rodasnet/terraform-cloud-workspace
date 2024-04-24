@@ -1,5 +1,5 @@
 module "Simple-Workspace" {
-  source          = "../"
+  source          = "../archive/workspaces-only"
   
   organization                  = var.organization
   name                          = "Simple-Workspace-2"

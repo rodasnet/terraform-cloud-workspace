@@ -1,4 +1,3 @@
-/*
 resource "tfe_workspace_run_task" "workspace_task_synk" {
     count = length(var.run_task_config_list)
 
@@ -18,7 +17,7 @@ variable "run_task_config_list" {
   default = []
 }
 
-*/
+
 ##############################################################################################
 # resource "tfe_workspace_run_task" "workspace_task_synk" {
 # 

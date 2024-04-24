@@ -1,4 +1,3 @@
-/*
 data "tfe_team" "managed" {
   for_each = var.team_access
 
@@ -36,4 +35,3 @@ resource "tfe_team_access" "custom" {
     run_tasks         = lookup(each.value, "run_tasks", false)
   }
 }
-*/

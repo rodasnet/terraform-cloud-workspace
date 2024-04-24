@@ -1,5 +1,5 @@
 module "Demo-Workspace-All-Options" {
-  source          = "../"
+  source          = "../archive/workspaces-only"
   
   organization                  = var.organization
   name                          = "Demo-Workspace-All-Options"

@@ -1,5 +1,5 @@
 module "Workspace-Import-Resources" {
-  source          = "../"
+  source          = "../archive/workspaces-only"
   
   organization                  = var.organization
   name                          = "Workspace-Import-Resources"

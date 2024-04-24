@@ -1,5 +1,5 @@
 module "TeamAccess-Workspace" {
-  source          = "../"
+  source          = "../archive/workspaces-only"
   
   organization                  = var.organization
   name                          = "TeamAccess-Workspace"

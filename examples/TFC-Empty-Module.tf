@@ -1,5 +1,5 @@
 module "TFC-Empty-Module" {
-  source          = "../"
+  source          = "../archive/workspaces-only"
 
   create_workspace = false
   
