@@ -1,8 +1,6 @@
 module "Project-Standalone-1" {
   source          = "../"
 
-  create_workspace = false
-
    project_definition = {
       organization = var.organization
       name = "MyFirstTfcProject1"
@@ -12,7 +10,6 @@ module "Project-Standalone-1" {
 module "Project-PolicySet-1" {
   source          = "../"
 
-  create_workspace = false
 
    project_definition = {
       organization = var.organization
