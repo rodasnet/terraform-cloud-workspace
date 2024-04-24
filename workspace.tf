@@ -1,3 +1,4 @@
+/*
 resource "tfe_workspace" "workspace" {
 
   count = var.create_workspace == true ? 1 : 0
@@ -61,3 +62,4 @@ resource "tfe_variable" "public" {
   sensitive    = false
   workspace_id = tfe_workspace.workspace[0].id
 }
+*/
