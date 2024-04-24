@@ -15,7 +15,8 @@ locals {
 resource "tfe_policy_set" "policy_set" {
   
   count = length(local.policy_set_create_list)
-  name = "testing-123"
+  name = local.policy_set_create_list[count.index].name
+  organization = local.policy_set_create_list[count.index].organization != null ? local.policy_set_create_list[count.index].organization : var.project_definition.organization
 
   # name                = var.project_definition.*.policy_set_list[count.index].policy_set.name
   # name                = var.project_definition.*.policy_set_list[count.index].policy_set.name
