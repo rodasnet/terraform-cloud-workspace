@@ -20,8 +20,8 @@ resource "tfe_policy_set" "policy_set" {
   # policy_tool_version = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
   # overridable         = try(var.project_definition.policy_sets[count.index].NNN,null) != null ? var.project_definition.policy_sets[count.index].NNN : var.project_definition.NNN
   organization = try(var.project_definition.policy_sets[count.index].organization,null) != null ? var.project_definition.policy_sets[count.index].organization : var.project_definition.organization
-  policies_path       = var.project_definition.*.policy_set_list[count.index].policy_set.policies_path
-  policy_ids          = var.project_definition.*.policy_set_list[count.index].policy_set.policy_ids
+  # policies_path       = var.project_definition.*.policy_set_list[count.index].policy_set.policies_path
+  # policy_ids          = var.project_definition.*.policy_set_list[count.index].policy_set.policy_ids
   # dynamic "vcs_repo" {
   #   for_each = var.project_definition.*.policy_set_list
   #   content {
