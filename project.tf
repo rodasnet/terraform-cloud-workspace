@@ -12,6 +12,7 @@ resource "tfe_policy_set" "policy_set" {
   count = try(var.project_definition, null) != null && try(var.project_definition.policy_sets, null) != null ? length(var.project_definition.policy_sets) : 0
 
   name = var.project_definition.policy_sets[count.index].name
+  # TODO: Test with organization override in policy_set definition
   organization = try(var.project_definition.policy_sets[count.index].organization,null) != null ? var.project_definition.policy_sets[count.index].organization : var.project_definition.organization
 
 
