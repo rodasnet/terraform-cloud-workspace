@@ -15,7 +15,7 @@ locals {
 resource "tfe_policy_set" "policy_set" {
   
   # count = length(local.policy_set_create_list)
-  count = length(var.project_definition.policy_sets)
+  count = var.project_definition != null ? length(var.project_definition.policy_sets) : 0
 
   name = var.project_definition.policy_sets[count.index].name
   organization = var.project_definition.policy_sets[count.index].organization
