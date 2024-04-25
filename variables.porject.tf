@@ -13,6 +13,10 @@ variable "project_definition" {
       description = string
     })))
 
+    workspace_links = optional(list(object({
+      workspace_id = string
+    })))
+
     policy_set_links = optional(list(object({
       policy_set_id = string
       project_id    = optional(string)

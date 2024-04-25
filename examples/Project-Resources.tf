@@ -7,6 +7,21 @@ module "Project-Standalone-1" {
   }
 }
 
+module "Project-Workspace-Link" {
+  source = "../"
+
+  project_definition = {
+    organization = var.organization
+    name         = "Project-Workspace-Link"
+
+    workspace_links = [
+      {
+        workspace_id = module.Workspace-Standalone-1[0].workspace_id
+      }
+    ]
+  }
+}
+
 module "Project-PolicySet-Link" {
   source = "../"
 
