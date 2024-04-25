@@ -49,7 +49,8 @@ resource "tfe_project_policy_set" "created" {
 
 resource "tfe_project_policy_set" "linked" {
 
-  count = length(var.project_definition.policy_set_links)
+  count = try(var.project_definition, null) != null && try(var.project_definition.policy_set_links, null) != null ? length(var.project_definition.policy_set_links) : 0
+
   policy_set_id = var.project_definition.policy_set_links[count.index].policy_set_id
   project_id    = tfe_project.project[0].id
 }
