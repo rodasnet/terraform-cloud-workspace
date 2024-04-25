@@ -6,6 +6,14 @@ module "Project-Standalone-1" {
       name = "MyFirstTfcProject1"
     }
 }
+module "Project-Standalone-2" {
+  source          = "../"
+
+   project_definition = {
+      organization = var.organization
+      name = "MyFirstTfcProject2"
+    }
+}
 
 module "Project-PolicySet-1" {
   source          = "../"
