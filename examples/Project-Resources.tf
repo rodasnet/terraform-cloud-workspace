@@ -15,7 +15,7 @@ module "Project-PolicySet-1" {
     name         = "Project-PolicySet-1"
     policy_sets = [
       {
-        name = "Project-PolicySet-1"
+        name = "Project-PolicySet-Example"
         # Organization is overridable in the policy set configuration
         # organization = "<A Different Organization>"
         vcs_repo = {
