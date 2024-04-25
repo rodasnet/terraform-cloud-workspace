@@ -14,6 +14,5 @@ module "Workspace-Project-Link" {
     organization = var.organization
     name         = "Workspace-Project-Link"
     project_id   = module.Project-Workspace-Link.project_id
-
   }
 }
