@@ -23,12 +23,13 @@ resource "tfe_policy_set" "policy_set" {
   policy_ids          = var.project_definition.policy_sets[count.index].policy_ids
   dynamic "vcs_repo" {
     for_each = var.project_definition.policy_sets[count.index].vcs_repo != null ? [1] : []
+
     content {
-      identifier                 = var.project_definition.policy_sets[count.index].identifier
-      branch                     = var.project_definition.policy_sets[count.index].branch
-      ingress_submodules         = var.project_definition.policy_sets[count.index].ingress_submodules
-      oauth_token_id             = var.project_definition.policy_sets[count.index].oauth_token_id
-      github_app_installation_id = var.project_definition.policy_sets[count.index].github_app_installation_id
+      identifier                 = var.project_definition.policy_sets[count.index].vcs_repo.identifier
+      branch                     = var.project_definition.policy_sets[count.index].vcs_repo.branch
+      ingress_submodules         = var.project_definition.policy_sets[count.index].vcs_repo.ingress_submodules
+      oauth_token_id             = var.project_definition.policy_sets[count.index].vcs_repo.oauth_token_id
+      github_app_installation_id = var.project_definition.policy_sets[count.index].vcs_repo.github_app_installation_id
     }
   }
   workspace_ids = var.project_definition.policy_sets[count.index].workspace_ids
