@@ -35,6 +35,9 @@ module "Project-PolicySet-1" {
         # }
         # workspace_ids = "value"
         # slug          = "value"
+      },
+      {
+        name = "Project-PolicySet-Second"
       }
     ]
   }
