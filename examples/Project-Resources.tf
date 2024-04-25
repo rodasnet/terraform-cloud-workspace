@@ -7,15 +7,6 @@ module "Project-Standalone-1" {
   }
 }
 
-module "Project-Workspace-Link" {
-  source = "../"
-
-  project_definition = {
-    organization = var.organization
-    name         = "Project-Workspace-Link"
-  }
-}
-
 module "Project-PolicySet-Link" {
   source = "../"
 
