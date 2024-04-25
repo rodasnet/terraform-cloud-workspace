@@ -4,6 +4,11 @@ module "Project-Standalone-1" {
   project_definition = {
     organization = var.organization
     name         = "MyFirstTfcProject1"
+    policy_set_links = [
+      {
+        policy_set_id = module.Project-PolicySet-1.policy_sets[0].id
+      }
+    ]
   }
 }
 
@@ -36,7 +41,8 @@ module "Project-PolicySet-1" {
         # workspace_ids = "value"
         # slug          = "value"
       }
-      #  The organization has reached the limit of 1 policy set
+      # Example of creating a second policy for the project
+      # The organization has reached the limit of 1 policy set
       # ,
       # {
       #   name = "Project-PolicySet-Second"

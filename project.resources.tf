@@ -36,6 +36,10 @@ resource "tfe_policy_set" "policy_set" {
   slug          = var.project_definition.policy_sets[count.index].slug
 }
 
+output "policy_sets" {
+  value = tfe_policy_set.policy_set
+}
+
 resource "tfe_project_policy_set" "created" {
 
   count = length(tfe_policy_set.policy_set)

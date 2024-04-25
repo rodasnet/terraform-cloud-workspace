@@ -7,10 +7,15 @@ variable "project_definition" {
   type = object({
     organization = string
     name         = string
-    
-    workspaces   = optional(list(object({
-      name = string
+
+    workspaces = optional(list(object({
+      name        = string
       description = string
+    })))
+
+    policy_set_links = optional(list(object({
+      policy_set_id = string
+      project_id    = string
     })))
 
     policy_sets = optional(list(object({
