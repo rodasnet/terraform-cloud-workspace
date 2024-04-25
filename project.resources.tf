@@ -22,7 +22,7 @@ resource "tfe_policy_set" "policy_set" {
   policies_path       = var.project_definition.policy_sets[count.index].policies_path
   policy_ids          = var.project_definition.policy_sets[count.index].policy_ids
   dynamic "vcs_repo" {
-    for_each = var.project_definition.policy_sets[count.index].vcs_repo
+    for_each = var.project_definition.policy_sets[count.index].vcs_repo != null ? [1] : []
     content {
       identifier                 = var.project_definition.policy_sets[count.index].identifier
       branch                     = var.project_definition.policy_sets[count.index].branch
