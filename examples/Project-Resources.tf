@@ -16,7 +16,7 @@ module "Project-Workspace-Link" {
 
     workspace_links = [
       {
-        workspace_id = module.Workspace-Standalone-1[0].workspace_id
+        workspace_id = module.Workspace-Standalone-1["Workspace-Standalone-1"].workspace_id
       }
     ]
   }
