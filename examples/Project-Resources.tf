@@ -16,14 +16,25 @@ module "Project-PolicySet-1" {
     policy_sets = [
       {
         name = "Project-PolicySet-Example"
+        # TODO: Test remaining 
+        # description         = "value"
+        # global              = "value"
+        # kind                = "value"
+        # agent_enabled       = "value"
+        # policy_tool_version = "value"
+        # overridable         = "value"
         # Organization is overridable in the policy set configuration
         # organization = "<A Different Organization>"
-        # Requires lisence
+        # policies_path       = "value"
+        # policy_ids          = "value"
+        # Requires license
         # vcs_repo = {
         #   identifier     = "rodasnet/optimalstop-secretary"
         #   branch         = "feature-branch"
         #   oauth_token_id = var.github_oauth_token_id
         # }
+        # workspace_ids = "value"
+        # slug          = "value"
       }
     ]
   }
