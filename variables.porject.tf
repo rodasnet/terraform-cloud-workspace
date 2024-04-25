@@ -51,6 +51,24 @@ variable "workspace_definition" {
   type = object({
     organization = string
     name  = string
+    description                   = optional(string)
+    agent_pool_id                 = optional(string)
+    allow_destroy_plan            = optional(string)
+    auto_apply                    = optional(string)
+    execution_mode                = optional(string)
+    assessments_enabled           = optional(string)
+    file_triggers_enabled         = optional(string)
+    global_remote_state           = optional(string)
+    remote_state_consumer_ids     = optional(string)
+    project_id                    = optional(string)
+    queue_all_runs                = optional(string)
+    speculative_enabled           = optional(string)
+    structured_run_output_enabled = optional(string)
+    ssh_key_id                    = optional(string)
+    terraform_version             = optional(string)
+    trigger_prefixes              = optional(string)
+    trigger_patterns              = optional(string)
+    working_directory             = optional(string)    
   })
 
   default = null
