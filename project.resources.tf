@@ -55,54 +55,6 @@ resource "tfe_project_policy_set" "linked" {
   project_id    = tfe_project.project[0].id
 }
 
-# variable "link_project_policy_set_list" {
-#   type = list(object({
-#     policy_set_id = string
-#     project_id    = string
-#   }))
-
-#   default = []
-# }
-
-# variable "create_new_policy_set_list" {
-#   type = list(object({
-#     policy_set = object({
-#       name                = string
-#       description         = optional(string)
-#       global              = optional(string)
-#       kind                = optional(string)
-#       agent_enabled       = optional(string)
-#       policy_tool_version = optional(string)
-#       overridable         = optional(bool)
-#       organization        = optional(string)
-#       policies_path       = optional(string)
-#       policy_ids          = optional(list(string))
-#       vcs_repo = optional(object({
-#         identifier                 = optional(string)
-#         branch                     = optional(string)
-#         ingress_submodules         = optional(bool)
-#         oauth_token_id             = optional(string)
-#         github_app_installation_id = optional(string)
-#       }))
-#       workspace_ids = optional(list(string))
-#       slug          = optional(map(string))
-
-#     })
-#     project_id = optional(string)
-#   }))
-
-#   default = []
-# }
-
-# variable "project_policy_set_list" {
-#   type = list(object({
-#     policy_set_id = string
-#     project_id    = string
-#   }))
-
-#   default = []
-# }
-
 # resource "tfe_project_variable_set" "project_variable_set" {
 
 #   count = length(var.project_variable_set_list)
