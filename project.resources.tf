@@ -36,12 +36,12 @@ resource "tfe_policy_set" "policy_set" {
   slug          = var.project_definition.policy_sets[count.index].slug
 }
 
-# resource "tfe_project_policy_set" "created" {
+resource "tfe_project_policy_set" "created" {
 
-#   count = length(tfe_policy_set.policy_set)
-#   policy_set_id = tfe_policy_set.policy_set[count.index].id
-#   project_id    = tfe_project.project[0].id
-# }
+  count = length(tfe_policy_set.policy_set)
+  policy_set_id = tfe_policy_set.policy_set[count.index].id
+  project_id    = tfe_project.project[0].id
+}
 
 # resource "tfe_project_policy_set" "linked" {
 
