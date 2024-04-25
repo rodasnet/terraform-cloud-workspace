@@ -88,10 +88,3 @@ resource "tfe_project_policy_set" "linked" {
 #   default = []
 # }
 
-# count = length(var.project_definition[*].policy_set_list)
-# count = length(flatten(var.project_definition.*.policy_set_list))
-# count = length(flatten(var.project_definition[*].policy_set_list))
-# count = length(flatten(local.create_policy_set_list))
-# count = length(local.create_policy_set_list)
-# count = length(var.project_definition.*.policy_set_list)
-# for_each =  var.project_definition.*.policy_set_list
