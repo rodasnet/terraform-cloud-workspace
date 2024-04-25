@@ -43,3 +43,15 @@ variable "project_definition" {
 
   default = null
 }
+
+#------------------------------------------------------------------------------
+# TFC Workspaces Variables
+#------------------------------------------------------------------------------
+variable "workspace_definition" {
+  type = object({
+    organization = string
+    name  = string
+  })
+
+  default = null
+}
