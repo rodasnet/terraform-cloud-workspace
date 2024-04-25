@@ -49,8 +49,8 @@ variable "project_definition" {
 #------------------------------------------------------------------------------
 variable "workspace_definition" {
   type = object({
-    organization = string
-    name  = string
+    organization                  = string
+    name                          = string
     description                   = optional(string)
     agent_pool_id                 = optional(string)
     allow_destroy_plan            = optional(string)
@@ -68,7 +68,7 @@ variable "workspace_definition" {
     terraform_version             = optional(string)
     trigger_prefixes              = optional(string)
     trigger_patterns              = optional(string)
-    working_directory             = optional(string)    
+    working_directory             = optional(string)
   })
 
   default = null

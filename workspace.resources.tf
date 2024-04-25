@@ -3,8 +3,8 @@ resource "tfe_workspace" "workspace" {
 
   count = var.workspace_definition != null ? 1 : 0
 
-  organization                  = var.workspace_definition.organization
-  name                          = var.workspace_definition.name
+  organization = var.workspace_definition.organization
+  name         = var.workspace_definition.name
   # description                   = var.description
   # agent_pool_id                 = var.agent_pool_id
   # allow_destroy_plan            = var.allow_destroy_plan
@@ -36,7 +36,7 @@ resource "tfe_workspace" "workspace" {
   #     branch         = var.vcs_repo.branch
   #   }
   # }
- 
+
 }
 
 # resource "tfe_variable" "sensitive" {
