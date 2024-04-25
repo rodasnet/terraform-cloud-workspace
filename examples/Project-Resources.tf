@@ -35,10 +35,12 @@ module "Project-PolicySet-1" {
         # }
         # workspace_ids = "value"
         # slug          = "value"
-      },
-      {
-        name = "Project-PolicySet-Second"
       }
+      #  The organization has reached the limit of 1 policy set
+      # ,
+      # {
+      #   name = "Project-PolicySet-Second"
+      # }
     ]
   }
 }
