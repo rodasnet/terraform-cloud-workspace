@@ -47,12 +47,12 @@ resource "tfe_project_policy_set" "created" {
   project_id    = tfe_project.project[0].id
 }
 
-# resource "tfe_project_policy_set" "linked" {
+resource "tfe_project_policy_set" "linked" {
 
-#   count         = length(var.link_project_policy_set_list)
-#   policy_set_id = var.link_project_policy_set_list[count.index].policy_set_id
-#   project_id    = var.link_project_policy_set_list[count.index].project_id
-# }
+  count = length(var.project_definition.policy_set_links)
+  policy_set_id = var.project_definition.policy_set_links[count.index].policy_set_id
+  project_id    = tfe_project.project[0].id
+}
 
 # variable "link_project_policy_set_list" {
 #   type = list(object({

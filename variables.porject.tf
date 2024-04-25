@@ -15,7 +15,7 @@ variable "project_definition" {
 
     policy_set_links = optional(list(object({
       policy_set_id = string
-      project_id    = string
+      project_id    = optional(string)
     })))
 
     policy_sets = optional(list(object({

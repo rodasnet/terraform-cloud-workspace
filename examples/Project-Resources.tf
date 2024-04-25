@@ -4,6 +4,15 @@ module "Project-Standalone-1" {
   project_definition = {
     organization = var.organization
     name         = "MyFirstTfcProject1"
+  }
+}
+
+module "Project-PolicySet-Link" {
+  source = "../"
+
+  project_definition = {
+    organization = var.organization
+    name         = "Project-PolicySet-Link"
     policy_set_links = [
       {
         policy_set_id = module.Project-PolicySet-1.policy_sets[0].id
