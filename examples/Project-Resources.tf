@@ -13,17 +13,17 @@ module "Project-PolicySet-1" {
    project_definition = {
       organization = var.organization
       name = "Project-PolicySet-1"
-      policy_sets = [
-        {
-          name = "Project-PolicySet-1"
-          # Organization is overridable in the policy set configuration
-          # organization = "<A Different Organization>"
-          vcs_repo = {
-            identifier      = "daniel-rodas/sample-terraform"
-            oauth_token_id = var.github_oauth_token_id
-          }
-        }
-      ]
+      # policy_sets = [
+      #   {
+      #     name = "Project-PolicySet-1"
+      #     # Organization is overridable in the policy set configuration
+      #     # organization = "<A Different Organization>"
+      #     vcs_repo = {
+      #       identifier      = "daniel-rodas/sample-terraform"
+      #       oauth_token_id = var.github_oauth_token_id
+      #     }
+      #   }
+      # ]
     }
 }
 
