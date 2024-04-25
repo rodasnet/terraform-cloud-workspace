@@ -18,11 +18,12 @@ module "Project-PolicySet-1" {
         name = "Project-PolicySet-Example"
         # Organization is overridable in the policy set configuration
         # organization = "<A Different Organization>"
-        vcs_repo = {
-          identifier     = "rodasnet/optimalstop-secretary"
-          branch         = "feature-branch"
-          oauth_token_id = var.github_oauth_token_id
-        }
+        # Requires lisence
+        # vcs_repo = {
+        #   identifier     = "rodasnet/optimalstop-secretary"
+        #   branch         = "feature-branch"
+        #   oauth_token_id = var.github_oauth_token_id
+        # }
       }
     ]
   }
