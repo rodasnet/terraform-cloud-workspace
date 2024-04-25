@@ -13,12 +13,6 @@ module "Project-Workspace-Link" {
   project_definition = {
     organization = var.organization
     name         = "Project-Workspace-Link"
-
-    workspace_links = [
-      {
-        workspace_id = module.Workspace-Standalone-1.workspace_id
-      }
-    ]
   }
 }
 
