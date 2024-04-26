@@ -1,4 +1,4 @@
-module "Legacy-Workspace-Link-Project.tf" {
+module "Legacy-Workspace-Link-Project" {
   source = "../archive/workspaces-only"
 
   organization         = var.organization
