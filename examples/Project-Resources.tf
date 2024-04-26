@@ -4,6 +4,7 @@ module "Project-Standalone-1" {
   project_definition = {
     organization = var.organization
     name         = "MyFirstTfcProject1"
+    description = "The first TFC sample project."
   }
 }
 
