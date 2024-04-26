@@ -3,7 +3,7 @@ terraform {
     tfe = {
       source  = "hashicorp/tfe"
       # TODO: Update provider version for TFC project resources support
-      version = ">= 0.54.0"
+      version = "0.54.0"
     }
   }
 }
