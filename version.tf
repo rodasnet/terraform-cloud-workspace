@@ -1,8 +1,7 @@
 terraform {
   required_providers {
     tfe = {
-      source  = "hashicorp/tfe"
-      # TODO: Update provider version for TFC project resources support
+      source = "hashicorp/tfe"
       version = "0.54.0"
     }
   }
