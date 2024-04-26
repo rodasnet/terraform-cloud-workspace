@@ -14,6 +14,7 @@ module "Project-Workspace-Link" {
   project_definition = {
     organization = var.organization
     name         = "Project-Workspace-Link"
+    description = "TFC project to be linked to a workspace."
   }
 }
 
