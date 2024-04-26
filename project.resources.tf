@@ -5,6 +5,7 @@ resource "tfe_project" "project" {
 
   organization = var.project_definition.organization
   name         = var.project_definition.name
+  description  = var.project_definition.description
 }
 
 output "project_id" {

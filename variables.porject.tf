@@ -7,6 +7,7 @@ variable "project_definition" {
   type = object({
     organization = string
     name         = string
+    description  = optional(string)
 
     policy_set_links = optional(list(object({
       policy_set_id = string
