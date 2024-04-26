@@ -71,6 +71,16 @@ module "Project-PolicySet-1" {
   }
 }
 
+module "Project-Test-1" {
+  source = "../"
+
+  project_definition = {
+    organization = var.organization
+    name         = "Project-Test-1"
+    description = "The test TFC sample project."
+  }
+}
+
 # START TEST CODE
 # variable "the_project" {
 #   type = object({
