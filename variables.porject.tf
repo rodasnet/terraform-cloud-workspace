@@ -35,6 +35,11 @@ variable "project_definition" {
       workspace_ids = optional(list(string))
       slug          = optional(map(string))
     })))
+
+    teams = optional(list(object({
+      name = string
+      access = string
+    })))
   })
 
   default = null
