@@ -3,8 +3,8 @@ module "Project-Team-Creation" {
 
   project_definition = {
     organization = var.organization
-    name         = "MyFirstTfcProject1"
-    description = "The first TFC sample project."
+    name         = "Project-Team-Creation"
+    description = "Test Project-Team-Creation."
 
     teams = [
       {
