@@ -1,3 +1,36 @@
+module "Project-Team-Creation" {
+  source = "../"
+
+  project_definition = {
+    organization = var.organization
+    name         = "MyFirstTfcProject1"
+    description = "The first TFC sample project."
+
+    teams = [
+      {
+        name = "team1"
+        access = "admin"
+      },
+      {
+        name = "team2"
+        access = "maintain"
+      },
+      {
+        name = "team3"
+        access = "write"
+      },
+      {
+        name = "team4"
+        access = "read"
+      },
+      {
+        name = "team5"
+        access = "custom"
+      },
+    ]
+  }
+}
+
 module "Project-Standalone-1" {
   source = "../"
 
