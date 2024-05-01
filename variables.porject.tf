@@ -36,6 +36,8 @@ variable "project_definition" {
       slug          = optional(map(string))
     })))
 
+    variable_set_links = optional(list(string),[])
+    
     teams = optional(list(object({
       name = string
       access = string
