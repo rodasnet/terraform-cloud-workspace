@@ -1,12 +1,13 @@
 
+locals {
+  porject_variable_set_links = var.project_definition != null ? toset(var.project_definition.variable_set_links) : []
+}
 data "tfe_variable_set" "project_vs" {
-  for_each = var.project_definition != null ? toset(var.project_definition.variable_set_links) : []
+  for_each = local.porject_variable_set_links
 
   name         = each.value
   organization = var.project_definition.organization
 }
-
-
 
 resource "tfe_project_variable_set" "project_variable_set_links" {
   for_each = data.tfe_variable_set.project_vs
