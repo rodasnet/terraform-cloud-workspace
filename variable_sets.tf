@@ -1,6 +1,6 @@
 
 locals {
-  porject_variable_set_links = var.project_definition != null ? toset(var.project_definition.variable_set_links) : []
+  porject_variable_set_links = var.project_definition != null ? toset(var.project_definition.variable_set_links) : toset([])
 }
 data "tfe_variable_set" "project_vs" {
   for_each = local.porject_variable_set_links
