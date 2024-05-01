@@ -1,6 +1,6 @@
 
 data "tfe_variable_set" "project_vs" {
-  for_each = toset(var.project_definition.variable_set_links)
+  for_each = var.project_definition != null ? toset(var.project_definition.variable_set_links) : []
 
   name         = each.value
   organization = var.project_definition.organization
