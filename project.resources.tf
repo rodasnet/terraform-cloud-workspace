@@ -55,10 +55,13 @@ resource "tfe_project_policy_set" "created" {
   project_id    = tfe_project.project[0].id
 }
 
+locals {
+  project_policy_set_links = var.project_definition != null && try(var.project_definition.policy_set_links, null) != null ? var.project_definition.policy_set_links : toset([])
+}
 resource "tfe_project_policy_set" "linked" {
 
-  count = try(var.project_definition, null) != null && try(var.project_definition.policy_set_links, null) != null ? length(var.project_definition.policy_set_links) : 0
+  for_each = local.project_policy_set_links
 
-  policy_set_id = var.project_definition.policy_set_links[count.index].policy_set_id
+  policy_set_id = each.value.policy_set_id
   project_id    = tfe_project.project[0].id
 }
