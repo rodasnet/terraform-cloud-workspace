@@ -1,5 +1,5 @@
 locals {
-  project_teams = var.project_definition != null && try(var.project_definition.teams, null) != null ? toset(var.project_definition.teams) : toset([])
+  project_teams = var.project_definition != null && try(var.project_definition.teams, null) != null ? var.project_definition.teams : toset([])
 }
 resource "tfe_team" "project_team" {
   
