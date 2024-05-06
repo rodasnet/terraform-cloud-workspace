@@ -11,34 +11,36 @@ resource "tfe_project" "project" {
 output "project_id" {
   value = try(tfe_project.project, null) != null && try(tfe_project.project[0], null) != null ? tfe_project.project[0].id : null
 }
-
+locals {
+  project_policy_sets = var.project_definition != null && try(var.project_definition.policy_sets, null) != null ? var.project_definition.policy_sets : toset([])
+}
 resource "tfe_policy_set" "policy_set" {
 
-  count = try(var.project_definition, null) != null && try(var.project_definition.policy_sets, null) != null ? length(var.project_definition.policy_sets) : 0
+  for_each = local.project_policy_sets
 
   name = var.project_definition.policy_sets[count.index].name
-  description         = var.project_definition.policy_sets[count.index].description
-  global              = var.project_definition.policy_sets[count.index].global
-  kind                = var.project_definition.policy_sets[count.index].kind
-  agent_enabled       = var.project_definition.policy_sets[count.index].agent_enabled
-  policy_tool_version = var.project_definition.policy_sets[count.index].policy_tool_version
-  overridable         = var.project_definition.policy_sets[count.index].overridable
-  organization        = try(var.project_definition.policy_sets[count.index].organization, null) != null ? var.project_definition.policy_sets[count.index].organization : var.project_definition.organization
-  policies_path       = var.project_definition.policy_sets[count.index].policies_path
-  policy_ids          = var.project_definition.policy_sets[count.index].policy_ids
+  description         = local.project_policy_sets[each.key].description
+  global              = local.project_policy_sets[each.key].global
+  kind                = local.project_policy_sets[each.key].kind
+  agent_enabled       = local.project_policy_sets[each.key].agent_enabled
+  policy_tool_version = local.project_policy_sets[each.key].policy_tool_version
+  overridable         = local.project_policy_sets[each.key].overridable
+  organization        = try(local.project_policy_sets[each.key].organization, null) != null ? local.project_policy_sets[each.key].organization : var.project_definition.organization
+  policies_path       = local.project_policy_sets[each.key].policies_path
+  policy_ids          = local.project_policy_sets[each.key].policy_ids
   dynamic "vcs_repo" {
-    for_each = var.project_definition.policy_sets[count.index].vcs_repo != null ? [1] : []
+    for_each = local.project_policy_sets[each.key].vcs_repo != null ? [1] : []
 
     content {
-      identifier                 = var.project_definition.policy_sets[count.index].vcs_repo.identifier
-      branch                     = var.project_definition.policy_sets[count.index].vcs_repo.branch
-      ingress_submodules         = var.project_definition.policy_sets[count.index].vcs_repo.ingress_submodules
-      oauth_token_id             = var.project_definition.policy_sets[count.index].vcs_repo.oauth_token_id
-      github_app_installation_id = var.project_definition.policy_sets[count.index].vcs_repo.github_app_installation_id
+      identifier                 = local.project_policy_sets[each.key].vcs_repo.identifier
+      branch                     = local.project_policy_sets[each.key].vcs_repo.branch
+      ingress_submodules         = local.project_policy_sets[each.key].vcs_repo.ingress_submodules
+      oauth_token_id             = local.project_policy_sets[each.key].vcs_repo.oauth_token_id
+      github_app_installation_id = local.project_policy_sets[each.key].vcs_repo.github_app_installation_id
     }
   }
-  workspace_ids = var.project_definition.policy_sets[count.index].workspace_ids
-  slug          = var.project_definition.policy_sets[count.index].slug
+  workspace_ids = local.project_policy_sets[each.key].workspace_ids
+  slug          = local.project_policy_sets[each.key].slug
 }
 
 output "policy_sets" {
