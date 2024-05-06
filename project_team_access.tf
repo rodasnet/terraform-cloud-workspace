@@ -9,14 +9,14 @@ resource "tfe_team" "project_team" {
   organization = "rodasnet"
 }
 
-resource "tfe_team_project_access" "project_access" {
+# resource "tfe_team_project_access" "project_access" {
 
-    for_each = local.project_teams
+#     for_each = local.project_teams
 
-    access       = each.value.access
-    team_id      = each.key
-    project_id   = tfe_project.project[0].id
-}
+#     access       = each.value.access
+#     team_id      = each.key
+#     project_id   = tfe_project.project[0].id
+# }
 
 # resource "tfe_team" "project_team_count" {
   
