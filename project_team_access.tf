@@ -5,7 +5,8 @@ resource "tfe_team" "project_team" {
   
   for_each = toset(keys({ for k,v in local.project_teams: k => v })) 
 
-  name = local.project_teams[each.value]["name"]
+  # name = local.project_teams[each.value]["name"]
+  name = local.project_teams[each.value].name
   organization = "rodasnet"
 }
 
