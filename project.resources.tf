@@ -50,7 +50,7 @@ output "policy_sets" {
 resource "tfe_project_policy_set" "created" {
 
   for_each = tfe_policy_set.policy_set
-  
+
   policy_set_id = each.value.id
   project_id    = tfe_project.project[0].id
 }
@@ -62,37 +62,3 @@ resource "tfe_project_policy_set" "linked" {
   policy_set_id = var.project_definition.policy_set_links[count.index].policy_set_id
   project_id    = tfe_project.project[0].id
 }
-
-# resource "tfe_project_variable_set" "project_variable_set" {
-
-#   count = length(var.project_variable_set_list)
-
-#   variable_set_id = var.project_variable_set_list[count.index].variable_set_id
-#   project_id      = var.project_variable_set_list[count.index].project_id
-# }
-
-# variable "project_variable_set_list" {
-#   type = list(object({
-#     variable_set_id = string
-#     project_id      = string
-#   }))
-#   default = []
-# }
-
-# resource "tfe_team_project_access" "project_access" {
-#   count = length(var.project_access)
-
-#   access     = var.project_access[count.index].access
-#   team_id    = var.project_access[count.index].team_id
-#   project_id = var.project_access[count.index].project_id
-# }
-
-# variable "project_access" {
-#   type = list(object({
-#     access     = string
-#     team_id    = string
-#     project_id = string
-#   }))
-#   default = []
-# }
-
