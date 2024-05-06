@@ -1,11 +1,11 @@
 locals {
-  project_teams = var.project_definition != null && try(var.project_definition.teams, null) != null ? (toset(keys({ for k,v in var.project_definition.teams: k => v }))) : toset([])
+  project_teams = var.project_definition != null && try(var.project_definition.teams, null) != null ? var.project_definition.teams : toset([])
 }
 resource "tfe_team" "project_team" {
   
-  for_each = local.project_teams
+  for_each = toset(keys({ for k,v in local.project_teams: k => v })) 
 
-  name = [each.value]["name"]
+  name = local.project_teams[each.value]["name"]
   organization = "rodasnet"
 }
 
