@@ -5,19 +5,18 @@ resource "tfe_team" "project_team" {
   
   for_each = toset(keys({ for k,v in local.project_teams: k => v })) 
 
-  # name = local.project_teams[each.value]["name"]
   name = local.project_teams[each.value].name
   organization = "rodasnet"
 }
 
-# resource "tfe_team_project_access" "project_access" {
+resource "tfe_team_project_access" "project_access" {
 
-#     for_each = local.project_teams
+    for_each = toset(keys({ for k,v in local.project_teams: k => v })) 
 
-#     access       = each.value.access
-#     team_id      = each.key
-#     project_id   = tfe_project.project[0].id
-# }
+    access       = local.project_teams[each.value].access
+    team_id      = each.key
+    project_id   = tfe_project.project[0].id
+}
 
 # resource "tfe_team" "project_team_count" {
   
