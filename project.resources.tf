@@ -49,8 +49,9 @@ output "policy_sets" {
 
 resource "tfe_project_policy_set" "created" {
 
-  count         = length(tfe_policy_set.policy_set)
-  policy_set_id = tfe_policy_set.policy_set[count.index].id
+  for_each = tfe_policy_set.policy_set
+  
+  policy_set_id = each.value.id
   project_id    = tfe_project.project[0].id
 }
 
