@@ -18,7 +18,7 @@ resource "tfe_policy_set" "policy_set" {
 
   for_each = local.project_policy_sets
 
-  name = var.project_definition.policy_sets[count.index].name
+  name                = local.project_policy_sets[each.key].name
   description         = local.project_policy_sets[each.key].description
   global              = local.project_policy_sets[each.key].global
   kind                = local.project_policy_sets[each.key].kind
@@ -49,7 +49,7 @@ output "policy_sets" {
 
 resource "tfe_project_policy_set" "created" {
 
-  count = length(tfe_policy_set.policy_set)
+  count         = length(tfe_policy_set.policy_set)
   policy_set_id = tfe_policy_set.policy_set[count.index].id
   project_id    = tfe_project.project[0].id
 }
