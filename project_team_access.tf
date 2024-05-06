@@ -3,7 +3,8 @@ locals {
 }
 resource "tfe_team" "project_team" {
   
-  for_each = local.project_teams
+  # for_each = local.project_teams
+  for_each =  toset([])
 
   name = each.value.name
   organization = "rodasnet"
