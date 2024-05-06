@@ -60,7 +60,7 @@ locals {
 }
 resource "tfe_project_policy_set" "linked" {
 
-  for_each = local.project_policy_set_links
+  for_each = toset(local.project_policy_set_links)
 
   policy_set_id = each.value.policy_set_id
   project_id    = tfe_project.project[0].id
