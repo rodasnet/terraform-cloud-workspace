@@ -16,7 +16,7 @@ locals {
 }
 resource "tfe_policy_set" "policy_set" {
 
-  for_each = local.project_policy_sets
+  for_each = for_each = toset(keys({ for k,v in local.project_policy_sets: k => v }))
 
   name                = local.project_policy_sets[each.key].name
   description         = local.project_policy_sets[each.key].description
