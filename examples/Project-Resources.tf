@@ -26,6 +26,9 @@ module "Project-Team-Creation" {
       {
         name = "team5"
         access = "custom"
+        organization_access = {
+          read_workspaces = true
+        }
       },
     ]
   }
