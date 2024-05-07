@@ -71,9 +71,9 @@ module "Project-PolicySet-1" {
   project_definition = {
     organization = var.organization
     name         = "Project-PolicySet-1"
-    # policy_sets = [
-    #   {
-    #     name = "Project-PolicySet-Example"
+    policy_sets = [
+      {
+        name = "Project-PolicySet-Example"
         # TODO: Test remaining 
         # description         = "value"
         # global              = "value"
@@ -93,14 +93,14 @@ module "Project-PolicySet-1" {
         # }
         # workspace_ids = "value"
         # slug          = "value"
-      # }
+      }
       # Example of creating a second policy for the project
       # The organization has reached the limit of 1 policy set
       # ,
       # {
       #   name = "Project-PolicySet-Second"
       # }
-    # ]
+    ]
   }
 }
 
