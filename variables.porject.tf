@@ -41,6 +41,7 @@ variable "project_definition" {
     teams = optional(list(object({
       name = string
       access = string
+      visibility = optional(string)
       organization_access = optional(object({
         read_workspaces = optional(bool)
       }))

@@ -10,6 +10,7 @@ module "Project-Team-Creation" {
       {
         name = "team1"
         access = "admin"
+        visibility = "secret"
       },
       {
         name = "team2"

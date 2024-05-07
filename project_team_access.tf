@@ -7,6 +7,7 @@ resource "tfe_team" "project_team" {
 
   name = each.value.name
   organization = "rodasnet"
+  visibility = each.value.visibility
 
   dynamic "organization_access" {
     for_each = each.value.organization_access != null ? [1] : []
