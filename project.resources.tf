@@ -16,31 +16,31 @@ locals {
 }
 resource "tfe_policy_set" "policy_set" {
 
-  for_each = toset(keys({ for k,v in local.project_policy_sets: k => v }))
+  for_each = { for k,v in local.project_policy_sets: k => v }
 
-  name                = local.project_policy_sets[each.key].name
-  description         = local.project_policy_sets[each.key].description
-  global              = local.project_policy_sets[each.key].global
-  kind                = local.project_policy_sets[each.key].kind
-  agent_enabled       = local.project_policy_sets[each.key].agent_enabled
-  policy_tool_version = local.project_policy_sets[each.key].policy_tool_version
-  overridable         = local.project_policy_sets[each.key].overridable
-  organization        = try(local.project_policy_sets[each.key].organization, null) != null ? local.project_policy_sets[each.key].organization : var.project_definition.organization
-  policies_path       = local.project_policy_sets[each.key].policies_path
-  policy_ids          = local.project_policy_sets[each.key].policy_ids
+  name                = each.value.name
+  description         = each.value.description
+  global              = each.value.global
+  kind                = each.value.kind
+  agent_enabled       = each.value.agent_enabled
+  policy_tool_version = each.value.policy_tool_version
+  overridable         = each.value.overridable
+  organization        = try(each.value.organization, null) != null ? each.value.organization : var.project_definition.organization
+  policies_path       = each.value.policies_path
+  policy_ids          = each.value.policy_ids
   dynamic "vcs_repo" {
-    for_each = local.project_policy_sets[each.key].vcs_repo != null ? [1] : []
+    for_each = each.value.vcs_repo != null ? [1] : []
 
     content {
-      identifier                 = local.project_policy_sets[each.key].vcs_repo.identifier
-      branch                     = local.project_policy_sets[each.key].vcs_repo.branch
-      ingress_submodules         = local.project_policy_sets[each.key].vcs_repo.ingress_submodules
-      oauth_token_id             = local.project_policy_sets[each.key].vcs_repo.oauth_token_id
-      github_app_installation_id = local.project_policy_sets[each.key].vcs_repo.github_app_installation_id
+      identifier                 = each.value.vcs_repo.identifier
+      branch                     = each.value.vcs_repo.branch
+      ingress_submodules         = each.value.vcs_repo.ingress_submodules
+      oauth_token_id             = each.value.vcs_repo.oauth_token_id
+      github_app_installation_id = each.value.vcs_repo.github_app_installation_id
     }
   }
-  workspace_ids = local.project_policy_sets[each.key].workspace_ids
-  slug          = local.project_policy_sets[each.key].slug
+  workspace_ids = each.value.workspace_ids
+  slug          = each.value.slug
 }
 
 output "policy_sets" {
