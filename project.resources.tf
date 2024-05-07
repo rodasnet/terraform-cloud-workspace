@@ -59,7 +59,21 @@ locals {
   project_policy_set_links = var.project_definition != null && try(var.project_definition.policy_set_links, null) != null ? var.project_definition.policy_set_links : toset([])
 }
 resource "tfe_project_policy_set" "linked" {
-
+############################################################################################################
+#   https://app.terraform.io/app/rodasnet/workspaces/tf_cloud_workspace/runs/run-bQUjDtztt7U4iv69
+#   Error: Invalid for_each argument
+# on ../project.resources.tf line 63, in resource "tfe_project_policy_set" "linked":
+#   for_each = { for k,v in local.project_policy_set_links: k => v }
+# local.project_policy_set_links is a list of object, known only after apply
+# The "for_each" map includes keys derived from resource attributes that cannot be determined until apply, 
+# and so Terraform cannot determine the full set of keys that will identify the instances of this resource.
+#
+# When working with unknown values in for_each, it's better to define the map keys statically 
+# in your configuration and place apply-time results only in the map values.
+#
+# Alternatively, you could use the -target planning option to first apply only the resources 
+# that the for_each value depends on, and then apply a second time to fully converge.
+############################################################################################################
   for_each = { for k,v in local.project_policy_set_links: k => v }
 
   policy_set_id = each.value.policy_set_id
