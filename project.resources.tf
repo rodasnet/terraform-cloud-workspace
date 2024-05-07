@@ -75,7 +75,8 @@ resource "tfe_project_policy_set" "linked" {
 # that the for_each value depends on, and then apply a second time to fully converge.
 ############################################################################################################
   # for_each = { for k,v in local.project_policy_set_links: k => v }
-  for_each = var.project_definition != null && try(var.project_definition.policy_set_links, null) != null ? var.project_definition.policy_set_links : toset([])
+  # for_each = { for k,v in var.project_definition.policy_set_links: k => v }
+  for_each = var.project_definition != null && try(var.project_definition.policy_set_links, null) != null ? { for k,v in var.project_definition.policy_set_links: k => v } : toset([])
 
   policy_set_id = each.value.policy_set_id
   # for_each = toset(keys({ for k,v in local.project_policy_set_links: k => v }))
