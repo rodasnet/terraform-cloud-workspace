@@ -6,28 +6,28 @@ module "Project-Team-Creation" {
     name         = "Project-Team-Creation"
     description = "Test Project-Team-Creation."
 
-    teams = [
-      {
-        name = "team1"
-        access = "admin"
-      },
-      {
-        name = "team2"
-        access = "maintain"
-      },
-      {
-        name = "team3"
-        access = "write"
-      },
-      {
-        name = "team4"
-        access = "read"
-      },
-      {
-        name = "team5"
-        access = "custom"
-      },
-    ]
+    # teams = [
+    #   {
+    #     name = "team1"
+    #     access = "admin"
+    #   },
+    #   {
+    #     name = "team2"
+    #     access = "maintain"
+    #   },
+    #   {
+    #     name = "team3"
+    #     access = "write"
+    #   },
+    #   {
+    #     name = "team4"
+    #     access = "read"
+    #   },
+    #   {
+    #     name = "team5"
+    #     access = "custom"
+    #   },
+    # ]
   }
 }
 
