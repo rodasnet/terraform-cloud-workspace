@@ -6,28 +6,28 @@ module "Project-Team-Creation" {
     name         = "Project-Team-Creation"
     description = "Test Project-Team-Creation."
 
-    # teams = [
-    #   {
-    #     name = "team1"
-    #     access = "admin"
-    #   },
-    #   {
-    #     name = "team2"
-    #     access = "maintain"
-    #   },
-    #   {
-    #     name = "team3"
-    #     access = "write"
-    #   },
-    #   {
-    #     name = "team4"
-    #     access = "read"
-    #   },
-    #   {
-    #     name = "team5"
-    #     access = "custom"
-    #   },
-    # ]
+    teams = [
+      {
+        name = "team1"
+        access = "admin"
+      },
+      {
+        name = "team2"
+        access = "maintain"
+      },
+      {
+        name = "team3"
+        access = "write"
+      },
+      {
+        name = "team4"
+        access = "read"
+      },
+      {
+        name = "team5"
+        access = "custom"
+      },
+    ]
   }
 }
 
@@ -57,11 +57,11 @@ module "Project-PolicySet-Link" {
   project_definition = {
     organization = var.organization
     name         = "Project-PolicySet-Link"
-    # policy_set_links = [
-    #   {
-    #     policy_set_id = module.Project-PolicySet-1.policy_sets[0].id
-    #   }
-    # ]
+    policy_set_links = [
+      {
+        policy_set_id = module.Project-PolicySet-1.policy_sets[0].id
+      }
+    ]
   }
 }
 
@@ -71,9 +71,9 @@ module "Project-PolicySet-1" {
   project_definition = {
     organization = var.organization
     name         = "Project-PolicySet-1"
-    # policy_sets = [
-    #   {
-        # name = "Project-PolicySet-Example"
+    policy_sets = [
+      {
+        name = "Project-PolicySet-Example"
         # TODO: Test remaining 
         # description         = "value"
         # global              = "value"
@@ -93,14 +93,14 @@ module "Project-PolicySet-1" {
         # }
         # workspace_ids = "value"
         # slug          = "value"
-      # }
+      }
       # Example of creating a second policy for the project
       # The organization has reached the limit of 1 policy set
       # ,
       # {
       #   name = "Project-PolicySet-Second"
       # }
-    # ]
+    ]
   }
 }
 
