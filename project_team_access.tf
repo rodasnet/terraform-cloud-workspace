@@ -7,6 +7,14 @@ resource "tfe_team" "project_team" {
 
   name = each.value.name
   organization = "rodasnet"
+
+  dynamic "organization_access" {
+    for_each = each.value.organization_access != null ? [1] : []
+
+    content {
+      read_workspaces = each.value.organization_access.read_workspaces
+    }
+  }
 }
 
 resource "tfe_team_project_access" "project_access" {
