@@ -74,7 +74,7 @@ resource "tfe_project_policy_set" "linked" {
 # Alternatively, you could use the -target planning option to first apply only the resources 
 # that the for_each value depends on, and then apply a second time to fully converge.
 ############################################################################################################
-  for_each = { for k,v in local.project_policy_set_links: v.name => v }
+  for_each = { for k,v in local.project_policy_set_links: k => v }
 
   policy_set_id = each.value.policy_set_id
   # for_each = toset(keys({ for k,v in local.project_policy_set_links: k => v }))
