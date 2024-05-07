@@ -55,9 +55,9 @@ resource "tfe_project_policy_set" "created" {
   project_id    = tfe_project.project[0].id
 }
 
-locals {
-  project_policy_set_links = var.project_definition != null && try(var.project_definition.policy_set_links, null) != null ? var.project_definition.policy_set_links : toset([])
-}
+# locals {
+#   project_policy_set_links = var.project_definition != null && try(var.project_definition.policy_set_links, null) != null ? var.project_definition.policy_set_links : toset([])
+# }
 resource "tfe_project_policy_set" "linked" {
 ############################################################################################################
 #   https://app.terraform.io/app/rodasnet/workspaces/tf_cloud_workspace/runs/run-bQUjDtztt7U4iv69
@@ -74,7 +74,8 @@ resource "tfe_project_policy_set" "linked" {
 # Alternatively, you could use the -target planning option to first apply only the resources 
 # that the for_each value depends on, and then apply a second time to fully converge.
 ############################################################################################################
-  for_each = { for k,v in local.project_policy_set_links: k => v }
+  # for_each = { for k,v in local.project_policy_set_links: k => v }
+  for_each = var.project_definition != null && try(var.project_definition.policy_set_links, null) != null ? var.project_definition.policy_set_links : toset([])
 
   policy_set_id = each.value.policy_set_id
   # for_each = toset(keys({ for k,v in local.project_policy_set_links: k => v }))
