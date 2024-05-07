@@ -62,7 +62,7 @@ resource "tfe_project_policy_set" "linked" {
 
   for_each = { for k,v in local.project_policy_set_links: k => v }
 
-  policy_set_id = local.project_policy_set_links[each.value]["policy_set_id"]
+  policy_set_id = each.value.policy_set_id
   # for_each = toset(keys({ for k,v in local.project_policy_set_links: k => v }))
 
   # policy_set_id = local.project_policy_set_links[each.value]["policy_set_id"]
