@@ -6,7 +6,9 @@ module "TeamAccess-Workspace" {
   description                   = "Terraform workspace with Team Acess configurations"
  
   team_access = {
-    "ConsultingCo"     = "read"
-    "SecondTeam"       = "write"
+    "DosNotExist1"     = "read"
+    "DosNotExist2"       = "write"
+    # "ConsultingCo"     = "read"
+    # "SecondTeam"       = "write"
   }
 }
