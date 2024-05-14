@@ -10,7 +10,7 @@ module "Azure-PoC-ASEv3" {
   speculative_enabled             = false
   structured_run_output_enabled   = false
   additional_tags_list            = ["asev3", "web", "poc"]
-  terraform_version               = ">= 0.14.0, < 0.15.0"
+  terraform_version               = "< 0.15.0"
   working_directory               = "modules/examples/asev3"
 
   vcs_repo = {
