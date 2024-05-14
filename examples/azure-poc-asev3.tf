@@ -20,8 +20,7 @@ module "Azure-PoC-ASEv3" {
     }
   
   variable_set_names = [
-    "Azure Provider PoC ASEv3",
-    "tfe-api-token"
+    "Azure Provider PoC ASEv3"
   ]
 }
 
