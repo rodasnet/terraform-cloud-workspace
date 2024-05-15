@@ -4,32 +4,32 @@ module "Project-Team-Creation" {
   project_definition = {
     organization = var.organization
     name         = "Project-Team-Creation"
-    description = "Test Project-Team-Creation."
+    description  = "Test Project-Team-Creation."
 
     teams = [
       {
-        name = "team1"
-        access = "admin"
+        name       = "team1"
+        access     = "admin"
         visibility = "secret"
       },
       {
-        name = "team2"
-        access = "maintain"
+        name       = "team2"
+        access     = "maintain"
         visibility = "secret"
       },
       {
-        name = "team3"
-        access = "write"
+        name       = "team3"
+        access     = "write"
         visibility = "secret"
       },
       {
-        name = "team4"
-        access = "read"
+        name       = "team4"
+        access     = "read"
         visibility = "secret"
       },
       {
-        name = "team5"
-        access = "custom"
+        name       = "team5"
+        access     = "custom"
         visibility = "secret"
         organization_access = {
           read_workspaces = true
@@ -45,7 +45,7 @@ module "Project-Standalone-1" {
   project_definition = {
     organization = var.organization
     name         = "MyFirstTfcProject1"
-    description = "The first TFC sample project."
+    description  = "The first TFC sample project."
   }
 }
 
@@ -55,7 +55,7 @@ module "Project-Workspace-Link" {
   project_definition = {
     organization = var.organization
     name         = "Project-Workspace-Link"
-    description = "TFC project to be linked to a workspace."
+    description  = "TFC project to be linked to a workspace."
   }
 }
 
@@ -121,7 +121,7 @@ module "Project-Test-1" {
   project_definition = {
     organization = var.organization
     name         = "Project-Test-1"
-    description = "The test TFC sample project."
+    description  = "The test TFC sample project."
   }
 }
 
@@ -161,26 +161,21 @@ module "Project-TeamAccess-Link" {
     organization = var.organization
     name         = "Project-TeamAccess-Link"
     team_access_links = [
-      # {
-      #   name = "team1"
-      #   access = "admin"
-      # },
       {
-        name = "team2"
-        access = "maintain"
+        name   = "team3"
+        access = "read"
       },
       {
-        name = "team3"
-        access = "write"
+        name   = "team2"
+        access = "read"
       },
-      # {
-      #   name = "team4"
-      #   access = "read"
-      # },
       {
-        name = "team5"
+        name   = "team5"
         access = "custom"
-
+      },
+      {
+        name   = "team1"
+        access = "read"
       },
     ]
   }
