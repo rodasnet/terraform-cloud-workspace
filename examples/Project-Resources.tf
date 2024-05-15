@@ -6,36 +6,36 @@ module "Project-Team-Creation" {
     name         = "Project-Team-Creation"
     description = "Test Project-Team-Creation."
 
-    # teams = [
-    #   {
-    #     name = "team1"
-    #     access = "admin"
-    #     visibility = "secret"
-    #   },
-    #   {
-    #     name = "team2"
-    #     access = "maintain"
-    #     visibility = "secret"
-    #   },
-    #   {
-    #     name = "team3"
-    #     access = "write"
-    #     visibility = "secret"
-    #   },
-    #   {
-    #     name = "team4"
-    #     access = "read"
-    #     visibility = "secret"
-    #   },
-    #   {
-    #     name = "team5"
-    #     access = "custom"
-    #     visibility = "secret"
-    #     organization_access = {
-    #       read_workspaces = true
-    #     }
-    #   },
-    # ]
+    teams = [
+      {
+        name = "team1"
+        access = "admin"
+        visibility = "secret"
+      },
+      {
+        name = "team2"
+        access = "maintain"
+        visibility = "secret"
+      },
+      {
+        name = "team3"
+        access = "write"
+        visibility = "secret"
+      },
+      {
+        name = "team4"
+        access = "read"
+        visibility = "secret"
+      },
+      {
+        name = "team5"
+        access = "custom"
+        visibility = "secret"
+        organization_access = {
+          read_workspaces = true
+        }
+      },
+    ]
   }
 }
 
