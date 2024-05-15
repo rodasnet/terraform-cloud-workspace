@@ -33,7 +33,7 @@ locals {
   team_access_links = var.project_definition != null && try(var.project_definition.team_access_links, null) != null ? var.project_definition.team_access_links : toset([])
 }
 data "tfe_team" "project_team" {
-  for_each = local.team_access_links
+  for_each = { for k,v in local.team_access_links: k => v }
 
   name = each.value.name
   organization = var.project_definition.organization
