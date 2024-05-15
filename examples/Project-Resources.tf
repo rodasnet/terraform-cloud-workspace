@@ -36,13 +36,6 @@ module "Project-Team-Creation" {
         }
       },
     ]
-
-    team_access_links = [
-      {
-        name = "teamCreatedInDashboard1"
-        access = "maintain"
-      }
-    ]
   }
 }
 
@@ -160,3 +153,35 @@ module "Project-Test-1" {
 
 #   name = var.the_project.policy_set_list[count.index].name
 # }
+
+module "Project-TeamAccess-Link" {
+  source = "../"
+
+  project_definition = {
+    organization = var.organization
+    name         = "Project-TeamAccess-Link"
+    team_access_links = [
+      {
+        name = "team1"
+        access = "admin"
+      },
+      {
+        name = "team2"
+        access = "maintain"
+      },
+      {
+        name = "team3"
+        access = "write"
+      },
+      {
+        name = "team4"
+        access = "read"
+      },
+      {
+        name = "team5"
+        access = "custom"
+
+      },
+    ]
+  }
+}
