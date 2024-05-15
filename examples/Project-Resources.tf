@@ -36,6 +36,13 @@ module "Project-Team-Creation" {
         }
       },
     ]
+
+    team_access_links = [
+      {
+        name = "teamCreatedInDashboard1"
+        access = "maintain"
+      }
+    ]
   }
 }
 
