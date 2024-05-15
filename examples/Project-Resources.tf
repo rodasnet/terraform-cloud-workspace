@@ -161,10 +161,10 @@ module "Project-TeamAccess-Link" {
     organization = var.organization
     name         = "Project-TeamAccess-Link"
     team_access_links = [
-      {
-        name = "team1"
-        access = "admin"
-      },
+      # {
+      #   name = "team1"
+      #   access = "admin"
+      # },
       {
         name = "team2"
         access = "maintain"
@@ -173,10 +173,10 @@ module "Project-TeamAccess-Link" {
         name = "team3"
         access = "write"
       },
-      {
-        name = "team4"
-        access = "read"
-      },
+      # {
+      #   name = "team4"
+      #   access = "read"
+      # },
       {
         name = "team5"
         access = "custom"
