@@ -10,26 +10,27 @@ module "Project-Team-Creation" {
       {
         name = "team1"
         access = "admin"
-        visibility = "organization"
+        visibility = "secret"
       },
       {
         name = "team2"
         access = "maintain"
-        visibility = "organization"
+        visibility = "secret"
       },
       {
         name = "team3"
         access = "write"
+        visibility = "secret"
       },
       {
         name = "team4"
         access = "read"
-        visibility = "organization"
+        visibility = "secret"
       },
       {
         name = "team5"
         access = "custom"
-        visibility = "organization"
+        visibility = "secret"
         organization_access = {
           read_workspaces = true
         }
