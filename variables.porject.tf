@@ -36,15 +36,20 @@ variable "project_definition" {
       slug          = optional(map(string))
     })))
 
-    variable_set_links = optional(list(string),[])
-    
+    variable_set_links = optional(list(string), [])
+
     teams = optional(list(object({
-      name = string
-      access = string
+      name       = string
+      access     = string
       visibility = optional(string)
       organization_access = optional(object({
         read_workspaces = optional(bool)
       }))
+    })))
+
+    team_access_links = optional(list(object({
+      access = string
+      name   = string
     })))
   })
 
