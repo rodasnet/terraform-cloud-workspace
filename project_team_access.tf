@@ -26,3 +26,15 @@ resource "tfe_team_project_access" "project_access" {
     team_id      = each.value.id
     project_id   = tfe_project.project[0].id
 }
+
+
+# Linked project team access
+locals {
+  team_access_links = var.project_definition != null && try(var.project_definition.team_access_links, null) != null ? var.project_definition.team_access_links : toset([])
+}
+data "tfe_team" "project_team" {
+  for_each = local.team_access_links
+
+  name = each.value.name
+  organization = var.project_definition.organization
+}
