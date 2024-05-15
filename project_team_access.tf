@@ -38,3 +38,11 @@ data "tfe_team" "project_team" {
   name = each.value.name
   organization = var.project_definition.organization
 }
+resource "tfe_team_project_access" "team_project_access_linked" {
+  
+  for_each = data.tfe_team.project_team
+
+  access = local.team_access_links[each.key].access
+  team_id = each.value.id
+  project_id = tfe_project.project[0].id
+}
