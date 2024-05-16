@@ -1,3 +1,4 @@
+/*
 locals {
   project_teams = var.project_definition != null && try(var.project_definition.teams, null) != null ? var.project_definition.teams : toset([])
 }
@@ -26,7 +27,7 @@ resource "tfe_team_project_access" "project_access" {
     team_id      = each.value.id
     project_id   = tfe_project.project[0].id
 }
-
+*/
 
 # Linked project team access
 locals {

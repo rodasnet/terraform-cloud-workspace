@@ -37,7 +37,7 @@ variable "project_definition" {
     })))
 
     variable_set_links = optional(list(string), [])
-
+/*
     teams = optional(list(object({
       name       = string
       access     = string
@@ -46,7 +46,7 @@ variable "project_definition" {
         read_workspaces = optional(bool)
       }))
     })))
-
+*/
     team_access_links = optional(list(object({
       access = string
       name   = string
