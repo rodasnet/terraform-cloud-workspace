@@ -6,7 +6,7 @@ module "Project-Team-Creation" {
     name         = "Project-Team-Creation"
     description  = "Test Project-Team-Creation."
 
-    teams = [
+/*    teams = [
       {
         name       = "team1"
         access     = "admin"
@@ -35,7 +35,7 @@ module "Project-Team-Creation" {
           read_workspaces = true
         }
       },
-    ]
+    ] */
   }
 }
 
@@ -162,19 +162,11 @@ module "Project-TeamAccess-Link" {
     name         = "Project-TeamAccess-Link"
     team_access_links = [
       {
-        name   = "team3"
+        name   = "teamCreatedInDashboard1"
         access = "read"
       },
       {
-        name   = "team2"
-        access = "read"
-      },
-      {
-        name   = "team5"
-        access = "custom"
-      },
-      {
-        name   = "team1"
+        name   = "SecondTeam"
         access = "read"
       },
     ]
