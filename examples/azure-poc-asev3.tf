@@ -6,7 +6,7 @@ module "Azure-PoC-ASEv3" {
   description                   = "Deploy App Service Environment V3 in Azure"
 
   auto_apply                      = true
-  assessments_enabled             = true
+  assessments_enabled             = false
   speculative_enabled             = false
   structured_run_output_enabled   = false
   additional_tags_list            = ["asev3", "web", "poc"]

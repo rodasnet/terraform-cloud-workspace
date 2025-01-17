@@ -10,7 +10,7 @@ module "Demo-Workspace-All-Options" {
   allow_destroy_plan              = false
   auto_apply                      = true
   execution_mode                  = "remote"
-  assessments_enabled             = true
+  assessments_enabled             = false
   file_triggers_enabled           = true # 'trigger_patterns' cannot be populated when 'file_triggers_enabled' is set to false.
   global_remote_state             = false
   # remote_state_consumer_ids       = values(data.tfe_workspace_ids.example.ids)

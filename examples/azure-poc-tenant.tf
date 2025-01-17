@@ -6,7 +6,7 @@ module "Azure-PoC-Tenant" {
   description                   = "Deploy Azure-PoC-Tenant"
 
   auto_apply                      = true
-  assessments_enabled             = true
+  assessments_enabled             = false
   speculative_enabled             = false
   structured_run_output_enabled   = true
   additional_tags_list            = ["tenant", "landingzone", "poc"]
