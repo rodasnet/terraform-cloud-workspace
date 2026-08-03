@@ -160,15 +160,6 @@ module "Project-TeamAccess-Link" {
   project_definition = {
     organization = var.organization
     name         = "Project-TeamAccess-Link"
-    team_access_links = [
-      {
-        name   = "teamCreatedInDashboard1"
-        access = "read"
-      },
-      {
-        name   = "SecondTeam"
-        access = "read"
-      },
-    ]
+    # team_access_links removed — teamCreatedInDashboard1 and SecondTeam no longer exist in TFC
   }
 }
