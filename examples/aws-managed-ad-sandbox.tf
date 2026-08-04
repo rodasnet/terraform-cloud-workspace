@@ -16,4 +16,6 @@ module "aws-managed-ad-sandbox" {
     branch         = "main"
     oauth_token_id = var.github_oauth_token_id
   }
+
+  variable_set_names = ["AWS Managed AD Sandbox"]
 }
