@@ -37,7 +37,7 @@ variable "project_definition" {
     })))
 
     variable_set_links = optional(list(string), [])
-/*
+    /*
     teams = optional(list(object({
       name       = string
       access     = string
@@ -81,6 +81,15 @@ variable "workspace_definition" {
     trigger_prefixes              = optional(string)
     trigger_patterns              = optional(string)
     working_directory             = optional(string)
+
+    vcs_repo = optional(object({
+      identifier                 = string
+      branch                     = optional(string)
+      ingress_submodules         = optional(bool)
+      oauth_token_id             = optional(string)
+      github_app_installation_id = optional(string)
+      tags_regex                 = optional(string)
+    }))
   })
 
   default = null

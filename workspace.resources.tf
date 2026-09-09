@@ -14,7 +14,7 @@ resource "tfe_workspace" "workspace" {
   # file_triggers_enabled         = var.file_triggers_enabled
   # global_remote_state           = var.global_remote_state
   # remote_state_consumer_ids     = var.remote_state_consumer_ids
-  project_id                    = var.workspace_definition.project_id
+  project_id = var.workspace_definition.project_id
   # queue_all_runs                = var.queue_all_runs
   # speculative_enabled           = var.speculative_enabled
   # structured_run_output_enabled = var.structured_run_output_enabled
@@ -26,16 +26,20 @@ resource "tfe_workspace" "workspace" {
   # terraform_version             = var.terraform_version
   # trigger_prefixes              = var.trigger_prefixes
   # trigger_patterns              = var.trigger_patterns
-  # working_directory             = var.working_directory
+  working_directory = try(var.workspace_definition.working_directory, null)
 
-  # dynamic "vcs_repo" {
-  #   for_each = var.vcs_repo != null ? [1] : []
-  #   content {
-  #     identifier     = var.vcs_repo.identifier
-  #     oauth_token_id = var.vcs_repo.oauth_token_id
-  #     branch         = var.vcs_repo.branch
-  #   }
-  # }
+  # Present -> VCS-driven workspace. Absent -> CLI-driven (unchanged behaviour).
+  dynamic "vcs_repo" {
+    for_each = try(var.workspace_definition.vcs_repo, null) != null ? [var.workspace_definition.vcs_repo] : []
+    content {
+      identifier                 = vcs_repo.value.identifier
+      branch                     = vcs_repo.value.branch
+      ingress_submodules         = vcs_repo.value.ingress_submodules
+      oauth_token_id             = vcs_repo.value.oauth_token_id
+      github_app_installation_id = vcs_repo.value.github_app_installation_id
+      tags_regex                 = vcs_repo.value.tags_regex
+    }
+  }
 
 }
 
