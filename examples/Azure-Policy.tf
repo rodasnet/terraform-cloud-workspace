@@ -1,3 +1,12 @@
+# One-time reconciliation: the azure-policy workspace was auto-created by
+# `terraform init` in rodasnet/terraform-azure-policy before this managing run
+# ever applied, so tf_cloud_workspace state never tracked it. Adopt it here;
+# safe to remove this import block after the run applies.
+import {
+  to = module.Azure-Policy.tfe_workspace.workspace[0]
+  id = "rodasnet/azure-policy"
+}
+
 module "Azure-Policy" {
   source = "../"
 
