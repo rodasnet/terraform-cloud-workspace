@@ -94,3 +94,19 @@ variable "workspace_definition" {
 
   default = null
 }
+
+#------------------------------------------------------------------------------
+# TFC Registry Module Variables
+#------------------------------------------------------------------------------
+variable "registry_module_definition" {
+  type = object({
+    # "<owner>/<repo>", e.g. "rodasnet/terraform-aws-s3". Must follow the
+    # terraform-<PROVIDER>-<NAME> naming convention - the registry module's
+    # name and provider are parsed from the repo name, not set explicitly.
+    identifier     = string
+    oauth_token_id = string
+    branch         = optional(string)
+  })
+
+  default = null
+}
